@@ -7,6 +7,9 @@
 # define ABS(x) (((x) < 0) ? -(x) : (x))
 # define NEG(x) (((x) < 0) ? 1 : 0)
 # define POS(x) (((x) > 0) ? 1 : 0)
+# define MIN(a, b) ((a) < (b) ? (a) : (b))
+# define MAX(a, b) ((a) > (b) ? (a) : (b))
+# define DIST(a, b) (ABS((a) - (b)))
 
 typedef struct	s_list
 {
