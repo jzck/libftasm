@@ -76,5 +76,8 @@ void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lsteadd(t_list **alst, t_list *new);
+void	ft_lstnadd(t_list **alst, t_list *new, int n);
+t_list	*ft_lstlast(t_list *lst)
 
 #endif
