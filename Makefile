@@ -22,11 +22,12 @@ all: $(NAME)
 $(D_OBJ)/%.o: $(D_SRC)/%.c
 	@$(MKDIR) $(D_OBJ)
 	@$(CC) $(W_FLAGS) -c $< -o $@ $(DEBUG)
-	@echo "Compiling "$<"..."
+	@echo "(libft) Compiling "$<"..."
 
 $(NAME): $(F_OBJ)
-	$(AR) $(NAME) $(F_OBJ)
-	ranlib $(NAME)
+	@$(AR) $(NAME) $(F_OBJ)
+	@echo "(libft) Linking "$@"..."
+	@ranlib $(NAME)
 
 clean:
 	$(RM) $(D_OBJ)

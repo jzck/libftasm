@@ -2,6 +2,7 @@
 #define LIBFT_H
 # include <string.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 # define SEP(x) (x == ' ' || x == '\t' || x == '\n')
 # define ABS(x) (((x) < 0) ? -(x) : (x))
@@ -75,9 +76,20 @@ void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+void	ft_lst_print(t_list *list, void (*printer)());
+int		ft_lstsize(t_list *lst);
 void	ft_lsteadd(t_list **alst, t_list *new);
 void	ft_lstnadd(t_list **alst, t_list *new, int n);
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lst_sorted_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)());
+void	ft_lst_sorted_insert(t_list **begin_list, t_list *insert, int (*cmp)());
+t_list	*ft_lstnew_range(int a, int b);
 
+int		ft_diff(void *a, void *b);
+void	*ft_id(void *a);
 #endif
