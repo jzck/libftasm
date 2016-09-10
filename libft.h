@@ -89,7 +89,11 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lst_sorted_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)());
 void	ft_lst_sorted_insert(t_list **begin_list, t_list *insert, int (*cmp)());
 t_list	*ft_lstnew_range(int a, int b);
+void	ft_lst_delif(t_list **alist, void *data_ref, int (*cmp)(), void (*del)(void *, size_t));
+void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t));
+void	ft_lst_cfree(void *ptr, size_t size);
+t_list	*ft_lst_filter(t_list *lst, void const *data_ref, t_list *(*f)(t_list *elem, void const *));
 
 int		ft_diff(void *a, void *b);
-void	*ft_id(void *a);
+t_list	*ft_id(t_list *a);
 #endif

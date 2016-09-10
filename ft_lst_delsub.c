@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	ft_lstdelsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t))
+void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t))
 {
 	t_list	*last;
 	t_list	*current;
@@ -11,6 +11,11 @@ void	ft_lstdelsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, 
 	tmp = NULL;
 	while (current && sub)
 	{
+		if ((*cmp)(current->content, sub->content) > 0)
+		{
+			sub = sub->next;
+			continue ;
+		}
 		if ((*cmp)(current->content, sub->content) == 0)
 		{
 			if (current == *alst)

@@ -1,29 +1,25 @@
 #include "libft.h"
 
-void	ft_lst_remove_if(
-		t_list **begin_list,
-		void *data_ref,
-		int (*cmp)())
+void	ft_lst_delif(t_list **alst, void *data_ref, int (*cmp)(), void (*del)(void *, size_t))
 {
 	t_list	*last;
 	t_list	*current;
 	t_list	*tmp;
 
 	last = NULL;
-	current = *begin_list;
+	current = *alst;
 	tmp = NULL;
-	fflush(stdout);
 	while (current)
 	{
-		if ((*cmp)(current->content, &data_ref) == 0)
+		if ((*cmp)(current->content, data_ref) == 0)
 		{
-			if (current == *begin_list)
-				*begin_list = current->next;
+			if (current == *alst)
+				*alst = current->next;
 			else
 				last->next = current->next;
 			tmp = current;
 			current = current->next;
-			free(tmp);
+			ft_lstdelone(&tmp, del);
 		}
 		else
 		{

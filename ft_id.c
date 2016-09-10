@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*ft_id(void *a)
+t_list	*ft_id(t_list *a)
 {
 	return (a);
 }
