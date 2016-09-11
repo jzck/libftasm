@@ -23,4 +23,5 @@ void	ft_lst_sorted_insert(t_list **begin_list, t_list *insert, int (*cmp)())
 		link = link->next;
 	}
 	link->next = insert;
+	insert->next = NULL;
 }

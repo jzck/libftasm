@@ -11,6 +11,11 @@ void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *,
 	tmp = NULL;
 	while (current && sub)
 	{
+		if ((*cmp)(current->content, sub->content) > 0)
+		{
+			sub = sub->next;
+			continue ;
+		}
 		if ((*cmp)(current->content, sub->content) == 0)
 		{
 			if (current == *alst)
@@ -27,7 +32,5 @@ void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *,
 			last = current;
 			current = current->next;
 		}
-		if (!current && sub)
-			current = *alst;
 	}
 }

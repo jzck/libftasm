@@ -1,17 +1,17 @@
 #include "libft.h"
 
-void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t))
+t_list	*ft_lst_removeif(t_list **alst, void *data_ref, int (*cmp)())
 {
 	t_list	*last;
 	t_list	*current;
 	t_list	*tmp;
 
 	last = NULL;
-	current = *alst;
 	tmp = NULL;
-	while (current && sub)
+	current = *alst;
+	while (current)
 	{
-		if ((*cmp)(current->content, sub->content) == 0)
+		if ((*cmp)(current->content, data_ref) == 0)
 		{
 			if (current == *alst)
 				*alst = current->next;
@@ -19,15 +19,14 @@ void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *,
 				last->next = current->next;
 			tmp = current;
 			current = current->next;
-			sub = sub->next;
-			ft_lstdelone(&tmp, del);
+			return (tmp);
 		}
 		else
 		{
 			last = current;
 			current = current->next;
 		}
-		if (!current && sub)
-			current = *alst;
 	}
+	return (NULL);
 }
+
