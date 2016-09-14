@@ -81,6 +81,7 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+void	ft_lst_sort(t_list **begin_list, int (*cmp)());
 void	ft_lst_print(t_list *list, void (*printer)());
 int		ft_lstsize(t_list *lst);
 void	ft_lsteadd(t_list **alst, t_list *new);
