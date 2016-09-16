@@ -96,6 +96,7 @@ void	ft_lst_cfree(void *ptr, size_t size);
 t_list	*ft_lst_filter(t_list *lst, void const *data_ref, t_list *(*f)(t_list *elem, void const *));
 t_list	*ft_lst_removeif(t_list **alst, void *data_ref, int (*cmp)());
 t_list	*ft_lst_find(t_list *begin_list, void *data_ref, int (*cmp)());
+t_list	*ft_lstpop(t_list **lst);
 
 int		ft_diff(void *a, void *b);
 t_list	*ft_id(t_list *a);
