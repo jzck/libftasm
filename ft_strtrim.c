@@ -6,10 +6,10 @@ char	*ft_strtrim(char const *s)
 	size_t	size;
 
 	out = ft_strdup(s);
-	while (*out && SEP(*out))
+	while (*out && FT_SEP(*out))
 		out++;
 	size = ft_strlen(out);
-	while (size - 1 && SEP(out[size - 1]))
+	while (size - 1 && FT_SEP(out[size - 1]))
 	{
 		size--;
 		out[size] = '\0';

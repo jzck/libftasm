@@ -23,7 +23,7 @@ void	ft_putnbr(int n)
 	}
 	else if (n < 0)
 		ft_putchar('-');
-	n = ABS(n);
+	n = FT_ABS(n);
 	if (n >= 10)
 		ft_putnbr(n / 10);
 	ft_putchar(n % 10 + '0');

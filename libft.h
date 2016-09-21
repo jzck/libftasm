@@ -4,13 +4,13 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# define SEP(x) (x == ' ' || x == '\t' || x == '\n')
-# define ABS(x) (((x) < 0) ? -(x) : (x))
-# define NEG(x) (((x) < 0) ? 1 : 0)
-# define POS(x) (((x) > 0) ? 1 : 0)
-# define MIN(a, b) ((a) < (b) ? (a) : (b))
-# define MAX(a, b) ((a) > (b) ? (a) : (b))
-# define DIST(a, b) (ABS((a) - (b)))
+# define FT_SEP(x) (x == ' ' || x == '\t' || x == '\n')
+# define FT_ABS(x) (((x) < 0) ? -(x) : (x))
+# define FT_NEG(x) (((x) < 0) ? 1 : 0)
+# define FT_POS(x) (((x) > 0) ? 1 : 0)
+# define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
+# define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
+# define FT_DIST(a, b) (ABS((a) - (b)))
 
 typedef struct	s_list
 {
@@ -99,5 +99,10 @@ t_list	*ft_lst_find(t_list *begin_list, void *data_ref, int (*cmp)());
 t_list	*ft_lstpop(t_list **lst);
 
 int		ft_diff(void *a, void *b);
+char	*ft_strrev(char *str);
 t_list	*ft_id(t_list *a);
+char	*ft_itoa_base(int nbr, char *base, char *flags);
+char	*ft_lltoa_base(long long nbr, char *base, char *flags);
+char	*ft_ulltoa_base(unsigned long long nbr, char *base);
+char	*ft_uitoa_base(unsigned int nbr, char *base);
 #endif
