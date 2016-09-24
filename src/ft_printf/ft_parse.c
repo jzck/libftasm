@@ -90,6 +90,6 @@ t_fmt	*ft_parse(char **format)
 	ft_fmt_simplify(fmt);
 	fmt->valid = ft_fmt_validate_conversion(fmt) ? 0 : 1;
 
-	ft_fmt_print(fmt);
+	/* ft_fmt_print(fmt); */
 	return (fmt);
 }

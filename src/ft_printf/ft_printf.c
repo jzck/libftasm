@@ -21,7 +21,8 @@ int	ft_printf(const char *format, ...)
 
 	va_start(ap1, format);
 	str = ft_strdup(format);
-	ft_putendl(format);
+	ft_bzero(final, 1000);
+	/* ft_putendl(format); */
 	while (*str)
 	{
 		if (*str == '%')

@@ -1,5 +1,6 @@
 #ifndef LIBFT_H
 #define LIBFT_H
+#include "libftprintf.h"
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -97,6 +98,8 @@ t_list	*ft_lst_filter(t_list *lst, void const *data_ref, t_list *(*f)(t_list *el
 t_list	*ft_lst_removeif(t_list **alst, void *data_ref, int (*cmp)());
 t_list	*ft_lst_find(t_list *begin_list, void *data_ref, int (*cmp)());
 t_list	*ft_lstpop(t_list **lst);
+void	ft_lst_merge(t_list **begin_list1, t_list *begin_list2);
+void	ft_lst_reverse(t_list **begin_list);
 
 int		ft_diff(void *a, void *b);
 char	*ft_strrev(char *str);
@@ -105,4 +108,6 @@ char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);
 char	*ft_ulltoa_base(unsigned long long nbr, char *base);
 char	*ft_uitoa_base(unsigned int nbr, char *base);
+
+void	ft_strlsort(char **list, int size, int (*cmp)());
 #endif
