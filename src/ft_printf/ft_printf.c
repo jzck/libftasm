@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 t_conv	g_convs[] =
 {

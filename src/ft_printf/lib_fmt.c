@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 t_fmt	*ft_fmt_init(void)
 {

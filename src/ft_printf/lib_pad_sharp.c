@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 void	ft_pad_sharp_o(char *str)
 {

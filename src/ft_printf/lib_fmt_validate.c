@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 void	ft_fmt_simplify(t_fmt *fmt)
 {

@@ -1,10 +1,12 @@
 #ifndef LIBFT_H
 #define LIBFT_H
-#include "libftprintf.h"
+# include "ftprintf.h"
+# include "ftxattr.h"
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # define FT_SEP(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
 # define FT_NEG(x) (((x) < 0) ? 1 : 0)
@@ -110,4 +112,11 @@ char	*ft_ulltoa_base(unsigned long long nbr, char *base);
 char	*ft_uitoa_base(unsigned int nbr, char *base);
 
 void	ft_strlsort(char **list, int size, int (*cmp)());
+char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags);
+size_t	ft_ilen(int n);
+size_t	ft_uilen(unsigned int n);
+
+int		ft_time_isrecent(time_t event);
+int		ft_xattr_print(char *path);
+int		ft_xattr_count(char *path);
 #endif

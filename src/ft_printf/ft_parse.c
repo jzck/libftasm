@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 void	ft_parse_flags(t_fmt *fmt, char **format)
 {
