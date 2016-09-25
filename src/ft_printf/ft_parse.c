@@ -1,5 +1,25 @@
 #include "ftprintf.h"
 
+t_fmt	*ft_parse(char **format, va_list ap)
+{
+	t_fmt		*fmt;
+
+	fmt = ft_fmt_init();
+	ft_parse_flags(fmt, format);
+	ft_parse_width(fmt, format, ap);
+	ft_parse_precision(fmt, format, ap);
+	ft_parse_modifiers(fmt, format);
+	fmt->conversion = **format;
+	(*format)++;
+	ft_fmt_validate_mod(fmt);
+	ft_fmt_validate_flags(fmt);
+	ft_fmt_simplify(fmt);
+	fmt->valid = ft_fmt_validate_conversion(fmt) ? 0 : 1;
+
+	/* ft_fmt_print(fmt); */
+	return (fmt);
+}
+
 void	ft_parse_flags(t_fmt *fmt, char **format)
 {
 	int		i;
@@ -24,30 +44,59 @@ void	ft_parse_flags(t_fmt *fmt, char **format)
 	/* fflush(stdout); */
 }
 
-void	ft_parse_nums(t_fmt *fmt, char **format)
+void	ft_parse_width(t_fmt *fmt, char **format, va_list ap)
 {
-	int			i;
-	char		buf[10];
+	int		i;
+	char	buf[10];
 	char	*str;
 
 	i = 0;
 	str = *format;
-	ft_strcpy(buf, "0");
-	while (ft_isdigit((int)(str[i])))
-		ft_strncat(buf, str + i++, 1);
-	fmt->width = ft_atoi(buf);
-	ft_strcpy(buf, "0");
-	if (str[i] == '.')
+	if (str[i] == '*')
 	{
 		i++;
-		while (ft_isdigit(str[i]))
-			ft_strncat(buf, str + i++, 1);
+		fmt->width = va_arg(ap, int);
 	}
-	fmt->precision = ft_atoi(buf);
+	else
+	{
+		ft_strcpy(buf, "0");
+		while (ft_isdigit((int)(str[i])))
+			ft_strncat(buf, str + i++, 1);
+		fmt->width = ft_atoi(buf);
+	}
 	*format += i;
+	/* printf("found width: %i\n", fmt->width); */
 	/* printf("\nparse_nums: %s\n", *format); */
 	/* fflush(stdout); */
 }
+
+void	ft_parse_precision(t_fmt *fmt, char **format, va_list ap)
+{
+	int		i;
+	char	buf[10];
+	char	*str;
+
+	i = 0;
+	str = *format;
+	if (str[i] == '.')
+	{
+		if (str[++i] == '*')
+		{
+			i++;
+			fmt->precision = va_arg(ap, int);
+		}
+		else
+		{
+			ft_strcpy(buf, "0");
+			while (ft_isdigit(str[i]))
+				ft_strncat(buf, str + i++, 1);
+			fmt->precision = ft_atoi(buf);
+		}
+	}
+	/* printf("found preci: %i\n", fmt->precision); */
+	*format += i;
+}
+
 
 void	ft_parse_modifiers(t_fmt *fmt, char **format)
 {
@@ -71,25 +120,4 @@ void	ft_parse_modifiers(t_fmt *fmt, char **format)
 	*format += ft_strlen(fmt->modifier);
 	/* printf("\nparse_mods: %s\n", *format); */
 	/* fflush(stdout); */
-}
-
-
-t_fmt	*ft_parse(char **format)
-{
-	t_fmt		*fmt;
-
-	fmt = ft_fmt_init();
-	ft_parse_flags(fmt, format);
-	ft_parse_nums(fmt, format);
-	ft_parse_modifiers(fmt, format);
-	fmt->conversion = **format;
-	(*format)++;
-
-	ft_fmt_validate_mod(fmt);
-	ft_fmt_validate_flags(fmt);
-	ft_fmt_simplify(fmt);
-	fmt->valid = ft_fmt_validate_conversion(fmt) ? 0 : 1;
-
-	/* ft_fmt_print(fmt); */
-	return (fmt);
 }

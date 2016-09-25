@@ -9,7 +9,8 @@ char	*ft_transform(t_fmt *fmt, va_list ap)
 	i = 0;
 	while (fmt->conversion != g_convs[i].id)
 		i++;
-	ret = (g_convs[i].converter)(fmt, ap);
+	fmt->conv = g_convs[i];
+	ret = (fmt->conv.converter)(fmt, ap);
 	if (fmt->width > (int)ft_strlen(ret))
 	{
 		buf = ret;

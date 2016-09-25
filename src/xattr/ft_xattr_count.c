@@ -8,6 +8,8 @@ int		ft_xattr_count(char *path)
 	int			count;
 
 	i = 0;
+	ft_bzero(list, FT_XATTR_SIZE);
+	/* printf("looking for xattr at: %s\n", path); */
 	listlen = listxattr(path, list, FT_XATTR_SIZE, XATTR_NOFOLLOW);
 	if (listlen == -1)
 		return (-1);

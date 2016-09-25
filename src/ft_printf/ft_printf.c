@@ -2,14 +2,15 @@
 
 t_conv	g_convs[] =
 {
-	{'d', "0123456789", ft_signed_conversion, "0- +"},
-	{'i', "0123456789", ft_signed_conversion, "0- +"},
-	{'u', "0123456789", ft_unsigned_conversion, "#0-"},
-	{'o', "01234567", ft_unsigned_conversion, "#0-"},
-	{'x', "0123456789abcdef", ft_unsigned_conversion, "#0-"},
-	{'X', "0123456789ABCDEF", ft_unsigned_conversion, "#0-"},
-	{'s', "", ft_str_conversion, "-"},
-	{'c', "", ft_char_conversion, "-"},
+	{'d', "0- +", "0123456789", &ft_signed_conversion, NULL},
+	{'i', "0- +", "0123456789", &ft_signed_conversion, NULL},
+	{'u', "0-", "0123456789", &ft_unsigned_conversion, NULL},
+	{'o', "#0-", "01234567", &ft_unsigned_conversion, &ft_pad_sharp_o},
+	{'x', "#0-", "0123456789abcdef", &ft_unsigned_conversion, &ft_pad_sharp_xb},
+	{'X', "#0-", "0123456789ABCDEF", &ft_unsigned_conversion, &ft_pad_sharp_xb},
+	{'b', "#0-", "01", &ft_unsigned_conversion, &ft_pad_sharp_xb},
+	{'s', "-", "", &ft_str_conversion, NULL},
+	{'c', "-", "", &ft_char_conversion, NULL},
 };
 
 int	ft_printf(const char *format, ...)
@@ -22,13 +23,12 @@ int	ft_printf(const char *format, ...)
 	va_start(ap1, format);
 	str = ft_strdup(format);
 	ft_bzero(final, 1000);
-	/* ft_putendl(format); */
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			str++;
-			if (!(fmt = ft_parse(&str)))
+			if (!(fmt = ft_parse(&str, ap1)))
 				return (1);
 			if (!fmt->valid)
 				ft_strncat(final, &fmt->conversion, 1);

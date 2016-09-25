@@ -119,4 +119,6 @@ size_t	ft_uilen(unsigned int n);
 int		ft_time_isrecent(time_t event);
 int		ft_xattr_print(char *path);
 int		ft_xattr_count(char *path);
+
+char	*ft_path_notdir(char *path);
 #endif

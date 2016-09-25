@@ -3,7 +3,21 @@
 # include "libft.h"
 # include <stdarg.h>
 # define ALL_FLAGS "#0- +"
-# define ALL_CONVERSIONS "sSpdDioOuUxXcC"
+# define ALL_CONVERSIONS "sSpdDioOuUxXcCb"
+
+typedef struct	s_fmt	t_fmt;
+
+typedef	char	*(t_converter)(t_fmt *fmt, va_list ap);
+typedef void	(t_sharp_func)(char *str, t_fmt *fmt);
+
+typedef struct	s_conv
+{
+	char			id;
+	char			allowed_flags[6];
+	char			base[20];
+	t_converter		*converter;
+	t_sharp_func	*sharp_func;
+}				t_conv;
 
 typedef struct	s_fmt
 {
@@ -13,25 +27,21 @@ typedef struct	s_fmt
 	char	modifier[3];
 	char	conversion;
 	int		valid;
+	t_conv	conv;
 }				t_fmt;
-
-typedef	char	*(*t_converter)(t_fmt *fmt, va_list ap);
-
-typedef struct	s_conv
-{
-	char		id;
-	char		base[20];
-	t_converter	converter;
-	char		allowed_flags[6];
-}				t_conv;
 
 extern t_conv	g_convs[];
 
 t_fmt	*ft_fmt_init(void);
 void	ft_fmt_print(t_fmt *fmt);
 
+t_fmt	*ft_parse(char **format, va_list ap);
+void	ft_parse_flags(t_fmt *fmt, char **format);
+void	ft_parse_width(t_fmt *fmt, char **format, va_list ap);
+void	ft_parse_precision(t_fmt *fmt, char **format, va_list ap);
+void	ft_parse_modifiers(t_fmt *fmt, char **format);
+
 int		ft_printf(const char *format, ...);
-t_fmt	*ft_parse(char **format);
 char	*ft_transform(t_fmt *fmt, va_list ap);
 
 void	ft_fmt_error_conv(char conv);
@@ -49,9 +59,9 @@ char	*ft_unsigned_conversion(t_fmt *fmt, va_list ap);
 char	*ft_str_conversion(t_fmt *fmt, va_list ap);
 char	*ft_char_conversion(t_fmt *fmt, va_list ap);
 
+void	ft_pad_sharp_o(char *str, t_fmt *fmt);
+void	ft_pad_sharp_xb(char *str, t_fmt *fmt);
+
 void	ft_pad_left(char *str, t_fmt *fmt);
 void	ft_pad_right(char *str, t_fmt *fmt);
-void	ft_pad_sharp_o(char *str);
-void	ft_pad_sharp_x(char *str, t_fmt *fmt);
-void	ft_pad_sharp(char *str, t_fmt *fmt);
 #endif

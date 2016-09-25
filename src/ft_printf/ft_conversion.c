@@ -51,5 +51,7 @@ char	*ft_str_conversion(t_fmt *fmt, va_list ap)
 	/* if (ft_strcmp(fmt->modifier, "l") == 0) */
 	/* 	va_arg(ap, wchar_t *); */
 	ret = ft_strdup(va_arg(ap, char *));
+	if (fmt->precision && fmt->precision < (int)ft_strlen(ret))
+		ret[fmt->precision] = '\0';
 	return (ret);
 }
