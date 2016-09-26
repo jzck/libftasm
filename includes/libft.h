@@ -2,6 +2,7 @@
 #define LIBFT_H
 # include "ftprintf.h"
 # include "ftxattr.h"
+# include "getnextline.h"
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
