@@ -105,19 +105,25 @@ void	ft_lst_merge(t_list **begin_list1, t_list *begin_list2);
 void	ft_lst_reverse(t_list **begin_list);
 
 int		ft_diff(void *a, void *b);
-char	*ft_strrev(char *str);
 t_list	*ft_id(t_list *a);
+
+char	*ft_strrev(char *str);
+char	**ft_strsplit(char const *s, char c);
+char	**ft_split_whitespaces(char *str);
+char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags);
+
 char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);
 char	*ft_ulltoa_base(unsigned long long nbr, char *base);
 char	*ft_uitoa_base(unsigned int nbr, char *base);
-
-void	ft_strlsort(char **list, int size, int (*cmp)());
-char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags);
 size_t	ft_ilen(int n);
 size_t	ft_uilen(unsigned int n);
 
+void	ft_strlsort(char **list, int size, int (*cmp)());
+void	ft_strlprint(char **strl, char sep);
+
 int		ft_time_isrecent(time_t event);
+
 int		ft_xattr_print(char *path);
 int		ft_xattr_count(char *path);
 
