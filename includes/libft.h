@@ -1,13 +1,16 @@
 #ifndef LIBFT_H
 #define LIBFT_H
+
 # include "ftprintf.h"
 # include "ftxattr.h"
 # include "getnextline.h"
+
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <time.h>
+
 # define FT_SEP(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
 # define FT_NEG(x) (((x) < 0) ? 1 : 0)
@@ -109,6 +112,7 @@ t_list	*ft_id(t_list *a);
 
 char	*ft_strrev(char *str);
 char	**ft_strsplit(char const *s, char c);
+char	*ft_str3join(char const *s1, char const *s2, char const *s3);
 char	**ft_split_whitespaces(char *str);
 char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags);
 
@@ -119,13 +123,12 @@ char	*ft_uitoa_base(unsigned int nbr, char *base);
 size_t	ft_ilen(int n);
 size_t	ft_uilen(unsigned int n);
 
-void	ft_strlsort(char **list, int size, int (*cmp)());
-void	ft_strlprint(char **strl, char sep);
+void	ft_sstrsort(char **list, int size, int (*cmp)());
+void	ft_sstrprint(char **list, char sep);
+char	**ft_sstrdup(char **list);
+char	**ft_sstradd(char **list, char *new);
 
 int		ft_time_isrecent(time_t event);
-
-int		ft_xattr_print(char *path);
-int		ft_xattr_count(char *path);
 
 char	*ft_path_notdir(char *path);
 #endif

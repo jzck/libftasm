@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	ft_strlsort(char **list, int size, int (*cmp)())
+void	ft_sstrsort(char **list, int size, int (*cmp)())
 {
 	int		i;
 	char	*tmp;
