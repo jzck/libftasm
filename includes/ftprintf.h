@@ -35,11 +35,11 @@ extern t_conv	g_convs[];
 t_fmt	*ft_fmt_init(void);
 void	ft_fmt_print(t_fmt *fmt);
 
-t_fmt	*ft_parse(char **format, va_list ap);
-void	ft_parse_flags(t_fmt *fmt, char **format);
-void	ft_parse_width(t_fmt *fmt, char **format, va_list ap);
-void	ft_parse_precision(t_fmt *fmt, char **format, va_list ap);
-void	ft_parse_modifiers(t_fmt *fmt, char **format);
+t_fmt	*ft_printf_parse(char **format, va_list ap);
+void	ft_printf_parse_flags(t_fmt *fmt, char **format);
+void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap);
+void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap);
+void	ft_printf_parse_modifiers(t_fmt *fmt, char **format);
 
 int		ft_printf(const char *format, ...);
 char	*ft_transform(t_fmt *fmt, va_list ap);

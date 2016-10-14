@@ -1,14 +1,14 @@
 #include "ftprintf.h"
 
-t_fmt	*ft_parse(char **format, va_list ap)
+t_fmt	*ft_printf_parse(char **format, va_list ap)
 {
 	t_fmt		*fmt;
 
 	fmt = ft_fmt_init();
-	ft_parse_flags(fmt, format);
-	ft_parse_width(fmt, format, ap);
-	ft_parse_precision(fmt, format, ap);
-	ft_parse_modifiers(fmt, format);
+	ft_printf_parse_flags(fmt, format);
+	ft_printf_parse_width(fmt, format, ap);
+	ft_printf_parse_precision(fmt, format, ap);
+	ft_printf_parse_modifiers(fmt, format);
 	fmt->conversion = **format;
 	(*format)++;
 	ft_fmt_validate_mod(fmt);
@@ -20,7 +20,7 @@ t_fmt	*ft_parse(char **format, va_list ap)
 	return (fmt);
 }
 
-void	ft_parse_flags(t_fmt *fmt, char **format)
+void	ft_printf_parse_flags(t_fmt *fmt, char **format)
 {
 	int		i;
 	char	*str;
@@ -44,7 +44,7 @@ void	ft_parse_flags(t_fmt *fmt, char **format)
 	/* fflush(stdout); */
 }
 
-void	ft_parse_width(t_fmt *fmt, char **format, va_list ap)
+void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
 {
 	int		i;
 	char	buf[10];
@@ -70,7 +70,7 @@ void	ft_parse_width(t_fmt *fmt, char **format, va_list ap)
 	/* fflush(stdout); */
 }
 
-void	ft_parse_precision(t_fmt *fmt, char **format, va_list ap)
+void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
 {
 	int		i;
 	char	buf[10];
@@ -98,7 +98,7 @@ void	ft_parse_precision(t_fmt *fmt, char **format, va_list ap)
 }
 
 
-void	ft_parse_modifiers(t_fmt *fmt, char **format)
+void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
 {
 	char	*str;
 

@@ -28,7 +28,7 @@ int	ft_printf(const char *format, ...)
 		if (*str == '%')
 		{
 			str++;
-			if (!(fmt = ft_parse(&str, ap1)))
+			if (!(fmt = ft_printf_parse(&str, ap1)))
 				return (1);
 			if (!fmt->valid)
 				ft_strncat(final, &fmt->conversion, 1);
