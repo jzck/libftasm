@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-#define SEP(x) (x==' ' || x=='\n' || x=='\t')
+#include "libft.h"
 
 char	**alloc_table(char **table, char *str)
 {
@@ -22,19 +19,19 @@ char	**alloc_table(char **table, char *str)
 
 	i = 0;
 	n_words = 0;
-	while (SEP(str[i]))
+	while (FT_WS(str[i]))
 		i++;
 	while (str[i] != '\0')
 	{
 		i++;
-		if (SEP(str[i]))
+		if (FT_WS(str[i]))
 		{
 			n_words++;
-			while (SEP(str[i]))
+			while (FT_WS(str[i]))
 				i++;
 		}
 	}
-	if (!SEP(str[i - 1]))
+	if (!FT_WS(str[i - 1]))
 		n_words++;
 	table = (char**)malloc(sizeof(*table) * (n_words + 1));
 	table[n_words] = 0x0;
@@ -50,17 +47,17 @@ char	**alloc_words(char **table, char *str)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (SEP(str[i]))
+	while (FT_WS(str[i]))
 		i++;
 	while (str[i] != '\0')
 	{
 		i++;
-		if (SEP(str[i]) || str[i] == '\0')
+		if (FT_WS(str[i]) || str[i] == '\0')
 		{
 			table[j] = (char*)malloc(sizeof(**table) * (k + 1));
 			j++;
 			k = 0;
-			while (SEP(str[i]))
+			while (FT_WS(str[i]))
 				i++;
 		}
 		k++;
@@ -77,19 +74,19 @@ char	**fill_table(char **table, char *str)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (SEP(str[i]))
+	while (FT_WS(str[i]))
 		i++;
 	while (str[i] != '\0')
 	{
 		table[j][k] = str[i];
 		i++;
 		k++;
-		if (SEP(str[i]))
+		if (FT_WS(str[i]))
 		{
 			table[j][k] = '\0';
 			j++;
 			k = 0;
-			while (SEP(str[i]))
+			while (FT_WS(str[i]))
 				i++;
 		}
 	}

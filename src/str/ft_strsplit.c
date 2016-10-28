@@ -85,6 +85,8 @@ char	**ft_strsplit(char const *s, char c)
 {
 	char	**table;
 
+	if (!s)
+		return (NULL);
 	table = 0;
 	table = alloc_table(table, s, c);
 	table = alloc_words(table, s, c);

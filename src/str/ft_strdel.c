@@ -2,6 +2,7 @@
 
 void	ft_strdel(char **as)
 {
-	free(*as);
+	if (as)
+		free(*as);
 	*as = NULL;
 }

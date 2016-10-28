@@ -41,7 +41,6 @@ void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap);
 void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap);
 void	ft_printf_parse_modifiers(t_fmt *fmt, char **format);
 
-int		ft_printf(const char *format, ...);
 char	*ft_transform(t_fmt *fmt, va_list ap);
 
 void	ft_fmt_error_conv(char conv);

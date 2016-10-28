@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "getnextline.h"
 
 static char     *ft_realloc(char *line, int size)
 {
@@ -23,9 +23,6 @@ int             get_next_line(int const fd, char **line)
 	*line = ft_strcpy(*line, save);
 	if ((pos = ft_strchr(*line, '\n')))
 	{
-		/* printf("found \\n in save\n"); */
-		/* fflush(stdout); */
-		/* ft_putstr(save); */
 		ft_strcpy(save, pos + 1);
 		*pos = '\0';
 		return (1);
@@ -33,8 +30,6 @@ int             get_next_line(int const fd, char **line)
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		/* ft_putstr(buf); */
-		/* ft_putchar('/'); */
 		if ((pos = ft_strchr(buf, '\n')))
 		{
 			ft_strcpy(save, pos + 1);
