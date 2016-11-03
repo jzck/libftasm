@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_xattr_count.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/03 18:00:52 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/03 18:00:56 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int		ft_xattr_count(char *path)
@@ -9,7 +21,6 @@ int		ft_xattr_count(char *path)
 
 	i = 0;
 	ft_bzero(list, FT_XATTR_SIZE);
-	/* printf("looking for xattr at: %s\n", path); */
 	listlen = listxattr(path, list, FT_XATTR_SIZE, XATTR_NOFOLLOW);
 	if (listlen == -1)
 		return (-1);

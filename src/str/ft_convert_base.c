@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 23:31:20 by jhalford          #+#    #+#             */
-/*   Updated: 2016/08/25 17:32:17 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/03 18:03:07 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static int		ft_check_str(char *str, char *base, int base_size)
 	return (1);
 }
 
-char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags)
+char			*ft_convert_base(
+		char *str, char *base_from, char *base_to, char *flags)
 {
 	int		base_size;
 	int		res;
