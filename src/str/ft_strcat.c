@@ -19,7 +19,7 @@ char	*ft_strcat(char *s1, const char *s2)
 
 	size = ft_strlen(s1);
 	j = 0;
-	while (s2 && s2[j] != '\0')
+	while (s2[j] != '\0')
 	{
 		s1[size + j] = s2[j];
 		j++;

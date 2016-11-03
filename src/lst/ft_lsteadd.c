@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lsteadd.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/03 14:57:17 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/03 14:57:18 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lsteadd(t_list **alst, t_list *new)
@@ -5,7 +17,6 @@ void	ft_lsteadd(t_list **alst, t_list *new)
 	t_list	*lst;
 
 	lst = *alst;
-	new->next = NULL;
 	if (lst)
 	{
 		while (lst->next)
