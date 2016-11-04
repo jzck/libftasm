@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/04 11:12:28 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t))
+void	ft_lst_delsub(
+		t_list **alst,
+		t_list *sub, int (*cmp)(),
+		void (*del)(void *, size_t))
 {
 	t_list	*last;
 	t_list	*current;

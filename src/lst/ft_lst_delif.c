@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_delif.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/04 11:09:12 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/04 11:11:54 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_lst_delif(t_list **alst, void *data_ref, int (*cmp)(), void (*del)(void *, size_t))
+void	ft_lst_delif(
+		t_list **alst, 
+		void *data_ref, int (*cmp)(), 
+		void (*del)(void *, size_t))
 {
 	t_list	*last;
 	t_list	*current;
@@ -28,4 +43,3 @@ void	ft_lst_delif(t_list **alst, void *data_ref, int (*cmp)(), void (*del)(void 
 		}
 	}
 }
-
