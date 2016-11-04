@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 11:12:28 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 12:00:41 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,23 @@
 
 void	ft_lst_delsub(
 		t_list **alst,
-		t_list *sub, int (*cmp)(),
+		t_list *sub,
+		int (*cmp)(),
 		void (*del)(void *, size_t))
 {
-	t_list	*last;
-	t_list	*current;
 	t_list	*tmp;
+	t_list	**indirect;
 
-	last = NULL;
-	current = *alst;
-	tmp = NULL;
-	while (current && sub)
+	indirect = alst;
+	while (*indirect)
 	{
-		if ((*cmp)(current->content, sub->content) == 0)
+		if ((*cmp)((*indirect)->content, sub->content) == 0)
 		{
-			if (current == *alst)
-				*alst = current->next;
-			else
-				last->next = current->next;
-			tmp = current;
-			current = current->next;
-			sub = sub->next;
+			tmp = *indirect;
+			(*indirect) = (*indirect)->next;
 			ft_lstdelone(&tmp, del);
+			sub = sub->next;
 		}
-		else
-		{
-			last = current;
-			current = current->next;
-		}
-		if (!current && sub)
-			current = *alst;
+		indirect = &(*indirect)->next;
 	}
 }
