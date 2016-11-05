@@ -6,31 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:57:10 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 15:27:16 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 13:11:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char		*ft_strrev(char *str)
-{
-	int		len;
-	char	tmp;
-	int		i;
-
-	i = 0;
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	while (i < len / 2)
-	{
-		tmp = str[len - (i + 1)];
-		str[len - (i + 1)] = str[i];
-		str[i] = tmp;
-		i++;
-	}
-	return (str);
-}
 
 static size_t	ft_size(int n)
 {

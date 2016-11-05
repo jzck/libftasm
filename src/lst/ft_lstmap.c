@@ -6,27 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:57:21 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 16:40:39 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 13:11:19 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	ft_lsteadd(t_list **alst, t_list *new)
-{
-	t_list	*lst;
-
-	lst = *alst;
-	new->next = NULL;
-	if (lst)
-	{
-		while (lst->next)
-			lst = lst->next;
-		lst->next = new;
-	}
-	else
-		*alst = new;
-}
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {

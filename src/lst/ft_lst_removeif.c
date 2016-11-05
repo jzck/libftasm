@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:30 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 11:59:13 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 13:07:22 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lst_removeif(t_list **alst, void *data_ref, int (*cmp)())
 
 	tmp = NULL;
 	indirect = alst;
-	while (current)
+	while (*indirect)
 	{
 		if ((*cmp)((*indirect)->content, data_ref) == 0)
 		{
