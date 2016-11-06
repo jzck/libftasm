@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_debug(void)
 {
@@ -19,5 +18,4 @@ void	ft_debug(void)
 
 	n++;
 	ft_printf("----------\n check %02i\n----------\n", n);
-	fflush(stdout);
 }

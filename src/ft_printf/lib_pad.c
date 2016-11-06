@@ -2,7 +2,7 @@
 
 void	ft_pad_right(char *str, t_fmt *fmt)
 {
-	if (strchr(fmt->flags, '#'))
+	if (ft_strchr(fmt->flags, '#'))
 		(fmt->conv.sharp_func)(str, fmt);
 	while ((int)ft_strlen(str) < fmt->width)
 		ft_strcat(str, " ");
@@ -31,7 +31,7 @@ void	ft_pad_left(char *str, t_fmt *fmt)
 	}
 	if (sign)
 		str--;
-	if (strchr(fmt->flags, '#'))
+	if (ft_strchr(fmt->flags, '#'))
 		(fmt->conv.sharp_func)(str, fmt);
 	while ((int)ft_strlen(str) < fmt->width)
 	{

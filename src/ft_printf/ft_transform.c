@@ -17,8 +17,6 @@ char	*ft_transform(t_fmt *fmt, va_list ap)
 		ret = (char *)malloc(sizeof(char) * (fmt->width + 5));
 		ft_strcpy(ret, buf);
 	}
-	/* printf("before padding: '%s'\n", ret); */
-	/* fflush(stdout); */
 	if (ft_strchr(fmt->flags, '-'))
 		ft_pad_right(ret, fmt);
 	else

@@ -15,8 +15,6 @@ t_fmt	*ft_printf_parse(char **format, va_list ap)
 	ft_fmt_validate_flags(fmt);
 	ft_fmt_simplify(fmt);
 	fmt->valid = ft_fmt_validate_conversion(fmt) ? 0 : 1;
-
-	/* ft_fmt_print(fmt); */
 	return (fmt);
 }
 
@@ -24,7 +22,6 @@ void	ft_printf_parse_flags(t_fmt *fmt, char **format)
 {
 	int		i;
 	char	*str;
-
 
 	i = 0;
 	str = *format;
@@ -40,8 +37,6 @@ void	ft_printf_parse_flags(t_fmt *fmt, char **format)
 		i++;
 	}
 	*format += i;
-	/* printf("\nparse_flags: %s\n", *format); */
-	/* fflush(stdout); */
 }
 
 void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
@@ -65,9 +60,6 @@ void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
 		fmt->width = ft_atoi(buf);
 	}
 	*format += i;
-	/* printf("found width: %i\n", fmt->width); */
-	/* printf("\nparse_nums: %s\n", *format); */
-	/* fflush(stdout); */
 }
 
 void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
@@ -93,7 +85,6 @@ void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
 			fmt->precision = ft_atoi(buf);
 		}
 	}
-	/* printf("found preci: %i\n", fmt->precision); */
 	*format += i;
 }
 
@@ -118,6 +109,4 @@ void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
 	else
 		ft_strcpy(fmt->modifier, "");
 	*format += ft_strlen(fmt->modifier);
-	/* printf("\nparse_mods: %s\n", *format); */
-	/* fflush(stdout); */
 }

@@ -16,8 +16,6 @@ char	*ft_ulltoa_base(unsigned long long nbr, char *base)
 	int		base_size;
 	char	*str;
 
-	/* printf("converting %llu to base %s\n", nbr, base); */
-	/* fflush(stdout); */
 	i = 0;
 	base_size = ft_strlen(base);
 	str = ft_strnew(ft_size(nbr, base_size) + 1);

@@ -31,7 +31,7 @@ int		ft_xattr_print(char *path)
 		if (valuelen == -1)
 			ft_printf("couldn't get value\n");
 		else
-			printf("%s:\n%s\n", list + i, value);
+			ft_printf("%s:\n%s\n", list + i, value);
 		i += ft_strlen(list) + 1;
 	}
 	return (0);
