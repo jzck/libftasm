@@ -6,11 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:32 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:33:32 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 16:40:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_transform(t_fmt *fmt, va_list ap)
 {
@@ -22,7 +22,7 @@ char	*ft_transform(t_fmt *fmt, va_list ap)
 	while (fmt->conversion != g_convs[i].id)
 		i++;
 	fmt->conv = g_convs[i];
-	ret = (fmt->conv.converter)(fmt, ap);
+	ret = (*fmt->conv.converter)(fmt, ap);
 	if (fmt->width > (int)ft_strlen(ret))
 	{
 		buf = ret;

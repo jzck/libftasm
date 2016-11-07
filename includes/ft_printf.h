@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:22:54 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:26:50 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 17:26:13 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 # define ALL_FLAGS "#0- +"
 # define ALL_CONVERSIONS "sSpdDioOuUxXcCb"
 
-typedef struct	s_fmt	t_fmt;
-
+typedef struct s_fmt	t_fmt;
+typedef struct s_conv	t_conv;
 typedef	char	*(t_converter)(t_fmt *fmt, va_list ap);
-typedef void	(t_sharp_func)(char *str, t_fmt *fmt);
+typedef void	(t_pad_func)(char *str, t_fmt *fmt);
 
-typedef struct	s_conv
+struct	s_conv
 {
 	char			id;
 	char			allowed_flags[6];
 	char			base[20];
 	t_converter		*converter;
-	t_sharp_func	*sharp_func;
-}				t_conv;
+	t_pad_func		*sharp_func;
+};
 
-typedef struct	s_fmt
+struct	s_fmt
 {
 	char	flags[6];
 	int		width;
@@ -40,7 +40,7 @@ typedef struct	s_fmt
 	char	conversion;
 	int		valid;
 	t_conv	conv;
-}				t_fmt;
+};
 
 extern t_conv	g_convs[];
 
@@ -61,7 +61,7 @@ void	ft_fmt_error_flag_conv(char flag, char conv);
 void	ft_fmt_error_flag_flag(char flag1, char flag2);
 
 void	ft_fmt_simplify(t_fmt *fmt);
-int		ft_fmt_validate_conversion(t_fmt *fmt);
+int		ft_fmt_validate_conv(t_fmt *fmt);
 void	ft_fmt_validate_flags(t_fmt *fmt);
 void	ft_fmt_validate_mod(t_fmt *fmt);
 
@@ -72,7 +72,6 @@ char	*ft_char_conversion(t_fmt *fmt, va_list ap);
 
 void	ft_pad_sharp_o(char *str, t_fmt *fmt);
 void	ft_pad_sharp_xb(char *str, t_fmt *fmt);
-
 void	ft_pad_left(char *str, t_fmt *fmt);
 void	ft_pad_right(char *str, t_fmt *fmt);
 #endif

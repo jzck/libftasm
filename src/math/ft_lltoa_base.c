@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:10:42 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:55:30 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 16:30:42 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char			*ft_lltoa_base(long long nbr, char *base, char *flags)
 
 	i = 0;
 	base_size = ft_strlen(base);
-	str = ft_strnew(ft_lllen(nbr, base_size) + 1);
+	str = ft_strnew(ft_lllen_base(nbr, base_size) + 1);
 	neg = FT_NEG(nbr);
 	if (nbr == 0)
 	{
@@ -47,5 +47,6 @@ char			*ft_lltoa_base(long long nbr, char *base, char *flags)
 	}
 	str = ft_flags(str, &i, flags, neg);
 	str[i] = '\0';
-	return (ft_strrev(str));
+	ft_strrev(str);
+	return (str);
 }

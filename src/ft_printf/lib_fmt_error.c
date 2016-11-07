@@ -6,11 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:38 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:33:39 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 17:22:41 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 void	ft_fmt_error_conv(char conv)
 {

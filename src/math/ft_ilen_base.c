@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_ilen_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:45:16 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 15:43:41 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:53:53 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 14:45:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_debug(void)
+size_t	ft_ilen_base(int n, int base)
 {
-	static int n = 0;
+	size_t	i;
 
-	n++;
-	ft_printf("----------\n check %02i\n----------\n", n);
+	i = 1;
+	while (n /= base)
+		i++;
+	return (i);
 }

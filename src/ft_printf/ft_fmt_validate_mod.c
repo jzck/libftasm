@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_fmt_validate_conv.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:45:16 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 15:43:41 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 16:53:42 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 16:53:52 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_debug(void)
+void	ft_fmt_validate_mod(t_fmt *fmt)
 {
-	static int n = 0;
-
-	n++;
-	ft_printf("----------\n check %02i\n----------\n", n);
+	if (fmt->conversion == 's' || fmt->conversion == 'c')
+		if (fmt->modifier[0] && ft_strcmp(fmt->modifier, "l"))
+			ft_fmt_error_mod_conv(fmt->modifier, fmt->conversion);
 }

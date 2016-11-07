@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:55:26 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 15:46:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,17 @@ char	*ft_strcut(char *str, char *cut);
 char	**ft_split_whitespaces(char *str);
 char	*ft_convert_base(
 		char *str, char *base_from, char *base_to, char *flags);
+char	*ft_strcatf(char *s1, const char *s2);
 
 char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);
 char	*ft_ulltoa_base(unsigned long long nbr, char *base);
 char	*ft_uitoa_base(unsigned int nbr, char *base);
 size_t	ft_ilen(int n);
+size_t	ft_ilen_base(int n, int base);
 size_t	ft_uilen(unsigned int n);
 size_t	ft_lllen(long long n);
+size_t	ft_lllen_base(long long n, int base);
 
 void	ft_sstrsort(char **list, int size, int (*cmp)());
 void	ft_sstrprint(char **list, char sep);

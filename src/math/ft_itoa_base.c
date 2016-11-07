@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:52:51 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:57:06 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 14:45:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char			*ft_itoa_base(int nbr, char *base, char *flags)
 
 	i = 0;
 	base_size = ft_strlen(base);
-	str = ft_strnew(ft_ilen(nbr, base_size) + 1);
+	str = ft_strnew(ft_ilen_base(nbr, base_size) + 1);
 	neg = FT_NEG(nbr);
 	if (nbr == 0)
 	{

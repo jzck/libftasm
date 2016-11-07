@@ -6,15 +6,15 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:31:48 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:48:59 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 16:56:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_signed_conversion(t_fmt *fmt, va_list ap)
 {
-	char		base10[10];
+	char		base10[11];
 	long long	arg;
 
 	arg = va_arg(ap, int);
@@ -33,9 +33,9 @@ char	*ft_unsigned_conversion(t_fmt *fmt, va_list ap)
 	while (fmt->conversion != g_convs[i].id)
 		i++;
 	if (!*fmt->modifier
-		|| ft_strcmp(fmt->modifier, "hh") == 0
-		|| ft_strcmp(fmt->modifier, "h") == 0
-		|| ft_strcmp(fmt->modifier, "z") == 0)
+			|| ft_strcmp(fmt->modifier, "hh") == 0
+			|| ft_strcmp(fmt->modifier, "h") == 0
+			|| ft_strcmp(fmt->modifier, "z") == 0)
 	{
 		uiarg = va_arg(ap, int);
 		return (ft_uitoa_base(uiarg, g_convs[i].base));

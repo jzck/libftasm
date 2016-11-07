@@ -6,11 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:35 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:33:35 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 17:22:26 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 t_fmt	*ft_fmt_init(void)
 {
@@ -31,6 +31,9 @@ void	ft_fmt_print(t_fmt *fmt)
 	ft_putendl("\n---");
 	ft_putstr("valid: ");
 	ft_putnbr(fmt->valid);
+	ft_putendl("");
+	ft_putstr("conv.: ");
+	ft_putchar(fmt->conversion);
 	ft_putendl("");
 	ft_putstr("flags: ");
 	ft_putendl(fmt->flags);

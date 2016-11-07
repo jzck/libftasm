@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_strcatf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:45:16 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 15:43:41 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 15:46:03 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 15:46:11 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_debug(void)
+char	*ft_strcatf(char *s1, const char *s2)
 {
-	static int n = 0;
+	char	buf[ft_strlen(s2)];
 
-	n++;
-	ft_printf("----------\n check %02i\n----------\n", n);
+	ft_strcpy(buf, s1);
+	ft_strcpy(s1, s2);
+	ft_strcat(s1, buf);
+	return (s1);
 }
