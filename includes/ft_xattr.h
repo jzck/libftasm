@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ftxattr.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:10:31 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:24:05 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:24:05 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_XATTR_H
+# define FT_XATTR_H
+# define FT_XATTR_SIZE 10000
+# include <sys/types.h>
+# include <sys/xattr.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	char	*c1;
-	char	*c2;
-
-	if (n == 0 || dst == src)
-		return (dst);
-	c1 = (char *)dst;
-	c2 = (char *)src;
-	while (--n)
-		*c1++ = *c2++;
-	*c1 = *c2;
-	return (dst);
-}
+int		ft_xattr_print(char *path);
+int		ft_xattr_count(char *path);
+#endif

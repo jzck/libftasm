@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dlstrtostr.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:27:29 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:31:08 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_dlsttostr(t_dlist *list)
@@ -9,12 +21,10 @@ char	*ft_dlsttostr(t_dlist *list)
 	while (list->prev)
 		list = list->prev;
 	str = (char *)ft_strnew(sizeof(char) * (ft_dlst_size(list) + 2));
-	/* list = ft_dlst_last(list); */
 	while (list)
 	{
 		ft_strcat(str, (char *)list->content);
 		list = list->next;
 	}
-	/* str = ft_strrev(str); */
 	return (str);
 }

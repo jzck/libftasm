@@ -1,16 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:52:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:57:06 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static size_t	ft_size(int n, int base)
+static char		*ft_flags(char *str, int *i, char *flags, int neg)
 {
-	size_t	i;
-
-	i = 1;
-	while (n /= base)
-		i++;
-	return (i);
+	if (neg)
+		str[*i++] = '-';
+	else if (ft_strchr(flags, '+'))
+		str[*i++] = '+';
+	else if (ft_strchr(flags, ' '))
+		str[*i++] = ' ';
+	return (str);
 }
 
-char	*ft_itoa_base(int nbr, char *base, char *flags)
+char			*ft_itoa_base(int nbr, char *base, char *flags)
 {
 	int		i;
 	int		neg;
@@ -19,10 +32,8 @@ char	*ft_itoa_base(int nbr, char *base, char *flags)
 
 	i = 0;
 	base_size = ft_strlen(base);
-	str = ft_strnew(ft_size(nbr, base_size) + 1);
-	neg = 0;
-	if (nbr < 0)
-		neg = 1;
+	str = ft_strnew(ft_ilen(nbr, base_size) + 1);
+	neg = FT_NEG(nbr);
 	if (nbr == 0)
 	{
 		str[i++] = '0';
@@ -34,12 +45,7 @@ char	*ft_itoa_base(int nbr, char *base, char *flags)
 		str[i++] = base[FT_ABS(nbr % base_size)];
 		nbr = nbr / base_size;
 	}
-	if (neg)
-		str[i++] = '-';
-	else if (ft_strchr(flags, '+'))
-		str[i++] = '+';
-	else if (ft_strchr(flags, ' '))
-		str[i++] = ' ';
+	str = ft_flags(str, &i, flags, neg);
 	str[i] = '\0';
 	return (ft_strrev(str));
 }

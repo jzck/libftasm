@@ -1,4 +1,16 @@
-#include "ftprintf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lib_fmt_validate.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:33:43 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:51:29 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 
 void	ft_fmt_simplify(t_fmt *fmt)
 {
@@ -17,6 +29,7 @@ void	ft_fmt_simplify(t_fmt *fmt)
 		ft_strcpy(fmt->modifier, "l");
 	}
 }
+
 int		ft_fmt_validate_conversion(t_fmt *fmt)
 {
 	if (!ft_strchr(ALL_CONVERSIONS, fmt->conversion))

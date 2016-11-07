@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:33:24 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:52:02 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ftprintf.h"
 
 t_fmt	*ft_printf_parse(char **format, va_list ap)
@@ -87,7 +99,6 @@ void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
 	}
 	*format += i;
 }
-
 
 void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
 {

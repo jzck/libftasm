@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:58:40 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/05 17:58:23 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/07 13:07:01 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,24 @@ char		**ft_strsplit(char const *s, char c)
 	int		j;
 	int		w;
 
+	if (!s)
+		return (0);
 	w = countwords(s, c);
 	if ((arr = (char **)malloc((w + 1) * sizeof(char *))))
 	{
-			i = 0;
-			while (i < w)
-			{
-						while (*s == c)
-							++s;
-						j = 0;
-						while (*(s + j) != c)
-							++j;
-						if ((arr[i] = ft_strnew(j)))
-							ft_strncpy(arr[i++], s, j);
-						s += j;
-					}
-			arr[i] = 0;
+		i = 0;
+		while (i < w)
+		{
+			while (*s == c)
+				++s;
+			j = 0;
+			while (*(s + j) != c)
+				++j;
+			if ((arr[i] = ft_strnew(j)))
+				ft_strncpy(arr[i++], s, j);
+			s += j;
 		}
+		arr[i] = 0;
+	}
 	return (arr);
 }

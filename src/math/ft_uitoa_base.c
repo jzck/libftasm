@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:08:10 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:10:35 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	ft_size(unsigned int n, int base)
@@ -10,7 +22,7 @@ static size_t	ft_size(unsigned int n, int base)
 	return (i);
 }
 
-char	*ft_uitoa_base(unsigned int nbr, char *base)
+char			*ft_uitoa_base(unsigned int nbr, char *base)
 {
 	int		i;
 	int		base_size;

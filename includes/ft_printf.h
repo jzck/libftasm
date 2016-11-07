@@ -1,5 +1,17 @@
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ftprintf.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:22:54 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:26:50 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include "libft.h"
 # include <stdarg.h>
 # define ALL_FLAGS "#0- +"

@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_conversion.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/07 13:31:48 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:48:59 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ftprintf.h"
 
 char	*ft_signed_conversion(t_fmt *fmt, va_list ap)
 {
-	char		base10[] = "0123456789";
-	long long	arg = va_arg(ap, int);
+	char		base10[10];
+	long long	arg;
 
+	arg = va_arg(ap, int);
+	ft_strcpy(base10, "0123456789");
 	(void)fmt;
 	return (ft_lltoa_base(arg, base10, fmt->flags));
 }
@@ -36,8 +50,6 @@ char	*ft_char_conversion(t_fmt *fmt, va_list ap)
 
 	(void)fmt;
 	ret = (char *)malloc(sizeof(char) + 1);
-	/* if (ft_strcmp(fmt->modifier, "l") == 0) */
-	/* 	va_arg(ap, wint_t); */
 	ret[0] = (char)va_arg(ap, int);
 	ret[1] = '\0';
 	return (ret);
@@ -48,8 +60,6 @@ char	*ft_str_conversion(t_fmt *fmt, va_list ap)
 	char	*ret;
 
 	(void)fmt;
-	/* if (ft_strcmp(fmt->modifier, "l") == 0) */
-	/* 	va_arg(ap, wchar_t *); */
 	ret = ft_strdup(va_arg(ap, char *));
 	if (fmt->precision && fmt->precision < (int)ft_strlen(ret))
 		ret[fmt->precision] = '\0';
