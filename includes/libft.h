@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/10 12:14:04 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/10 14:40:54 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))
+
+typedef struct s_stof	t_stof;
+
+struct	s_stof
+{
+	char	*name;
+	int		(*f)();
+};
 
 void	ft_debug(void);
 
@@ -118,4 +126,6 @@ int		ft_time_isrecent(time_t event);
 char	*ft_path_notdir(char *path);
 
 int		ft_printf(const char *format, ...);
+
+char	*ft_getenv(char **env, char *key);
 #endif
