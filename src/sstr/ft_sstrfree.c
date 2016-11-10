@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sstradd.c                                       :+:      :+:    :+:   */
+/*   ft_sstrfree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:03:58 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/10 12:15:23 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/08 17:01:24 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/10 12:11:20 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_sstradd(char **sstr, char *new)
+void	ft_sstrfree(char **sstr)
 {
 	int		i;
-	int		size;
-	char	**newlist;
 
 	i = 0;
-	size = 0;
-	while (sstr && sstr[size])
-		size++;
-	if (!(newlist = (char **)malloc(sizeof(char *) * (size + 2))))
-		return (NULL);
-	while (sstr && *sstr)
-		newlist[i++] = *sstr++;
-	newlist[i++] = new;
-	newlist[i] = NULL;
-	return (newlist);
+	while (sstr[i])
+	{
+		ft_strdel(sstr + i);
+		i++;
+	}
 }

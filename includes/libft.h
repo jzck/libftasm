@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 11:25:08 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/10 12:14:04 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,12 @@ size_t	ft_uilen(unsigned int n);
 size_t	ft_lllen(long long n);
 size_t	ft_lllen_base(long long n, int base);
 
+char	**ft_sstradd(char **list, char *new);
 void	ft_sstrsort(char **list, int size, int (*cmp)());
 void	ft_sstrprint(char **list, char sep);
 char	**ft_sstrdup(char **list);
-char	**ft_sstradd(char **list, char *new);
 void	ft_sstrdel(char **sstr, int index);
+void	ft_sstrfree(char **sstr);
 
 int		ft_time_isrecent(time_t event);
 
