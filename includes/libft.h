@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/10 14:40:54 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/11 17:47:12 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,6 @@ char	*ft_path_notdir(char *path);
 int		ft_printf(const char *format, ...);
 
 char	*ft_getenv(char **env, char *key);
+
+void	*ft_realloc(void *data, int size)
 #endif
