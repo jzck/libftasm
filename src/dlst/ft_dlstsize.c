@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 17:37:53 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:41:30 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:23 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:23 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *data, int size)
+int		ft_dlstsize(t_dlist *list)
 {
-	void	*new;
+	int		size;
+	t_dlist	*tmp;
 
-	ft_printf("realloc befor: '%s'\n", data);
-	new = ft_memalloc(size);
-	ft_memcpy(new, data, ft_strlen(data));
-	ft_memdel(&data);
-	ft_printf("realloc after: '%s'\n", new);
-	return (new);
+	size = 0;
+	if (list)
+		size++;
+	tmp = list;
+	while (tmp->next)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	tmp = list;
+	while (tmp->prev)
+	{
+		size++;
+		tmp = tmp->prev;
+	}
+	return (size);
 }

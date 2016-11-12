@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_dlist	*ft_dlst_new(void const *content, size_t content_size)
+t_dlist	*ft_dlstnew(void const *content, size_t content_size)
 {
 	t_dlist	*new;
 

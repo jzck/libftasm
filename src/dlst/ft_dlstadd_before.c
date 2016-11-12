@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_add_before.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 17:37:53 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:41:30 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:09 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:10 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *data, int size)
+void	ft_dlstadd_before(t_dlist **alst, t_dlist *new)
 {
-	void	*new;
-
-	ft_printf("realloc befor: '%s'\n", data);
-	new = ft_memalloc(size);
-	ft_memcpy(new, data, ft_strlen(data));
-	ft_memdel(&data);
-	ft_printf("realloc after: '%s'\n", new);
-	return (new);
+	if (new)
+	{
+		new->next = (*alst);
+		if (*alst)
+			new->prev = (*alst)->prev;
+		if (new->next)
+			new->next->prev = new;
+		if (new->prev)
+			new->prev->next = new;
+		*alst = new;
+	}
 }

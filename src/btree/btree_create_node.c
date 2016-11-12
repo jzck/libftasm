@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 17:37:53 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:41:30 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/19 23:32:10 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	*ft_realloc(void *data, int size)
+t_btree	*btree_create_node(void *item)
 {
-	void	*new;
+	t_btree	*node;
 
-	ft_printf("realloc befor: '%s'\n", data);
-	new = ft_memalloc(size);
-	ft_memcpy(new, data, ft_strlen(data));
-	ft_memdel(&data);
-	ft_printf("realloc after: '%s'\n", new);
-	return (new);
+	node = (t_btree *)malloc(sizeof(t_btree));
+	node->left = 0;
+	node->right = 0;
+	node->item = item;
+	return (node);
 }

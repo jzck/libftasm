@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_last.c                                     :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:15 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/25 17:46:00 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-t_dlist	*ft_dlst_last(t_dlist *list)
+int	btree_level_count(t_btree *root)
 {
-	while (list && list->next)
-		list = list->next;
-	return (list);
+	return (root
+			? 1 + FT_MAX(btree_level_count(root->left),
+				btree_level_count(root->right))
+			: 0);
 }

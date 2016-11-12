@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_delone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 17:37:53 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:41:30 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:13 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:13 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *data, int size)
+void	ft_dlstdelone(t_dlist **alst, void (*del)(void *, size_t))
 {
-	void	*new;
+	t_dlist	*tmp;
 
-	ft_printf("realloc befor: '%s'\n", data);
-	new = ft_memalloc(size);
-	ft_memcpy(new, data, ft_strlen(data));
-	ft_memdel(&data);
-	ft_printf("realloc after: '%s'\n", new);
-	return (new);
+	tmp = *alst;
+	if (tmp)
+	{
+		if (del)
+			(*del)(tmp->content, tmp->content_size);
+		if (tmp->next)
+			tmp->next->prev = tmp->prev;
+		if (tmp->prev)
+			tmp->prev->next = tmp->next;
+		if (tmp->prev)
+			*alst = tmp->prev;
+		else
+			*alst = tmp->next;
+		free(tmp);
+	}
 }

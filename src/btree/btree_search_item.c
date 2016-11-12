@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_delone.c                                   :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:13 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:13 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/23 19:04:56 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_dlst_delone(t_dlist **alst, void (*del)(void *, size_t))
+void	*btree_search_item(t_btree *root,
+		void *data_ref, int (*cmpf)(void *, void *))
 {
-	t_dlist	*tmp;
+	void *out;
 
-	tmp = *alst;
-	if (tmp)
+	out = NULL;
+	if (root)
 	{
-		if (del)
-			(*del)(tmp->content, tmp->content_size);
-		if (tmp->next)
-			tmp->next->prev = tmp->prev;
-		if (tmp->prev)
-			tmp->prev->next = tmp->next;
-		if (tmp->prev)
-			*alst = tmp->prev;
-		else
-			*alst = tmp->next;
-		free(tmp);
+		out = btree_search_item(root->left, data_ref, cmpf);
+		if (!out && ((*cmpf)(root->item, data_ref) == 0))
+			out = root->item;
+		if (!out)
+			out = btree_search_item(root->right, data_ref, cmpf);
 	}
+	return (out);
 }

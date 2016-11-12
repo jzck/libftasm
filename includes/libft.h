@@ -16,6 +16,7 @@
 # include "ft_xattr.h"
 # include "lst.h"
 # include "dlst.h"
+# include "btree.h"
 
 # include <string.h>
 # include <unistd.h>
@@ -129,5 +130,5 @@ int		ft_printf(const char *format, ...);
 
 char	*ft_getenv(char **env, char *key);
 
-void	*ft_realloc(void *data, int size)
+void	*ft_realloc(void *data, int size);
 #endif

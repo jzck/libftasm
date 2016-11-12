@@ -13,7 +13,7 @@
 #include "libft.h"
 #define BUFF_SIZE 32
 
-static char		*ft_realloc(char *line, int size)
+static char		*ft_strrealloc(char *line, int size)
 {
 	char	*str;
 
@@ -41,7 +41,7 @@ static int		ft_loop_read(int fd, char **line, char (*save)[])
 			ft_strcat(*line, buf);
 			return (1);
 		}
-		if ((*line = ft_realloc(*line, ret)) == NULL)
+		if ((*line = ft_strrealloc(*line, ret)) == NULL)
 			return (-1);
 		ft_strcat(*line, buf);
 	}

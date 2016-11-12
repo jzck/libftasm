@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_add_before.c                               :+:      :+:    :+:   */
+/*   ft_dlst_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:09 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:10 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:15 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlst_add_before(t_dlist **alst, t_dlist *new)
+t_dlist	*ft_dlstlast(t_dlist *list)
 {
-	if (new)
-	{
-		new->next = (*alst);
-		if (*alst)
-			new->prev = (*alst)->prev;
-		if (new->next)
-			new->next->prev = new;
-		if (new->prev)
-			new->prev->next = new;
-		*alst = new;
-	}
+	while (list && list->next)
+		list = list->next;
+	return (list);
 }

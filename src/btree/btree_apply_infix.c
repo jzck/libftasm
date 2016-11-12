@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_size.c                                     :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:23 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:23 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/18 21:10:05 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-int		ft_dlst_size(t_dlist *list)
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-	int		size;
-	t_dlist	*tmp;
-
-	size = 0;
-	if (list)
-		size++;
-	tmp = list;
-	while (tmp->next)
-	{
-		size++;
-		tmp = tmp->next;
-	}
-	tmp = list;
-	while (tmp->prev)
-	{
-		size++;
-		tmp = tmp->prev;
-	}
-	return (size);
+	if (root->left)
+		btree_apply_infix(root->left, applyf);
+	(*applyf)(root->item);
+	if (root->right)
+		btree_apply_infix(root->right, applyf);
+	return ;
 }
