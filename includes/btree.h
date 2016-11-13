@@ -7,12 +7,13 @@ typedef struct s_btree		t_btree;
 
 struct	s_btree
 {
+	void			*item;
+	size_t			content_size;
 	struct s_btree	*left;
 	struct s_btree	*right;
-	void			*item;
 };
 
-t_btree	*btree_create_node(void *item);
+t_btree	*btree_create_node(void const *item, size_t content_size);
 
 void	btree_insert_data(
 		t_btree **root,
