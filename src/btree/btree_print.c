@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   btree_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/14 16:08:23 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 18:26:32 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 
-void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
+static void	print_offset(int offset)
 {
-	if (root->left)
-		btree_apply_suffix(root->left, applyf);
-	if (root->right)
-		btree_apply_suffix(root->right, applyf);
-	(*applyf)(root->item);
-	return ;
+	int i;
+	for (i = 0; i < offset; ++i)
+	{
+		ft_putstr(" ");
+	}
+}
+
+void		btree_print(t_btree* tree, void (*printer)(t_btree *tree))
+{
+	static int offset = 0;
+
+	print_offset(offset);
+
+	if (tree == NULL)
+	{
+		ft_putendl("-");
+		return;
+	}
+	(*printer)(tree);
+
+	offset += 3;
+	btree_print(tree->right, printer);
+	btree_print(tree->left, printer);
+	offset -= 3;
 }

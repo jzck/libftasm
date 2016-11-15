@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   ft_addrcmp.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/14 16:08:23 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/14 15:59:10 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 15:59:39 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#include "libft.h"
 
-void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
+int		ft_addrcmp(void *a, void *b)
 {
-	if (root->left)
-		btree_apply_suffix(root->left, applyf);
-	if (root->right)
-		btree_apply_suffix(root->right, applyf);
-	(*applyf)(root->item);
-	return ;
+	return (a - b);
 }

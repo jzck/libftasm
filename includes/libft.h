@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:47:12 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/14 16:31:04 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ size_t	ft_ilen_base(int n, int base);
 size_t	ft_uilen(unsigned int n);
 size_t	ft_lllen(long long n);
 size_t	ft_lllen_base(long long n, int base);
+int		ft_addrcmp(void *a, void *b);
 
 char	**ft_sstradd(char **list, char *new);
 void	ft_sstrsort(char **list, int size, int (*cmp)());
