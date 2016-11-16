@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 11:25:08 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 10:53:34 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ int		ft_time_isrecent(time_t event);
 char	*ft_path_notdir(char *path);
 
 int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 #endif

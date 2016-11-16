@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:22:54 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 17:26:13 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 10:53:57 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ struct	s_fmt
 	int		valid;
 	t_conv	conv;
 };
+
+int		ft_vdprintf(int fd, const char *format, va_list ap);
 
 extern t_conv	g_convs[];
 
