@@ -6,7 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/11/16 10:53:34 by jhalford         ###   ########.fr       */
+=======
+/*   Updated: 2016/11/14 16:31:04 by jhalford         ###   ########.fr       */
+>>>>>>> a3f7d30e3fc482af179207682b48ae052d422bdf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +20,7 @@
 # include "ft_xattr.h"
 # include "lst.h"
 # include "dlst.h"
+# include "btree.h"
 
 # include <string.h>
 # include <unistd.h>
@@ -30,6 +35,14 @@
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))
+
+typedef struct s_stof	t_stof;
+
+struct	s_stof
+{
+	char	*name;
+	int		(*f)();
+};
 
 void	ft_debug(void);
 
@@ -105,12 +118,14 @@ size_t	ft_ilen_base(int n, int base);
 size_t	ft_uilen(unsigned int n);
 size_t	ft_lllen(long long n);
 size_t	ft_lllen_base(long long n, int base);
+int		ft_addrcmp(void *a, void *b);
 
+char	**ft_sstradd(char **list, char *new);
 void	ft_sstrsort(char **list, int size, int (*cmp)());
 void	ft_sstrprint(char **list, char sep);
 char	**ft_sstrdup(char **list);
-char	**ft_sstradd(char **list, char *new);
 void	ft_sstrdel(char **sstr, int index);
+void	ft_sstrfree(char **sstr);
 
 int		ft_time_isrecent(time_t event);
 
@@ -118,4 +133,8 @@ char	*ft_path_notdir(char *path);
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
+
+char	*ft_getenv(char **env, char *key);
+
+void	*ft_realloc(void *data, int size);
 #endif

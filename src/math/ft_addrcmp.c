@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_addrcmp.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:39:00 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/14 15:59:10 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 15:59:39 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_addrcmp(void *a, void *b)
 {
-	char	*c1;
-	char	*c2;
-
-	if (n == 0 || dst == src)
-		return (dst);
-	c1 = (char *)dst;
-	c2 = (char *)src;
-	while (--n)
-		*c1++ = *c2++;
-	*c1 = *c2;
-	return (dst);
+	return (a - b);
 }

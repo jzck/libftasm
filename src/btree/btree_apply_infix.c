@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:39:00 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 11:58:47 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-	char	*c1;
-	char	*c2;
-
-	if (n == 0 || dst == src)
-		return (dst);
-	c1 = (char *)dst;
-	c2 = (char *)src;
-	while (--n)
-		*c1++ = *c2++;
-	*c1 = *c2;
-	return (dst);
+	if (root->left)
+		btree_apply_infix(root->left, applyf);
+	(*applyf)(root->item);
+	if (root->right)
+		btree_apply_infix(root->right, applyf);
+	return ;
 }

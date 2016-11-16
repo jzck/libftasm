@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_new.c                                      :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:20 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:20 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 16:11:49 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-t_dlist	*ft_dlst_new(void const *content, size_t content_size)
+t_btree	*btree_create_node(void const *item, size_t content_size)
 {
-	t_dlist	*new;
+	t_btree	*new;
 
-	if (!content)
+	if (!(new = (t_btree *)malloc(sizeof(t_btree))))
+		return (NULL);
+	new->left = 0;
+	new->right = 0;
+	if (!item)
 	{
-		new = malloc(sizeof(*new));
-		if (!new)
-			return (NULL);
 		new->content_size = 0;
-		new->content = NULL;
+		new->item = NULL;
 	}
 	else
 	{
-		new = (t_dlist *)malloc(sizeof(*new));
-		if (!new)
-			return (NULL);
 		new->content_size = content_size;
-		new->content = ft_memalloc(content_size + 1);
-		ft_memcpy(new->content, content, content_size);
+		new->item = ft_memalloc(content_size + 1);
+		ft_memcpy(new->item, item, content_size);
 	}
-	new->next = NULL;
-	new->prev = NULL;
 	return (new);
 }

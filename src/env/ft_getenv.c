@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_add_after.c                                :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:36 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/10 14:30:00 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/10 14:30:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlst_add_after(t_dlist **alst, t_dlist *new)
+char	*ft_getenv(char **env, char *key)
 {
-	if (new)
+	if (!env)
+		return (NULL);
+	while (*env)
 	{
-		new->prev = (*alst);
-		if (*alst)
-			new->next = (*alst)->next;
-		if (new->next)
-			new->next->prev = new;
-		if (new->prev)
-			new->prev->next = new;
-		*alst = new;
+		/* ft_printf("%s\n", env[i]); */
+		if (ft_strcmp(*env, key) == '=')
+			return (*env + ft_strlen(key) + 1);
+		env++;
 	}
+	return (NULL);
 }

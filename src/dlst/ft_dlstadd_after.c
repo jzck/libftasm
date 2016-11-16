@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_dlst_add_after.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:39:00 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:04 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:36 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_dlstadd_after(t_dlist **alst, t_dlist *new)
 {
-	char	*c1;
-	char	*c2;
-
-	if (n == 0 || dst == src)
-		return (dst);
-	c1 = (char *)dst;
-	c2 = (char *)src;
-	while (--n)
-		*c1++ = *c2++;
-	*c1 = *c2;
-	return (dst);
+	if (new)
+	{
+		new->prev = (*alst);
+		if (*alst)
+			new->next = (*alst)->next;
+		if (new->next)
+			new->next->prev = new;
+		if (new->prev)
+			new->prev->next = new;
+		*alst = new;
+	}
 }

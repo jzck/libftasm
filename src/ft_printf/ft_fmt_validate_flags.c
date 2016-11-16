@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 16:53:07 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 17:25:47 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/10 13:02:07 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ static void	ft_fmt_validate_flag_conv(t_fmt *fmt)
 
 	i = 0;
 	flag_ptr = fmt->flags;
+	while (fmt->conversion != g_convs[i].id)
+		i++;
 	while (*flag_ptr)
 	{
 		flag = *flag_ptr;
 		if (!ft_strchr(g_convs[i].allowed_flags, flag))
 		{
 			ft_fmt_error_flag_conv(flag, fmt->conversion);
+			/* ft_printf("allowed flags:%s\n", g_convs[i].allowed_flags); */
 			if (flag == '#')
 				*flag_ptr = '.';
 		}
@@ -56,8 +59,6 @@ void		ft_fmt_validate_flags(t_fmt *fmt)
 	int		i;
 
 	i = 0;
-	while (fmt->conversion != g_convs[i].id)
-		i++;
 	ft_fmt_validate_flag_conv(fmt);
 	ft_fmt_validate_flag_flag(fmt);
 }

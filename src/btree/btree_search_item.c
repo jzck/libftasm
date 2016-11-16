@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/11 17:39:00 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/23 19:04:56 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*btree_search_item(t_btree *root,
+		void *data_ref, int (*cmpf)(void *, void *))
 {
-	char	*c1;
-	char	*c2;
+	void *out;
 
-	if (n == 0 || dst == src)
-		return (dst);
-	c1 = (char *)dst;
-	c2 = (char *)src;
-	while (--n)
-		*c1++ = *c2++;
-	*c1 = *c2;
-	return (dst);
+	out = NULL;
+	if (root)
+	{
+		out = btree_search_item(root->left, data_ref, cmpf);
+		if (!out && ((*cmpf)(root->item, data_ref) == 0))
+			out = root->item;
+		if (!out)
+			out = btree_search_item(root->right, data_ref, cmpf);
+	}
+	return (out);
 }
