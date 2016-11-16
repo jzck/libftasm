@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 14:30:00 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/10 14:30:27 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 11:24:52 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_getenv(char **env, char *key)
 		return (NULL);
 	while (*env)
 	{
-		/* ft_printf("%s\n", env[i]); */
 		if (ft_strcmp(*env, key) == '=')
 			return (*env + ft_strlen(key) + 1);
 		env++;

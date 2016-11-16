@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   btree.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 11:13:15 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/16 11:14:02 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BTREE_H
 # define BTREE_H
 
-#include "libft.h"
+# include "libft.h"
 
 typedef struct s_btree		t_btree;
 
@@ -28,6 +40,6 @@ int		btree_level_count(t_btree *root);
 void	btree_apply_prefix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_suffix(t_btree *root, void (*applyf)(void *));
-void	btree_print(t_btree* tree, void (*printer)(t_btree *tree));
+void	btree_print(t_btree *tree, void (*printer)(t_btree *tree));
 
 #endif

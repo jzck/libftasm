@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:12 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/14 16:55:27 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 18:23:24 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_lst_delif(
 		{
 			tmp = (*indirect);
 			(*indirect) = (*indirect)->next;
+			ft_printf("free'd at %p\n", tmp);
 			(*del)(tmp->content, tmp->content_size);
 		}
 		else

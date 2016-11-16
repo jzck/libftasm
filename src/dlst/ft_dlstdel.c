@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:55:40 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/14 17:57:46 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 11:15:40 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_dlstdelfront(t_dlist **alst, void (*del)(void *, size_t))
 	}
 }
 
-void	ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
+void		ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
 {
 	if (alst && *alst && del)
 	{

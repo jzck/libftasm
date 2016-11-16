@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:32 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 16:40:15 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 17:56:37 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_transform(t_fmt *fmt, va_list ap)
 {
-	char	*buf;
 	char	*ret;
 	int		i;
 
@@ -24,11 +23,7 @@ char	*ft_transform(t_fmt *fmt, va_list ap)
 	fmt->conv = g_convs[i];
 	ret = (*fmt->conv.converter)(fmt, ap);
 	if (fmt->width > (int)ft_strlen(ret))
-	{
-		buf = ret;
-		ret = (char *)malloc(sizeof(char) * (fmt->width + 5));
-		ft_strcpy(ret, buf);
-	}
+		ret = ft_realloc(ret, fmt->width + 5);
 	if (ft_strchr(fmt->flags, '-'))
 		ft_pad_right(ret, fmt);
 	else

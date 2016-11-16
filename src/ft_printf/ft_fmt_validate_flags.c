@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 16:53:07 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/10 13:02:07 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 11:15:55 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	ft_fmt_validate_flag_conv(t_fmt *fmt)
 		if (!ft_strchr(g_convs[i].allowed_flags, flag))
 		{
 			ft_fmt_error_flag_conv(flag, fmt->conversion);
-			/* ft_printf("allowed flags:%s\n", g_convs[i].allowed_flags); */
 			if (flag == '#')
 				*flag_ptr = '.';
 		}
