@@ -28,7 +28,6 @@ void	ft_lst_delif(
 		{
 			tmp = (*indirect);
 			(*indirect) = (*indirect)->next;
-			ft_printf("free'd at %p\n", tmp);
 			(*del)(tmp->content, tmp->content_size);
 		}
 		else

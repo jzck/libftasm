@@ -16,7 +16,6 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	if (alst && *alst && del)
 	{
-		ft_printf("free'd at %p\n", *alst);
 		ft_lstdel(&(*alst)->next, del);
 		ft_lstdelone(alst, del);
 		*alst = NULL;
