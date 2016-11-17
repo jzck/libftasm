@@ -3,63 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 12:45:02 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 13:43:29 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/15 13:12:06 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/17 13:12:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#define BUFF_SIZE 32
+#include "get_next_line.h"
+#include <stdio.h>
 
-static char		*ft_realloc(char *line, int size)
+static int		ft_fdcmp(t_save *a, int *b)
 {
-	char	*str;
-
-	str = (char *)malloc(sizeof(char) * (ft_strlen(line) + size + 1));
-	if (str == NULL)
-		return (NULL);
-	str = ft_strcpy(str, line);
-	free(line);
-	return (str);
+	return (a->fd - *b);
 }
 
-static int		ft_loop_read(int fd, char **line, char (*save)[])
+static t_list	*ft_newfd(t_list **head, int fd)
 {
-	char		buf[BUFF_SIZE + 1];
-	char		*pos;
-	int			ret;
+	t_save		new;
+
+	new.fd = fd;
+	new.str = ft_memalloc((BUFF_SIZE > 0 ? BUFF_SIZE : 0) + 1);
+	ft_lstadd(head, ft_lstnew(&new, sizeof(t_save)));
+	return (*head);
+}
+
+static int		ft_loop_read(int fd, char **line, char *save)
+{
+	char	buf[BUFF_SIZE + 1];
+	char	*pos;
+	char	*tmp;
+	int		ret;
 
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buf[ret] = '\0';
+		buf[ret] = 0;
+		tmp = *line;
 		if ((pos = ft_strchr(buf, '\n')))
 		{
-			ft_strcpy(*save, pos + 1);
-			*pos = '\0';
-			ft_strcat(*line, buf);
-			return (1);
+			ft_strcpy(save, pos + 1);
+			*pos = 0;
 		}
-		if ((*line = ft_realloc(*line, ret)) == NULL)
+		if (!(*line = ft_strjoin(*line, buf)))
 			return (-1);
-		ft_strcat(*line, buf);
+		ft_strdel(&tmp);
+		if (pos)
+			return (1);
 	}
-	return (0);
+	if (ret < 0)
+		return (-1);
+	return (**line ? 1 : 0);
 }
 
 int				get_next_line(int const fd, char **line)
 {
-	static char	save[BUFF_SIZE] = "";
-	char		*pos;
+	static t_list	*head;
+	t_list			*tmp;
+	char			*pos;
+	char			*save;
 
-	*line = (char *)malloc(sizeof(char *) * (BUFF_SIZE + ft_strlen(save) + 1));
-	*line = ft_strcpy(*line, save);
+	if (fd < 0 || !line)
+		return (-1);
+	if (!(tmp = ft_lst_find(head, (void *)&fd, &ft_fdcmp)))
+		tmp = ft_newfd(&head, fd);
+	save = ((t_save*)tmp->content)->str;
+	if (!(*line = ft_strdup(save)))
+		return (-1);
+	ft_bzero(save, BUFF_SIZE + 1);
 	if ((pos = ft_strchr(*line, '\n')))
 	{
 		ft_strcpy(save, pos + 1);
-		*pos = '\0';
+		*pos = 0;
 		return (1);
 	}
-	return (ft_loop_read(fd, line, &save));
+	return (ft_loop_read(fd, line, save));
 }

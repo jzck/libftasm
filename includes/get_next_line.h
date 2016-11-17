@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:21:59 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:22:13 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/05 12:21:36 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/17 13:18:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
-# include "libft.h"
+# define BUFF_SIZE 32
 
-int	get_next_line(int const fd, char **line);
+# include "libft/libft.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+
+typedef struct s_save	t_save;
+
+struct	s_save
+{
+	int		fd;
+	char	*str;
+};
+
+int		get_next_line(int const fd, char **line);
 
 #endif
