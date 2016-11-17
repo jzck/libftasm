@@ -19,6 +19,8 @@ void	ft_dlstadd_after(t_dlist **alst, t_dlist *new)
 		new->prev = (*alst);
 		if (*alst)
 			new->next = (*alst)->next;
+		else
+			new->next = NULL;
 		if (new->next)
 			new->next->prev = new;
 		if (new->prev)
