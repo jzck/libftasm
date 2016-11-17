@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   btree_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/16 11:24:32 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+static void	print_offset(int offset)
 {
-	t_list	*tmp;
-	t_list	**indirect;
+	int i;
 
-	indirect = alst;
-	while (*indirect)
+	i = 0;
+	while (i < offset)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		ft_putstr(" ");
+		i++;
 	}
+}
+
+void		btree_print(t_btree *tree, void (*printer)(t_btree *tree))
+{
+	static int offset = 0;
+
+	print_offset(offset);
+	if (tree == NULL)
+	{
+		ft_putendl("-");
+		return ;
+	}
+	(*printer)(tree);
+	offset += 3;
+	btree_print(tree->right, printer);
+	btree_print(tree->left, printer);
+	offset -= 3;
 }

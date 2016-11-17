@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_add_before.c                               :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:09 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:10 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 16:08:23 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_dlst_add_before(t_dlist **alst, t_dlist *new)
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 {
-	if (new)
-	{
-		new->next = (*alst);
-		if (*alst)
-			new->prev = (*alst)->prev;
-		if (new->next)
-			new->next->prev = new;
-		if (new->prev)
-			new->prev->next = new;
-		*alst = new;
-	}
+	if (root->left)
+		btree_apply_suffix(root->left, applyf);
+	if (root->right)
+		btree_apply_suffix(root->right, applyf);
+	(*applyf)(root->item);
+	return ;
 }

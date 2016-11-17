@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_delone.c                                   :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:13 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:13 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/25 17:46:00 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_dlst_delone(t_dlist **alst, void (*del)(void *, size_t))
+int	btree_level_count(t_btree *root)
 {
-	t_dlist	*tmp;
-
-	tmp = *alst;
-	if (tmp)
-	{
-		if (del)
-			(*del)(tmp->content, tmp->content_size);
-		if (tmp->next)
-			tmp->next->prev = tmp->prev;
-		if (tmp->prev)
-			tmp->prev->next = tmp->next;
-		if (tmp->prev)
-			*alst = tmp->prev;
-		else
-			*alst = tmp->next;
-		free(tmp);
-	}
+	return (root
+			? 1 + FT_MAX(btree_level_count(root->left),
+				btree_level_count(root->right))
+			: 0);
 }

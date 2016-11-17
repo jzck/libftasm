@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   ft_dlst_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:23 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:23 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+int		ft_dlstsize(t_dlist *list)
 {
-	t_list	*tmp;
-	t_list	**indirect;
+	int		size;
+	t_dlist	*tmp;
 
-	indirect = alst;
-	while (*indirect)
+	size = 0;
+	if (list)
+		size++;
+	tmp = list;
+	while (tmp->next)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		size++;
+		tmp = tmp->next;
 	}
+	tmp = list;
+	while (tmp->prev)
+	{
+		size++;
+		tmp = tmp->prev;
+	}
+	return (size);
 }

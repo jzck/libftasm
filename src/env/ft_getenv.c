@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/10 14:30:00 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/16 11:24:52 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+char	*ft_getenv(char **env, char *key)
 {
-	t_list	*tmp;
-	t_list	**indirect;
-
-	indirect = alst;
-	while (*indirect)
+	if (!env)
+		return (NULL);
+	while (*env)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		if (ft_strcmp(*env, key) == '=')
+			return (*env + ft_strlen(key) + 1);
+		env++;
 	}
+	return (NULL);
 }

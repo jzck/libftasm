@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:12 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 11:47:22 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 18:23:24 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,24 @@
 
 void	ft_lst_delif(
 		t_list **alst,
-		void *data_ref, int (*cmp)(),
+		void *data_ref,
+		int (*cmp)(),
 		void (*del)(void *, size_t))
 {
-	t_list	*last;
-	t_list	*current;
 	t_list	*tmp;
+	t_list	**indirect;
 
-	last = NULL;
-	current = *alst;
-	tmp = NULL;
-	while (current)
+	indirect = alst;
+	while (*indirect)
 	{
-		if ((*cmp)(current->content, data_ref) == 0)
+		if ((*cmp)((*indirect)->content, data_ref) == 0)
 		{
-			if (current == *alst)
-				*alst = current->next;
-			else
-				last->next = current->next;
-			tmp = current;
-			current = current->next;
-			ft_lstdelone(&tmp, del);
+			tmp = (*indirect);
+			(*indirect) = (*indirect)->next;
+			ft_printf("free'd at %p\n", tmp);
+			(*del)(tmp->content, tmp->content_size);
 		}
 		else
-		{
-			last = current;
-			current = current->next;
-		}
+			indirect = &(*indirect)->next;
 	}
 }

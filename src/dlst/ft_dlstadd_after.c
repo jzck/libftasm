@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   ft_dlst_add_after.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:04 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/07 13:27:36 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+void	ft_dlstadd_after(t_dlist **alst, t_dlist *new)
 {
-	t_list	*tmp;
-	t_list	**indirect;
-
-	indirect = alst;
-	while (*indirect)
+	if (new)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		new->prev = (*alst);
+		if (*alst)
+			new->next = (*alst)->next;
+		if (new->next)
+			new->next->prev = new;
+		if (new->prev)
+			new->prev->next = new;
+		*alst = new;
 	}
 }

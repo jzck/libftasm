@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_add_after.c                                :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:36 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/11 17:37:53 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/16 17:56:17 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlst_add_after(t_dlist **alst, t_dlist *new)
+void	*ft_realloc(void *data, int size)
 {
-	if (new)
-	{
-		new->prev = (*alst);
-		if (*alst)
-			new->next = (*alst)->next;
-		if (new->next)
-			new->next->prev = new;
-		if (new->prev)
-			new->prev->next = new;
-		*alst = new;
-	}
+	void	*new;
+
+	new = ft_memalloc(size);
+	ft_memcpy(new, data, ft_strlen(data));
+	ft_memdel(&data);
+	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:31:48 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 16:56:28 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 18:30:20 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ char	*ft_unsigned_conversion(t_fmt *fmt, va_list ap)
 	while (fmt->conversion != g_convs[i].id)
 		i++;
 	if (!*fmt->modifier
-			|| ft_strcmp(fmt->modifier, "hh") == 0
-			|| ft_strcmp(fmt->modifier, "h") == 0
-			|| ft_strcmp(fmt->modifier, "z") == 0)
+			|| ft_strequ(fmt->modifier, "hh")
+			|| ft_strequ(fmt->modifier, "h")
+			|| ft_strequ(fmt->modifier, "z"))
 	{
 		uiarg = va_arg(ap, int);
 		return (ft_uitoa_base(uiarg, g_convs[i].base));

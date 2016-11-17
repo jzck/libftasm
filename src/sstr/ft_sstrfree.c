@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_size.c                                     :+:      :+:    :+:   */
+/*   ft_sstrfree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 13:27:23 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 13:27:23 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/08 17:01:24 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 11:08:19 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_dlst_size(t_dlist *list)
+void	ft_sstrfree(char **sstr)
 {
-	int		size;
-	t_dlist	*tmp;
+	int		i;
 
-	size = 0;
-	if (list)
-		size++;
-	tmp = list;
-	while (tmp->next)
+	i = 0;
+	if (sstr)
 	{
-		size++;
-		tmp = tmp->next;
+		while (sstr[i])
+		{
+			ft_strdel(sstr + i);
+			i++;
+		}
+		ft_strdel(sstr + i);
+		free(sstr);
 	}
-	tmp = list;
-	while (tmp->prev)
-	{
-		size++;
-		tmp = tmp->prev;
-	}
-	return (size);
 }

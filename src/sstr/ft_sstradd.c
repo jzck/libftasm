@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 18:03:58 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 18:04:23 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/14 16:31:02 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	**ft_sstradd(char **sstr, char *new)
 	size = 0;
 	while (sstr && sstr[size])
 		size++;
-	newlist = (char **)malloc(sizeof(char *) * (size + 3));
+	if (!(newlist = (char **)malloc(sizeof(char *) * (size + 2))))
+		return (NULL);
 	while (sstr && *sstr)
 		newlist[i++] = *sstr++;
 	newlist[i++] = new;

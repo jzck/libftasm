@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/16 13:43:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/08/23 19:04:56 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+void	*btree_search_item(t_btree *root,
+		void *data_ref, int (*cmpf)(void *, void *))
 {
-	t_list	*tmp;
-	t_list	**indirect;
+	void *out;
 
-	indirect = alst;
-	while (*indirect)
+	out = NULL;
+	if (root)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		out = btree_search_item(root->left, data_ref, cmpf);
+		if (!out && ((*cmpf)(root->item, data_ref) == 0))
+			out = root->item;
+		if (!out)
+			out = btree_search_item(root->right, data_ref, cmpf);
 	}
+	return (out);
 }

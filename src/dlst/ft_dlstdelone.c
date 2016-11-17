@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   ft_dlst_delone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/07 13:27:13 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/14 17:52:58 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_delsub(
-		t_list **alst,
-		t_list *sub,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+void	ft_dlstdelone(t_dlist **alst, void (*del)(void *, size_t))
 {
-	t_list	*tmp;
-	t_list	**indirect;
+	t_dlist	*tmp;
 
-	indirect = alst;
-	while (*indirect)
+	tmp = *alst;
+	if (tmp)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-			sub = sub->next;
-		}
-		indirect = &(*indirect)->next;
+		if (del)
+			(*del)(tmp->content, tmp->content_size);
+		if (tmp->next)
+			tmp->next->prev = tmp->prev;
+		if (tmp->prev)
+			tmp->prev->next = tmp->next;
+		if (tmp->prev)
+			*alst = tmp->prev;
+		else
+			*alst = tmp->next;
+		free(tmp);
 	}
 }

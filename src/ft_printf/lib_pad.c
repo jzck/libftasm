@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:45 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 16:58:00 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/16 18:13:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_pad_left(char *str, t_fmt *fmt)
 {
 	char	sign;
 
-	sign = '\0';
+	sign = 0;
 	if (str[0] == '-' || str[0] == '+' || str[0] == ' ')
 	{
 		sign = str[0];
