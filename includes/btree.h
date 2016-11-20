@@ -40,6 +40,6 @@ int		btree_level_count(t_btree *root);
 void	btree_apply_prefix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_suffix(t_btree *root, void (*applyf)(void *));
-void	btree_print(t_btree *tree, void (*printer)(t_btree *tree));
+void	btree_print(t_btree *tree, char *(*printer)(void *));
 
 #endif
