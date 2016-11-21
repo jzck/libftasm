@@ -6,68 +6,89 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/16 11:24:32 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/21 15:13:44 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
-int _print_t(t_btree *tree, int is_left, int offset, int depth, char s[20][255], char *(*printer)(void *))
-{
-	char b[20];
-	int width = 5;
 
+enum	e_data
+{
+	is_left,
+	offset,
+	depth,
+};
+
+static int	print_t(t_btree *tree,
+		int data[3], char s[20][255], char *(*printer)(void *))
+{
+	char	b[20];
+	int		width;
+	int		left;
+	int		right;
+	int		i;
+
+	width = 5;
 	if (!tree)
-		return 0;
-	/* ft_printf("new tree elem: %s\n", printer(tree)); */
+		return (0);
 	sprintf(b, "%5s", printer(tree->item));
-	int left  = _print_t(tree->left,  1, offset,                depth + 1, s, printer);
-	int right = _print_t(tree->right, 0, offset + left + width, depth + 1, s, printer);
-#ifdef COMPACT
-	for (int i = 0; i < width; i++)
-		s[depth][offset + left + i] = b[i];
-	if (depth && is_left)
+	left = print_t(tree->left, (int[3]){
+			1, data[offset], data[depth] + 1}, s, printer);
+	right = print_t(tree->right, (int[3]){
+			0, data[offset] + left + width, data[depth] + 1}, s, printer);
+	i = -1;
+	while (++i < width)
+		s[data[depth]][data[offset] + left + i] = b[i];
+	if (data[depth] && data[is_left])
 	{
-		for (int i = 0; i < width + right; i++)
-			s[depth - 1][offset + left + width/2 + i] = '-';
-		s[depth - 1][offset + left + width/2] = '.';
+		i = -1;
+		while (++i < width)
+			s[data[depth] - 1][data[offset] + left + width / 2 + i] = '-';
+		s[data[depth] - 1][data[offset] + left + width / 2] = '.';
 	}
-	else if (depth && !is_left)
+	else if (data[depth] && !data[is_left])
 	{
-		for (int i = 0; i < left + width; i++)
-			s[depth - 1][offset - width/2 + i] = '-';
-		s[depth - 1][offset + left + width/2] = '.';
+		i = -1;
+		while (++i < width)
+			s[data[depth] - 1][data[offset] - width / 2 + i] = '-';
+		s[data[depth] - 1][data[offset] + left + width / 2] = '.';
 	}
-#else
-	for (int i = 0; i < width; i++)
-		s[2 * depth][offset + left + i] = b[i];
-	if (depth && is_left)
+	i = -1;
+	while (++i < width)
+		s[2 * data[depth]][data[offset] + left + i] = b[i];
+	if (data[depth] && data[is_left])
 	{
-		for (int i = 0; i < width + right; i++)
-			s[2 * depth - 1][offset + left + width/2 + i] = '-';
-		s[2 * depth - 1][offset + left + width/2] = '+';
-		s[2 * depth - 1][offset + left + width + right + width/2] = '+';
+		i = -1;
+		while (++i < width)
+			s[2 * data[depth] - 1][data[offset] + left + width / 2 + i] = '-';
+		s[2 * data[depth] - 1][data[offset] + left + width / 2] = '+';
+		s[2 * data[depth] - 1][
+			data[offset] + left + right + 3 * width / 2] = '+';
 	}
-	else if (depth && !is_left) {
-		for (int i = 0; i < left + width; i++)
-			s[2 * depth - 1][offset - width/2 + i] = '-';
-		s[2 * depth - 1][offset + left + width/2] = '+';
-		s[2 * depth - 1][offset - width/2 - 1] = '+';
+	else if (data[depth] && !data[is_left])
+	{
+		i = -1;
+		while (++i < width)
+			s[2 * data[depth] - 1][data[offset] - width / 2 + i] = '-';
+		s[2 * data[depth] - 1][data[offset] + left + width / 2] = '+';
+		s[2 * data[depth] - 1][data[offset] - width / 2 - 1] = '+';
 	}
-#endif
 	return (left + width + right);
 }
 
 void	btree_print(t_btree *tree, char *(*printer)(void *))
 {
-	char s[20][255];
-	char empty[255];
-	/* for (int i = 0; i < 20; i++) */
-	/* 	s[i][1] = 0; */
-	for (int i = 0; i < 20; i++)
+	char	s[20][255];
+	char	empty[255];
+	int		i;
+
+	i = -1;
+	while (++i < 20)
 		sprintf(s[i], "%80s", " ");
 	sprintf(empty, "%80s", " ");
-	_print_t(tree, 0, 0, 0, s, printer);
-	for (int i = 0; i < 20; i++)
+	print_t(tree, (int[3]){0, 0, 0}, s, printer);
+	i = -1;
+	while (++i < 20)
 	{
 		if (ft_strcmp(s[i], empty) == 0)
 			break ;
