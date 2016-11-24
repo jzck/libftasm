@@ -38,28 +38,11 @@ static int	print_t(t_btree *tree,
 			0, data[offset] + left + width, data[depth] + 1}, s, printer);
 	i = -1;
 	while (++i < width)
-		s[data[depth]][data[offset] + left + i] = b[i];
-	if (data[depth] && data[is_left])
-	{
-		i = -1;
-		while (++i < width)
-			s[data[depth] - 1][data[offset] + left + width / 2 + i] = '-';
-		s[data[depth] - 1][data[offset] + left + width / 2] = '.';
-	}
-	else if (data[depth] && !data[is_left])
-	{
-		i = -1;
-		while (++i < width)
-			s[data[depth] - 1][data[offset] - width / 2 + i] = '-';
-		s[data[depth] - 1][data[offset] + left + width / 2] = '.';
-	}
-	i = -1;
-	while (++i < width)
 		s[2 * data[depth]][data[offset] + left + i] = b[i];
 	if (data[depth] && data[is_left])
 	{
 		i = -1;
-		while (++i < width)
+		while (++i < width + right)
 			s[2 * data[depth] - 1][data[offset] + left + width / 2 + i] = '-';
 		s[2 * data[depth] - 1][data[offset] + left + width / 2] = '+';
 		s[2 * data[depth] - 1][
@@ -68,7 +51,7 @@ static int	print_t(t_btree *tree,
 	else if (data[depth] && !data[is_left])
 	{
 		i = -1;
-		while (++i < width)
+		while (++i < width + left)
 			s[2 * data[depth] - 1][data[offset] - width / 2 + i] = '-';
 		s[2 * data[depth] - 1][data[offset] + left + width / 2] = '+';
 		s[2 * data[depth] - 1][data[offset] - width / 2 - 1] = '+';

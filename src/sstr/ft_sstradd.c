@@ -20,13 +20,19 @@ char	**ft_sstradd(char **sstr, char *new)
 
 	i = 0;
 	size = 0;
-	while (sstr && sstr[size])
-		size++;
+	if (sstr)
+		while (sstr[size])
+			size++;
 	if (!(newlist = (char **)malloc(sizeof(char *) * (size + 2))))
 		return (NULL);
-	while (sstr && *sstr)
-		newlist[i++] = *sstr++;
-	newlist[i++] = new;
+	if (sstr)
+		while (sstr[i])
+		{
+			newlist[i] = sstr[i];
+			i++;
+		}
+	newlist[i++] = ft_strdup(new);
 	newlist[i] = NULL;
+	free(sstr);
 	return (newlist);
 }
