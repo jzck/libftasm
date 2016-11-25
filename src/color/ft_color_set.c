@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time_isrecent.c                                 :+:      :+:    :+:   */
+/*   ft_color_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:01:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 11:43:52 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/25 13:53:46 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/25 14:05:39 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_time_isrecent(time_t event)
+void	ft_color_set(char *fg, char *bg)
 {
-	time_t	now;
-
-	now = time(&now);
-	if (now - event >= 0 && now - event <= 6 * 365 / 12 * 24 * 60 * 60)
-		return (1);
-	else
-		return (0);
+	ft_putstr(fg);
+	ft_putstr(bg);
 }

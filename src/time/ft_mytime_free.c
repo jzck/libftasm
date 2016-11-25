@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time_isrecent.c                                 :+:      :+:    :+:   */
+/*   ft_mytime_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:01:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 11:43:52 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/25 11:45:29 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/25 11:48:12 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_time_isrecent(time_t event)
+void	ft_mytime_free(t_mytime **time)
 {
-	time_t	now;
-
-	now = time(&now);
-	if (now - event >= 0 && now - event <= 6 * 365 / 12 * 24 * 60 * 60)
-		return (1);
-	else
-		return (0);
+	ft_strdel(&(*time)->year);
+	ft_strdel(&(*time)->month);
+	ft_strdel(&(*time)->day);
+	ft_strdel(&(*time)->hour);
+	ft_strdel(&(*time)->min);
+	ft_strdel(&(*time)->sec);
+	ft_memdel((void **)time);
 }

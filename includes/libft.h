@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/23 13:56:46 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/25 16:02:22 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 # define LIBFT_H
 
 # include "ft_xattr.h"
+# include "mytime.h"
 # include "lst.h"
 # include "dlst.h"
 # include "btree.h"
+# include "color.h"
 
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <time.h>
+# include <sys/xattr.h>
+# include <sys/acl.h>
 
 # define FT_WS(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
@@ -124,8 +128,6 @@ void	ft_sstrprint(char **list, char sep);
 char	**ft_sstrdup(char **list);
 void	ft_sstrdel(char **sstr, int index);
 void	ft_sstrfree(char **sstr);
-
-int		ft_time_isrecent(time_t event);
 
 char	*ft_path_notdir(char *path);
 
