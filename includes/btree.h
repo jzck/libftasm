@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 11:13:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 18:33:24 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/25 20:37:02 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ enum	e_printdata
 	is_left,
 	offset,
 	depth,
+	left,
+	right,
 };
-
 
 t_btree	*btree_create_node(void const *item, size_t content_size);
 
