@@ -18,5 +18,9 @@ void	ft_sstrprint(char **list, char sep)
 
 	i = 0;
 	while (list[i])
-		ft_printf("%s%c", list[i++], sep);
+	{
+		ft_putstr(list[i++]);
+		if (list[i])
+			ft_putchar(sep);
+	}
 }
