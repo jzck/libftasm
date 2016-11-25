@@ -6,18 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 18:28:42 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/25 18:33:47 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
-
-enum	e_data
-{
-	is_left,
-	offset,
-	depth,
-};
 
 static int	print_t(t_btree *tree,
 		int data[3], char s[20][255], char *(*printer)(void *))
@@ -45,8 +38,8 @@ static int	print_t(t_btree *tree,
 		while (++i < width + right)
 			s[2 * data[depth] - 1][data[offset] + left + width / 2 + i] = '-';
 		s[2 * data[depth] - 1][data[offset] + left + width / 2] = '+';
-		s[2 * data[depth] - 1][
-			data[offset] + left + right + 3 * width / 2] = '+';
+		s[2 * data[depth] - 1][ data[offset] + left + right + 3 * width / 2]
+			= '+';
 	}
 	else if (data[depth] && !data[is_left])
 	{

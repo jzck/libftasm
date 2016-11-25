@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 11:13:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/16 11:14:02 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/25 18:33:24 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ struct	s_btree
 	struct s_btree	*left;
 	struct s_btree	*right;
 };
+
+enum	e_printdata
+{
+	is_left,
+	offset,
+	depth,
+};
+
 
 t_btree	*btree_create_node(void const *item, size_t content_size);
 
