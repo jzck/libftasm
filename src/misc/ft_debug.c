@@ -17,5 +17,5 @@ void	ft_debug(void)
 	static int n = 0;
 
 	n++;
-	ft_printf("----------\n check %02i\n----------\n", n);
+	ft_dprintf(2, "----------\n check %02i\n----------\n", n);
 }

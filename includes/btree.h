@@ -25,14 +25,16 @@ struct	s_btree
 	struct s_btree	*right;
 };
 
-enum	e_printdata
+struct	s_printdata
 {
-	is_left,
-	offset,
-	depth,
-	left,
-	right,
+	int		is_left;
+	int		offset;
+	int		depth;
+	int		left;
+	int		right;
 };
+
+typedef struct s_printdata	t_printdata;
 
 t_btree	*btree_create_node(void const *item, size_t content_size);
 
