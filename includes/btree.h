@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 11:13:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 20:37:02 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/28 14:44:55 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int		btree_level_count(t_btree *root);
 void	btree_apply_prefix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void	btree_apply_suffix(t_btree *root, void (*applyf)(void *));
-void	btree_print(t_btree *tree, char *(*printer)(void *));
+void		btree_print(int fd, t_btree *tree, char *(*printer)(void *));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 16:02:22 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/28 15:20:11 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))
+
+# define STDIN		0
+# define STDOUT		1
+# define STDERR		2
+
+typedef long long		t_type;
 
 typedef struct s_stof	t_stof;
 
@@ -125,6 +131,7 @@ int		ft_addrcmp(void *a, void *b);
 char	**ft_sstradd(char **list, char *new);
 void	ft_sstrsort(char **list, int (*cmp)());
 void	ft_sstrprint(char **list, char sep);
+void	ft_sstrprint_fd(int fd, char **list, char sep);
 char	**ft_sstrdup(char **list);
 void	ft_sstrdel(char **sstr, int index);
 void	ft_sstrfree(char **sstr);

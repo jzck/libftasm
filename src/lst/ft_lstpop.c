@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:56 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 11:09:56 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/28 19:14:40 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstpop(t_list **lst)
 	t_list	*top;
 
 	top = *lst;
-	if (*lst)
+	if (lst && *lst)
 		*lst = (*lst)->next;
 	return (top);
 }

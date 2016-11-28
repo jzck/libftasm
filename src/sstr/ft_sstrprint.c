@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sstrprint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:04:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 18:04:15 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/28 15:17:33 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/28 15:18:12 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,5 @@
 
 void	ft_sstrprint(char **list, char sep)
 {
-	int		i;
-
-	i = 0;
-	while (list[i])
-	{
-		ft_putstr(list[i++]);
-		if (list[i])
-			ft_putchar(sep);
-	}
+	ft_sstrprint_fd(STDOUT, list, sep);
 }

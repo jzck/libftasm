@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 20:44:56 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/28 14:53:46 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	print_t(t_btree *tree,
 	return (print_t2(data, s, b));
 }
 
-void		btree_print(t_btree *tree, char *(*printer)(void *))
+void		btree_print(int fd, t_btree *tree, char *(*printer)(void *))
 {
 	char	s[20][255];
 	char	empty[255];
@@ -75,6 +75,6 @@ void		btree_print(t_btree *tree, char *(*printer)(void *))
 	{
 		if (ft_strcmp(s[i], empty) == 0)
 			break ;
-		printf("%s\n", s[i]);
+		ft_dprintf(fd, "%s\n", s[i]);
 	}
 }

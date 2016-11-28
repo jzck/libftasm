@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_sstrprint_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:58:22 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/28 15:35:58 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/28 15:17:29 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/28 15:23:52 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_sstrprint_fd(int fd, char **list, char sep)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	while (list[i])
+	{
+		ft_putstr_fd(list[i++], fd);
+		if (list[i])
+			ft_putchar_fd(sep, fd);
+	}
 }
