@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 18:04:13 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 18:04:13 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/01 12:29:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	**ft_sstrdup(char **list)
 		cpy[i++] = ft_strdup(*list);
 		list++;
 	}
+	cpy[i] = NULL;
 	return (cpy);
 }
