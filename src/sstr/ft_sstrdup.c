@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sstrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:04:13 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/01 12:29:27 by jhalford         ###   ########.fr       */
+/*   Created: 2016/12/07 14:25:45 by jhalford          #+#    #+#             */
+/*   Updated: 2016/12/07 16:29:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	**ft_sstrdup(char **list)
 
 	i = 0;
 	size = 0;
+	DG("sstrdup call now");
 	while (list[size])
 		size++;
 	cpy = (char **)malloc(sizeof(char *) * (size + 1));
@@ -28,6 +29,7 @@ char	**ft_sstrdup(char **list)
 		cpy[i++] = ft_strdup(*list);
 		list++;
 	}
+	DG("sstrdup i=%i, size=%i (should be equal)", i, size);
 	cpy[i] = NULL;
 	return (cpy);
 }

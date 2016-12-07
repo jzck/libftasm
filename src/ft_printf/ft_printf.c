@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:27 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/21 18:22:26 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/07 17:14:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 	while (*str)
 	{
 		tmp = final;
-		if (*str == '%')
+		if (*str == '{')
+			ft_printf_color(fd, &final, &str);
+		else if (*str == '%')
 		{
 			if (ft_fmtcalc(&final, &str, ap))
 				return (1);

@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:06:24 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/28 14:53:46 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/06 20:10:51 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void		btree_print(int fd, t_btree *tree, char *(*printer)(void *))
 	while (++i < 20)
 	{
 		if (ft_strcmp(s[i], empty) == 0)
+			break ;
+		if (i == 0 && ft_strcmp(s[1], empty) == 0)
 			break ;
 		ft_dprintf(fd, "%s\n", s[i]);
 	}

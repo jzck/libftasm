@@ -6,13 +6,21 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 13:36:48 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 18:27:28 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/06 20:15:42 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 # include "libft.h"
+
+struct	s_color
+{
+	char	fg[7];
+	char	bg[7];
+};
+
+typedef struct s_color	t_color;
 
 # define FG_BLACK		"\x1b[30m"
 # define FG_RED			"\x1b[31m"
@@ -32,7 +40,12 @@
 # define BG_CYAN		"\x1b[46m"
 # define BG_DEFAULT		"\x1b[49m"
 
+# define FBG_DEFAULT	"\x1b[49m\x1b[20m"
+
 void	ft_color_reset(void);
-void	ft_color_set(char *fg, char *bg);
+void	ft_color_set(t_color color);
+
+void	ft_color_mk(t_color *color, char fg[7], char bg[7]);
+void	ft_color_mkif(t_color *color, int cond, char fg[7], char bg[7]);
 
 #endif

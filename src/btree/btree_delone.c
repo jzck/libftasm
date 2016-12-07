@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_set.c                                     :+:      :+:    :+:   */
+/*   btree_delone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 13:53:46 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/03 12:16:38 by jhalford         ###   ########.fr       */
+/*   Created: 2016/12/05 11:45:51 by jhalford          #+#    #+#             */
+/*   Updated: 2016/12/05 14:07:12 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btree.h"
 
-void	ft_color_set(t_color color)
+void	btree_delone(t_btree **root, void (*del)(void *, size_t))
 {
-	char	out[20];
-
-	ft_strcpy(out, color.fg);
-	ft_strcat(out, color.bg);
-	ft_putstr(out);
+	if (root && *root)
+	{
+		if (del)
+			(*del)((*root)->item, (*root)->content_size);
+		free(*root);
+		*root = NULL;
+	}
 }

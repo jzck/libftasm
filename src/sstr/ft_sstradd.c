@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 18:03:58 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/14 16:31:02 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/07 17:39:37 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ char	**ft_sstradd(char **sstr, char *new)
 	if (sstr)
 		while (sstr[size])
 			size++;
-	if (!(newlist = (char **)malloc(sizeof(char *) * (size + 2))))
+	if (!(newlist = (char **)ft_memalloc(sizeof(char *) * (size + 2))))
 		return (NULL);
 	if (sstr)
-		while (sstr[i])
-		{
-			newlist[i] = sstr[i];
-			i++;
-		}
-	newlist[i++] = ft_strdup(new);
-	newlist[i] = NULL;
+		ft_memcpy(newlist, sstr, sizeof(char*) * size);
+	newlist[size++] = ft_strdup(new);
+	newlist[size] = NULL;
 	free(sstr);
 	return (newlist);
 }

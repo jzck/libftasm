@@ -6,13 +6,18 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/28 15:20:11 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/07 16:54:11 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define DG_MSG0		"{yel}%13s:{blu}%-3d{eoc} |"
+# define DG_MSG1		ft_path_notdir(__FILE__), __LINE__
+# define DG(f, ...)		ft_dprintf(2, DG_MSG0 f "{eoc}\n", DG_MSG1, ##__VA_ARGS__)
+
+# include "get_next_line.h"
 # include "ft_xattr.h"
 # include "mytime.h"
 # include "lst.h"
@@ -40,9 +45,14 @@
 # define STDOUT		1
 # define STDERR		2
 
-typedef long long		t_type;
-
 typedef struct s_stof	t_stof;
+typedef struct s_stos	t_stos;
+
+struct	s_stos
+{
+	char	*key;
+	char	*val;
+};
 
 struct	s_stof
 {

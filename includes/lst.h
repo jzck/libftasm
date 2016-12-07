@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/23 14:50:54 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/07 16:54:25 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_lst_delsub(
 		t_list *sub, int (*cmp)(),
 		void (*del)(void *, size_t));
 void	ft_lst_cfree(void *ptr, size_t size);
+void	ft_lst_bfree(void *ptr, size_t size);
 t_list	*ft_lst_filter(
 		t_list *lst,
 		void const *data_ref,

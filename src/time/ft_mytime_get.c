@@ -6,12 +6,11 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:34:56 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/25 11:55:18 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/03 11:54:16 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 t_mytime	*ft_mytime_get(time_t epoch)
 {
@@ -30,4 +29,3 @@ t_mytime	*ft_mytime_get(time_t epoch)
 	time->sec = ft_strsub(date, 17, 2);
 	return (time);
 }
-

@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_set.c                                     :+:      :+:    :+:   */
+/*   ft_color_mk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 13:53:46 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/03 12:16:38 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/27 11:35:18 by jhalford          #+#    #+#             */
+/*   Updated: 2016/12/03 12:16:59 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_color_set(t_color color)
+void	ft_color_mk(t_color *color, char fg[7], char bg[7])
 {
-	char	out[20];
-
-	ft_strcpy(out, color.fg);
-	ft_strcat(out, color.bg);
-	ft_putstr(out);
+	ft_strcpy(color->fg, fg);
+	ft_strcpy(color->bg, bg);
 }

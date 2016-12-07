@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:22:54 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/21 18:20:10 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/06 19:12:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ extern t_conv	g_convs[];
 
 t_fmt	*ft_fmt_init(void);
 void	ft_fmt_print(t_fmt *fmt);
+void	ft_printf_color(int fd, char **final, char **str);
 
 t_fmt	*ft_printf_parse(char **format, va_list ap);
 void	ft_printf_parse_flags(t_fmt *fmt, char **format);

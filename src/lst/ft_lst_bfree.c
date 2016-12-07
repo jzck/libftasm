@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_set.c                                     :+:      :+:    :+:   */
+/*   ft_lst_bfree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 13:53:46 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/03 12:16:38 by jhalford         ###   ########.fr       */
+/*   Created: 2016/12/07 16:55:04 by jhalford          #+#    #+#             */
+/*   Updated: 2016/12/07 18:07:31 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_color_set(t_color color)
+void	ft_lst_bfree(void *ptr, size_t size)
 {
-	char	out[20];
+	t_list	*lst;
 
-	ft_strcpy(out, color.fg);
-	ft_strcat(out, color.bg);
-	ft_putstr(out);
+	lst = ptr;
+	(void)size;
+	if (lst)
+	{
+		ft_strdel((char **)&lst->content);
+		free(lst);
+	}
 }
