@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 18:07:39 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/09 18:03:45 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/09 22:09:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 t_stos g_colors[] =
 {
+	{"{bol}", ON_BOLD},
+	{"{und}", ON_UNDERLINED},
+	{"{inv}", ON_INVERTED},
 	{"{bla}", FG_BLACK},
 	{"{red}", FG_RED},
 	{"{gre}", FG_GREEN},

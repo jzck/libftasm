@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 13:36:48 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/06 20:15:42 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/09 22:09:24 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ struct	s_color
 
 typedef struct s_color	t_color;
 
+# define FG_DEFAULT		"\x1b[0m"
+# define ON_BOLD		"\x1b[1m"
+
+# define ON_UNDERLINED	"\x1b[4m"
+# define ON_INVERTED	"\x1b[7m"
+
 # define FG_BLACK		"\x1b[30m"
 # define FG_RED			"\x1b[31m"
 # define FG_GREEN		"\x1b[32m"
@@ -29,7 +35,6 @@ typedef struct s_color	t_color;
 # define FG_BLUE		"\x1b[34m"
 # define FG_MAGENTA		"\x1b[35m"
 # define FG_CYAN		"\x1b[36m"
-# define FG_DEFAULT		"\x1b[0m"
 
 # define BG_BLACK		"\x1b[40m"
 # define BG_RED			"\x1b[41m"
