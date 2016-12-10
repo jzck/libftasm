@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/09 22:11:49 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/10 17:02:46 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void	ft_sstrprint_fd(int fd, char **list, char sep);
 char	**ft_sstrdup(char **list);
 void	ft_sstrdel(char **sstr, int index);
 void	ft_sstrfree(char **sstr);
+char	*ft_sstrcat(char **sstr, char sep);
 
 char	*ft_path_notdir(char *path);
 
