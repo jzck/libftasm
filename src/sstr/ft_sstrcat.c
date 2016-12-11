@@ -26,12 +26,12 @@ char	*ft_sstrcat(char **sstr, char sep)
 		len += ft_strlen(sstr[i++]);
 	if (!(out = ft_strnew(sizeof(char) * (len + i + 1))))
 		return (NULL);
-	ft_strcat(out, sstr[0]);
+	ft_strcpy(out, sstr[0]);
 	i = 1;
 	while (sstr[i])
 	{
 		ft_strcat(out, (char[]){sep, 0});
-		ft_strcat(out, sstr[i]);
+		ft_strcat(out, sstr[i++]);
 	}
 	return (out);
 }
