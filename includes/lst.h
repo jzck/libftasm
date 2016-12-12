@@ -6,12 +6,14 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/07 16:54:25 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:59:12 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LST_H
 # define LST_H
+
+# include "libft.h"
 
 struct	s_list
 {
@@ -73,5 +75,6 @@ void	ft_lst_reverse(t_list **begin_list);
 
 int		ft_diff(void *a, void *b);
 t_list	*ft_id(t_list *a);
+t_list	*ft_lst_at(t_list *list, unsigned int nbr);
 
 #endif

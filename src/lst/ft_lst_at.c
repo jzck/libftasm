@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:19 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/12 13:31:59 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/14 13:18:48 by jhalford          #+#    #+#             */
+/*   Updated: 2016/12/12 14:58:37 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lst.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+t_list	*ft_lst_at(t_list *list, unsigned int nbr)
 {
-	while (lst)
+	unsigned int	i;
+
+	if (!list)
+		return (NULL);
+	i = 0;
+	while (i < nbr && list)
 	{
-		(*f)(lst);
-		lst = lst->next;
+		list = list->next;
+		i++;
 	}
+	return (list);
 }
