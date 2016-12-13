@@ -6,9 +6,11 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 12:16:31 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/13 12:18:41 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:57:31 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_strappend(char **dst, char *src)
 {
@@ -16,7 +18,7 @@ int		ft_strappend(char **dst, char *src)
 
 	if (!(out = ft_strjoin(*dst, src)))
 		return (-1);
-	ft_strdel(*dst);
+	ft_strdel(dst);
 	*dst = out;
 	return (0);
 }
