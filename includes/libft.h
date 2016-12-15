@@ -6,16 +6,21 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/13 17:22:16 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:21:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define DG_MSG0		"{inv}{yel}%13s {bol}{blu}%-3d{eoc}"
+# define STDIN		0
+# define STDOUT		1
+# define STDERR		2
+# define STDBUG		3
+
+# define DG_MSG0		"{inv}{yel}%21s {bol}{blu}%-3d{eoc}"
 # define DG_MSG1		ft_path_notdir(__FILE__), __LINE__
-# define DG(f, ...)		ft_dprintf(2, DG_MSG0 f "{eoc}\n", DG_MSG1, ##__VA_ARGS__)
+# define DG(f, ...)		ft_dprintf(STDBUG, DG_MSG0 f "{eoc}\n", DG_MSG1, ##__VA_ARGS__)
 
 # include "get_next_line.h"
 # include "ft_xattr.h"
@@ -40,10 +45,6 @@
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))
-
-# define STDIN		0
-# define STDOUT		1
-# define STDERR		2
 
 typedef struct s_stof	t_stof;
 typedef struct s_stos	t_stos;
