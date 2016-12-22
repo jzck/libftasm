@@ -60,7 +60,10 @@ char	*ft_str_conversion(t_fmt *fmt, va_list ap)
 	char	*ret;
 
 	(void)fmt;
-	ret = ft_strdup(va_arg(ap, char *));
+	ret = va_arg(ap, char *);
+	if (ret == NULL)
+		return(ft_strdup("NULL"));
+	ret = ft_strdup(ret);
 	if (fmt->precision && fmt->precision < (int)ft_strlen(ret))
 		ret[fmt->precision] = '\0';
 	return (ret);
