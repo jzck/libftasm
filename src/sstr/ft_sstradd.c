@@ -27,8 +27,8 @@ char	**ft_sstradd(char **sstr, char *new)
 		return (NULL);
 	if (sstr)
 		ft_memcpy(newlist, sstr, sizeof(char*) * size);
-	newlist[size++] = ft_strdup(new);
-	newlist[size] = NULL;
+	newlist[size] = ft_strdup(new);
+	newlist[size + 1] = NULL;
 	free(sstr);
 	return (newlist);
 }
