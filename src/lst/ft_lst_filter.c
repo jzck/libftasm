@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:17 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/21 12:36:08 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/09 12:33:31 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ t_list	*ft_lst_filter(
 	out = NULL;
 	while (lst)
 	{
-		elem = (*f)(lst, data_ref);
+		if (f)
+			elem = (*f)(lst, data_ref);
+		else
+			elem = lst;
 		elem = ft_lstnew(elem->content, elem->content_size);
 		ft_lsteadd(&out, elem);
 		lst = lst->next;
