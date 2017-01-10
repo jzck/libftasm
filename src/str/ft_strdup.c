@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 14:25:41 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/07 15:29:38 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/10 10:56:33 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	i = 0;
-	dup = (char*)malloc(sizeof(*dup) * (ft_strlen(s1) + 1));
+	if (!s1 || !(dup = (char*)malloc(sizeof(*dup) * (ft_strlen(s1) + 1))))
+		return (NULL);
 	ft_strcpy(dup, s1);
 	return (dup);
 }
