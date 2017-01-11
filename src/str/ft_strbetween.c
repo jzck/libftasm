@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sstrfree.c                                      :+:      :+:    :+:   */
+/*   ft_strbetween.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 11:53:36 by jhalford          #+#    #+#             */
-/*   Updated: 2017/01/11 14:42:45 by jhalford         ###   ########.fr       */
+/*   Created: 2017/01/11 16:26:44 by jhalford          #+#    #+#             */
+/*   Updated: 2017/01/11 16:38:13 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_sstrfree(char **sstr)
+char	*ft_strbetween(char *start, char *end)
 {
-	int		i;
+	char	*out;
 
-	i = 0;
-	if (sstr)
-	{
-		while (sstr[i])
-		{
-			ft_strdel(sstr + i);
-			i++;
-		}
-		ft_strdel(sstr + i);
-		free(sstr);
-	}
+	out = ft_strnew(end - start + 1);
+	ft_strncpy(out, start, end - start);
+	return (out);
 }
