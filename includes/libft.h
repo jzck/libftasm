@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/01/11 16:28:39 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/12 13:55:40 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ char	*ft_strcatf(char *s1, const char *s2);
 char	*ft_strinsert(char *str, char c, int n);
 int		ft_strappend(char **dst, char *src);
 char	*ft_strbetween(char *start, char *end);
+char	*ft_strreplace(char **str, char *start, char *end, char *new);
 
 char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);

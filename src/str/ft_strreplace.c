@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strappend.c                                     :+:      :+:    :+:   */
+/*   ft_strreplace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 12:16:31 by jhalford          #+#    #+#             */
-/*   Updated: 2017/01/12 14:07:01 by jhalford         ###   ########.fr       */
+/*   Created: 2017/01/12 13:50:21 by jhalford          #+#    #+#             */
+/*   Updated: 2017/01/12 13:59:25 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strappend(char **dst, char *src)
+char	*ft_strreplace(char **str, char *start, char *end, char *new)
 {
 	char	*out;
 
-	if (!(out = ft_strjoin(*dst, src)))
-		return (-1);
-	ft_strdel(dst);
-	*dst = out;
-	return (0);
+	out = ft_strnew(ft_strlen(*str) - (end - start) + ft_strlen(new) + 1);
+	ft_strncpy(out, *str, start - *str);
+	ft_strcat(out, new);
+	ft_strcat(out, end + 1);
+	return (out);
 }

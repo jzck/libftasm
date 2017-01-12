@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/08 13:36:17 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/12 14:33:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_lst_delsub(
 		{
 			tmp = *indirect;
 			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
 			sub = sub->next;
+			ft_lstdelone(&tmp, del);
 		}
 		indirect = &(*indirect)->next;
 	}
