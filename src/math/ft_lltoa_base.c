@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:10:42 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/07 16:30:42 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/22 16:39:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static char		*ft_flags(char *str, int *i, char *flags, int neg)
 {
 	if (neg)
-		str[*i++] = '-';
+		str[(*i)++] = '-';
 	else if (ft_strchr(flags, '+'))
-		str[*i++] = '+';
+		str[(*i)++] = '+';
 	else if (ft_strchr(flags, ' '))
-		str[*i++] = ' ';
+		str[(*i)++] = ' ';
 	return (str);
 }
 
@@ -46,7 +46,7 @@ char			*ft_lltoa_base(long long nbr, char *base, char *flags)
 		nbr = nbr / base_size;
 	}
 	str = ft_flags(str, &i, flags, neg);
-	str[i] = '\0';
+	str[i] = 0;
 	ft_strrev(str);
 	return (str);
 }

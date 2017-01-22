@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/01/12 13:55:40 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/22 16:31:25 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 
 # define FT_WS(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
-# define FT_NEG(x) (((x) < 0) ? 1 : 0)
-# define FT_POS(x) (((x) > 0) ? 1 : 0)
+# define FT_NEG(x) ((x) < 0)
+# define FT_POS(x) ((x) > 0)
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))

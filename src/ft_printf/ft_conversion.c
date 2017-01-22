@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:31:48 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/09 18:00:52 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/01/22 16:28:55 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 char	*ft_signed_conversion(t_fmt *fmt, va_list ap)
 {
-	char		base10[11];
+	char		base10[] = "0123456789";
 	long long	arg;
 
 	arg = va_arg(ap, int);
-	ft_strcpy(base10, "0123456789");
 	(void)fmt;
 	return (ft_lltoa_base(arg, base10, fmt->flags));
 }
