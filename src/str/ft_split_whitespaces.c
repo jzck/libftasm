@@ -3,103 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/08 09:33:37 by jhalford          #+#    #+#             */
-/*   Updated: 2016/08/20 23:23:41 by jhalford         ###   ########.fr       */
+/*   Created: 2017/02/03 16:07:17 by jhalford          #+#    #+#             */
+/*   Updated: 2017/02/03 16:12:40 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**alloc_table(char **table, char *str)
+char	*ft_strdupi_w(char const *s)
 {
 	int		i;
-	int		n_words;
+	char	*str;
 
 	i = 0;
-	n_words = 0;
-	while (FT_WS(str[i]))
+	while (s[i] && s[i] != ' ' && s[i] != '\t')
 		i++;
-	while (str[i] != '\0')
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (str)
 	{
-		i++;
-		if (FT_WS(str[i]))
+		str[i--] = '\0';
+		while (i >= 0)
 		{
-			n_words++;
-			while (FT_WS(str[i]))
-				i++;
+			str[i] = s[i];
+			i--;
 		}
 	}
-	if (!FT_WS(str[i - 1]))
-		n_words++;
-	table = (char**)malloc(sizeof(*table) * (n_words + 1));
-	table[n_words] = 0x0;
-	return (table);
+	return (str);
 }
 
-char	**alloc_words(char **table, char *str)
+static int	ft_len_words(char const *s)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = 0;
+	while (s[i])
+	{
+		if ((i == 0 && s[i] != ' ' && s[i] != '\t') || ((s[i] != ' '
+		&& s[i] != '\t') && (s[i - 1] == ' ' || s[i - 1] == '\t')))
+			len++;
+		i++;
+	}
+	return (len);
+}
+
+char		**ft_split_whitespaces(char const *s)
 {
 	int		i;
+	char	**str;
 	int		j;
-	int		k;
 
+	str = NULL;
+	if (!(s))
+		return (str);
+	str = (char **)malloc(sizeof(char *) * (ft_len_words(s) + 1));
 	i = 0;
 	j = 0;
-	k = 0;
-	while (FT_WS(str[i]))
-		i++;
-	while (str[i] != '\0')
+	if (!(str))
+		return (str);
+	while (s[i])
 	{
-		i++;
-		if (FT_WS(str[i]) || str[i] == '\0')
+		if ((i == 0 && s[i] != ' ' && s[i] != '\t') || ((s[i] != ' '
+		&& s[i] != '\t') && (s[i - 1] == ' ' || s[i - 1] == '\t')))
 		{
-			table[j] = (char*)malloc(sizeof(**table) * (k + 1));
+			str[j] = ft_strdupi_w((s + i));
 			j++;
-			k = 0;
-			while (FT_WS(str[i]))
-				i++;
 		}
-		k++;
-	}
-	return (table);
-}
-
-char	**fill_table(char **table, char *str)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (FT_WS(str[i]))
 		i++;
-	while (str[i] != '\0')
-	{
-		table[j][k] = str[i];
-		i++;
-		k++;
-		if (FT_WS(str[i]))
-		{
-			table[j][k] = '\0';
-			j++;
-			k = 0;
-			while (FT_WS(str[i]))
-				i++;
-		}
 	}
-	return (table);
-}
-
-char	**ft_split_whitespaces(char *str)
-{
-	char	**table;
-
-	table = NULL;
-	table = alloc_table(table, str);
-	table = alloc_words(table, str);
-	table = fill_table(table, str);
-	return (table);
+	str[j] = NULL;
+	return (str);
 }

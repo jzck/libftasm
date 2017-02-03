@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/01/22 16:31:25 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/03 16:08:41 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ char	*ft_strrev(char *str);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_str3join(char const *s1, char const *s2, char const *s3);
 char	*ft_strcut(char *str, char *cut);
-char	**ft_split_whitespaces(char *str);
+char	**ft_split_whitespaces(char const *str);
 char	*ft_convert_base(
 		char *str, char *base_from, char *base_to, char *flags);
 char	*ft_strcatf(char *s1, const char *s2);
