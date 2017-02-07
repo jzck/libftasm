@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/03 16:08:41 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/07 16:12:40 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,8 @@ char	*ft_path_notdir(char *path);
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
 
-char	*ft_getenv(char **env, char *key);
-
 void	*ft_realloc(void *data, int size);
+
+char	*ft_getenv(char **env, char *key);
+int		dup2_close(int fd1, int fd2);
 #endif

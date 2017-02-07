@@ -1,15 +1,25 @@
-NAME	=	libft.a
-CC		=	gcc
-AR		=	ar -rc
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
+#    Updated: 2017/02/07 16:13:25 by jhalford         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-MKDIR	=	mkdir -p
-RM		=	/bin/rm -rf
+NAME		=	libft.a
 
+CC			=	gcc
+AR			=	ar -rc
+MKDIR		=	mkdir -p
+RM			=	/bin/rm -rf
 FLAGS		=	-Wall -Wextra -Werror
 D_FLAGS		=	-g
 
-LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
-DELTA		=	$$(echo "$$(tput cols)-24-$(LEN_NAME)"|bc)
+DELTA		=	$$(echo "$$(tput cols)-47"|bc)
 
 SRC_DIR		=	src/
 INC_DIR		=	includes/
@@ -167,6 +177,7 @@ str/ft_strsplit.c\
 str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strtrim.c\
+sys/dup2_close.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
 time/ft_time_isrecent.c\
@@ -175,23 +186,30 @@ xattr/ft_xattr_print.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
+NB			=	$(words $(SRC_BASE))
+INDEX		=	0
 
 all: $(NAME)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	@$(MKDIR) $(OBJ_DIR)
-	@$(CC) $(FLAGS) $(D_FLAGS) -MMD -c $< -o $@\
-		-I $(INC_DIR)
-	@printf "\r\033[38;5;11m⌛ MAKE %s     plz wait :  %*s\033[0m\033[K" $(NAME) $(DELTA) "$@"
-
-$(OBJ_DIR):
-	@$(MKDIR) $(OBJ_DIR)
-	@$(MKDIR) $(dir $(OBJS))
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "\r\033[48;5;15;38;5;25m✅ MAKE $(NAME)\033[0m\033[K"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
+	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
+	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
+	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
+	@printf "\r\033[38;5;11m⌛ MAKE %10.10s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
+	@$(MKDIR) $(OBJ_DIR)
+	@$(CC) $(FLAGS) $(D_FLAGS) -MMD -c $< -o $@\
+		-I $(INC_DIR)
+	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
+
+$(OBJ_DIR):
+	@$(MKDIR) $(OBJ_DIR)
+	@$(MKDIR) $(dir $(OBJS))
 
 clean:
 	@$(RM) $(OBJ_DIR)
