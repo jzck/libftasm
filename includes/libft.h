@@ -13,9 +13,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define STDIN		0
-# define STDOUT		1
-# define STDERR		2
+# define STDIN		STDIN_FILENO
+# define STDOUT		STDOUT_FILENO
+# define STDERR		STDERR_FILENO
 # define STDBUG		3
 
 # define DG_MSG0		"{inv}{yel}%21s {bol}{blu}%-3d{eoc}"
