@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/07 16:12:40 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/10 00:27:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 # define DG_MSG1		ft_path_notdir(__FILE__), __LINE__
 # define DG(f, ...)		ft_dprintf(STDBUG, DG_MSG0 f "{eoc}\n", DG_MSG1, ##__VA_ARGS__)
 
-# include "get_next_line.h"
-# include "ft_xattr.h"
-# include "mytime.h"
-# include "lst.h"
-# include "dlst.h"
-# include "btree.h"
-# include "color.h"
-
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -38,13 +30,21 @@
 # include <sys/xattr.h>
 # include <sys/acl.h>
 
+# include "lst.h"
+# include "get_next_line.h"
+# include "ft_xattr.h"
+# include "mytime.h"
+# include "dlst.h"
+# include "btree.h"
+# include "color.h"
+
 # define FT_WS(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
 # define FT_NEG(x) ((x) < 0)
 # define FT_POS(x) ((x) > 0)
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
-# define FT_DIST(a, b) (FT_ABS((a) - (b)))
+# define FT_DIST(a, b) FT_ABS((a) - (b))
 
 typedef struct s_stof	t_stof;
 typedef struct s_stos	t_stos;

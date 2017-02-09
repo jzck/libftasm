@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/07 20:11:46 by jhalford         ###   ########.fr        #
+#    Updated: 2017/02/10 00:26:46 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,8 +98,9 @@ lst/ft_lstmap.c\
 lst/ft_lstnadd.c\
 lst/ft_lstnew.c\
 lst/ft_lstnew_range.c\
-lst/ft_lstpop.c\
 lst/ft_lstsort.c\
+lst/pop.c\
+lst/push.c\
 math/ft_addrcmp.c\
 math/ft_ilen.c\
 math/ft_ilen_base.c\

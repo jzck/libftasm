@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 15:57:38 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/09 21:37:14 by jhalford         ###   ########.fr       */
+/*   Created: 2017/02/09 15:59:39 by jhalford          #+#    #+#             */
+/*   Updated: 2017/02/10 00:28:45 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_list	*push(t_list **stack, int elem)
 {
-	t_list	*new;
-
-	if (!(new = (t_list *)malloc(sizeof(*new))))
-		return (NULL);
-	new->next = NULL;
-	new->content_size = content_size;
-	new->content = ft_memalloc(content_size + 1);
-	if (content)
-		ft_memcpy(new->content, content, content_size);
-	return (new);
+	ft_lstadd(stack, ft_lstnew(&elem, sizeof(elem)));
+	return (*stack);
 }
