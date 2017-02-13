@@ -20,5 +20,7 @@ char	*ft_strreplace(char **str, char *start, char *end, char *new)
 	ft_strncpy(out, *str, start - *str);
 	ft_strcat(out, new);
 	ft_strcat(out, end + 1);
+	ft_strdel(str);
+	*str = out;
 	return (out);
 }
