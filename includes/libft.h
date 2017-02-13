@@ -131,6 +131,7 @@ int		ft_strappend(char **dst, char *src);
 char	*ft_strbetween(char *start, char *end);
 char	*ft_strreplace(char **str, char *start, char *end, char *new);
 char	*ft_strtok(char *s, const char *delim);
+size_t	ft_strcspn(char *s, const char *delim);
 
 char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);

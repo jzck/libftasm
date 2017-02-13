@@ -12,7 +12,7 @@ char	*ft_strtok(char *s, const char *delim)
 			return (0);
 	} while (ft_strchr(delim, ch));
 	--s;
-	lasts = s + strcspn(s, delim);
+	lasts = s + ft_strcspn(s, delim);
 	if (*lasts != 0)
 		*lasts++ = 0;
 	return (s);

@@ -153,6 +153,7 @@ str/ft_strchr.c\
 str/ft_strclr.c\
 str/ft_strcmp.c\
 str/ft_strcpy.c\
+str/ft_strcspn.c\
 str/ft_strcut.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
