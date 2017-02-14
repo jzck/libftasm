@@ -175,6 +175,7 @@ str/ft_strnstr.c\
 str/ft_strrchr.c\
 str/ft_strreplace.c\
 str/ft_strrev.c\
+str/ft_strsplit.c\
 str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strtok.c\
