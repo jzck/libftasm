@@ -15,16 +15,13 @@
 char	*ft_strtrim(char const *s)
 {
 	char	*out;
-	size_t	size;
+	char	*last;
 
+	while (*s && FT_WS(*s))
+		s++;
 	out = ft_strdup(s);
-	while (*out && FT_WS(*out))
-		out++;
-	size = ft_strlen(out);
-	while (size - 1 && FT_WS(out[size - 1]))
-	{
-		size--;
-		out[size] = '\0';
-	}
+	last = out + ft_strlen(out) - 1;
+	while (last > out && FT_WS(*last))
+		*last-- = 0;
 	return (out);
 }
