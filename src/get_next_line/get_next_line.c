@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 13:12:06 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/17 14:03:38 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/17 14:09:58 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ static int		ft_fdcmp(t_save *a, int *b)
 	return (a->fd - *b);
 }
 
-static int		ft_gnlfree(t_save *a, size_t size)
+static void		ft_gnlfree(void *a, size_t size)
 {
-	ft_strdel(&a->str);
+	(void)size;
+	ft_strdel(&((t_save*)a)->str);
 }
 
 static t_list	*ft_newfd(t_list **head, int fd)
@@ -82,6 +83,6 @@ int				get_next_line(int const fd, char **line)
 		return (1);
 	}
 	if (!(ret = ft_loop_read(fd, line, save)))
-		ft_lst_delif(&head, &fd, ft_fdcmp, ft_gnlfree);
+		ft_lst_delif(&head, (int *)&fd, ft_fdcmp, &ft_gnlfree);
 	return (ret);
 }
