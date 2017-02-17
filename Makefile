@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/10 00:26:46 by jhalford         ###   ########.fr        #
+#    Updated: 2017/02/17 17:31:38 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,7 +192,8 @@ OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
-all: $(NAME)
+all:
+	@make -j $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
