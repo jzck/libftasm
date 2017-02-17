@@ -6,7 +6,7 @@ size_t	ft_strcspn(char *s, const char *delim)
 
 	str = s;
 	while(*str)
-		if(strchr(delim,*str))
+		if(ft_strchr(delim,*str))
 			return (str - s);
 		else
 			str++;
