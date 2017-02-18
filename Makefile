@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/18 13:05:19 by jhalford         ###   ########.fr        #
+#    Updated: 2017/02/18 13:58:40 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM			=	/bin/rm -rf
 
 W_FLAGS		=	-Wall -Wextra -Werror
 D_FLAGS		=
-V_FLAGS		=
+V_FLAGS		=	-fvisibility=hidden
 FLAGS		=	$(W_FLAGS) $(D_FLAGS) $(V_FLAGS)
 
 DELTA		=	$$(echo "$$(tput cols)-47"|bc)
