@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 13:36:48 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/07 20:09:07 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/18 20:01:33 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_color	t_color;
 # define BG_CYAN		"\e[46m"
 # define BG_DEFAULT		"\e[49m"
 
-# define FBG_DEFAULT	"\e[49m\e[20m"
+# define FBG_DEFAULT	FG_DEFAULT BG_DEFAULT
 
 void	ft_color_reset(void);
 void	ft_color_set(t_color color);

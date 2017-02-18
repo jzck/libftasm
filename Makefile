@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/18 13:58:40 by jhalford         ###   ########.fr        #
+#    Updated: 2017/02/18 14:23:51 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,6 +144,7 @@ sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
+str/ft_putaddr_fd.c\
 str/ft_split_whitespaces.c\
 str/ft_str3join.c\
 str/ft_strappend.c\
