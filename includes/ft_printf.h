@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:22:54 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/15 15:29:22 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/18 13:21:03 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include "libft.h"
 # include <stdarg.h>
+
 # define ALL_FLAGS "#0- +"
 # define ALL_CONVERSIONS "sSpdDioOuUxXcCb"
 
@@ -50,12 +51,7 @@ extern t_conv	g_convs[];
 t_fmt	*ft_fmt_init(void);
 void	ft_fmt_print(t_fmt *fmt);
 void	ft_printf_color(int fd, char **final, char **str);
-
 t_fmt	*ft_printf_parse(char **format, va_list ap);
-void	ft_printf_parse_flags(t_fmt *fmt, char **format);
-void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap);
-void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap);
-void	ft_printf_parse_modifiers(t_fmt *fmt, char **format);
 
 char	*ft_transform(t_fmt *fmt, va_list ap);
 
@@ -78,4 +74,5 @@ void	ft_pad_sharp_o(char *str, t_fmt *fmt);
 void	ft_pad_sharp_xb(char *str, t_fmt *fmt);
 void	ft_pad_left(char *str, t_fmt *fmt);
 void	ft_pad_right(char *str, t_fmt *fmt);
+
 #endif
