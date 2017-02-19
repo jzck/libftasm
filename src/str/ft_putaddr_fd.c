@@ -18,13 +18,17 @@ void	ft_putaddr_fd(void *a, int fd)
 	unsigned long long	addr;
 	int					i;
 
+	ft_putnbr((long)a);
+	ft_putchar('\n');
 	addr = (unsigned long long)a;
 	out[18] = 0;
 	i = 17;
 	while (addr)
 	{
-		out[i--] = "0123456789abcdef"[addr % 16];
-		addr = addr / 16;
+		ft_putnbr(addr);
+		ft_putchar('\n');
+		out[i--] = "0123456789ABCDEF"[addr % 16];
+		addr /= 16;
 	}
 	out[i--] = 'x';
 	out[i] = '0';

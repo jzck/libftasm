@@ -125,15 +125,10 @@ mem/ft_memmove.c\
 mem/ft_memset.c\
 mem/ft_realloc.c\
 path/ft_path_notdir.c\
-printing/ft_putaddr.c\
 printing/ft_putchar.c\
-printing/ft_putchar_fd.c\
 printing/ft_putendl.c\
-printing/ft_putendl_fd.c\
 printing/ft_putnbr.c\
-printing/ft_putnbr_fd.c\
 printing/ft_putstr.c\
-printing/ft_putstr_fd.c\
 sstr/ft_sstradd.c\
 sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\

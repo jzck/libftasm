@@ -67,14 +67,14 @@ void	ft_memdel(void **ap);
 int		ft_putchar(int c);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
-void	ft_putnbr(int n);
-void	ft_putaddr(void *a);
+void	ft_putnbr(long n);
+void	ft_putnbr_hex(long n);
 
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(int c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putaddr_fd(void *a, int fd);
+void	ft_putnbr_fd(long n, int fd);
+void	ft_putnbr_hex_fd(long n, int fd);
 
 void	*ft_realloc(void *data, int size);
 
