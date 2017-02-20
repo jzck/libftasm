@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/19 05:42:56 by jhalford         ###   ########.fr        #
+#    Updated: 2017/02/20 16:44:02 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,11 @@ CC			=	gcc
 AR			=	ar -rc
 MKDIR		=	mkdir -p
 RM			=	/bin/rm -rf
-FLAGS		=	-Wall -Wextra -Werror
-D_FLAGS		=	-g
+
+W_FLAGS		=	-Wall -Wextra -Werror
+D_FLAGS		=
+V_FLAGS		=	-fvisibility=hidden
+FLAGS		=	$(W_FLAGS) $(D_FLAGS) $(V_FLAGS)
 
 DELTA		=	$$(echo "$$(tput cols)-47"|bc)
 
@@ -56,7 +59,6 @@ dlst/ft_dlstlast.c\
 dlst/ft_dlstnew.c\
 dlst/ft_dlstrtostr.c\
 dlst/ft_dlstsize.c\
-env/ft_getenv.c\
 ft_printf/ft_conversion.c\
 ft_printf/ft_fmt_simplify.c\
 ft_printf/ft_fmt_validate_conv.c\
@@ -122,17 +124,11 @@ mem/ft_memdel.c\
 mem/ft_memmove.c\
 mem/ft_memset.c\
 mem/ft_realloc.c\
-misc/ft_debug.c\
 path/ft_path_notdir.c\
-printing/ft_putaddr.c\
 printing/ft_putchar.c\
-printing/ft_putchar_fd.c\
 printing/ft_putendl.c\
-printing/ft_putendl_fd.c\
 printing/ft_putnbr.c\
-printing/ft_putnbr_fd.c\
 printing/ft_putstr.c\
-printing/ft_putstr_fd.c\
 sstr/ft_sstradd.c\
 sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\
@@ -143,6 +139,7 @@ sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
+str/ft_putaddr_fd.c\
 str/ft_split_whitespaces.c\
 str/ft_str3join.c\
 str/ft_strappend.c\
@@ -181,11 +178,12 @@ str/ft_strsub.c\
 str/ft_strtok.c\
 str/ft_strtrim.c\
 sys/dup2_close.c\
+sys/ft_getenv.c\
+sys/ft_xattr_count.c\
+sys/ft_xattr_print.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
-time/ft_time_isrecent.c\
-xattr/ft_xattr_count.c\
-xattr/ft_xattr_print.c
+time/ft_time_isrecent.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
@@ -198,6 +196,7 @@ all:
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@strip -x $(NAME)
 	@printf "\r\e[48;5;15;38;5;25m✅ MAKE $(NAME)\e[0m\e[K\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
@@ -206,8 +205,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
 	@printf "\r\e[38;5;11m⌛ MAKE %10.10s : %2d%% \e[48;5;%dm%*s\e[0m%*s\e[48;5;255m \e[0m \e[38;5;11m %*s\e[0m\e[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
-	@$(MKDIR) $(OBJ_DIR)
-	@$(CC) $(FLAGS) $(D_FLAGS) -MMD -c $< -o $@\
+	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 

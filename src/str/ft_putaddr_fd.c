@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mytime.h                                           :+:      :+:    :+:   */
+/*   ft_putaddr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 11:43:12 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/18 13:11:26 by jhalford         ###   ########.fr       */
+/*   Created: 2017/02/18 18:47:04 by jhalford          #+#    #+#             */
+/*   Updated: 2017/02/18 18:48:58 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYTIME_H
-# define MYTIME_H
-# include "libft.h"
+#include "libft.h"
 
-struct		s_mytime
+void	ft_putaddr_fd(void *a, int fd)
 {
-	char	*year;
-	char	*month;
-	char	*day;
-	char	*hour;
-	char	*min;
-	char	*sec;
-};
+	char				out[19];
+	unsigned long long	addr;
+	int					i;
 
-typedef struct s_mytime		t_mytime;
-
-int			ft_time_isrecent(time_t event);
-
-t_mytime	*ft_mytime_get(time_t epoch);
-void		ft_mytime_free(t_mytime **time);
-
-#endif
+	ft_putnbr((long)a);
+	ft_putchar('\n');
+	addr = (unsigned long long)a;
+	out[18] = 0;
+	i = 17;
+	while (addr)
+	{
+		ft_putnbr(addr);
+		ft_putchar('\n');
+		out[i--] = "0123456789ABCDEF"[addr % 16];
+		addr /= 16;
+	}
+	out[i--] = 'x';
+	out[i] = '0';
+	ft_putstr_fd(out + i, fd);
+}

@@ -6,31 +6,13 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:24 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/15 15:30:49 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/02/18 13:08:53 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_fmt	*ft_printf_parse(char **format, va_list ap)
-{
-	t_fmt		*fmt;
-
-	fmt = ft_fmt_init();
-	ft_printf_parse_flags(fmt, format);
-	ft_printf_parse_width(fmt, format, ap);
-	ft_printf_parse_precision(fmt, format, ap);
-	ft_printf_parse_modifiers(fmt, format);
-	fmt->conversion = **format;
-	(*format)++;
-	ft_fmt_validate_mod(fmt);
-	ft_fmt_validate_flags(fmt);
-	ft_fmt_simplify(fmt);
-	fmt->valid = ft_fmt_validate_conv(fmt) ? 0 : 1;
-	return (fmt);
-}
-
-void	ft_printf_parse_flags(t_fmt *fmt, char **format)
+static void	ft_printf_parse_flags(t_fmt *fmt, char **format)
 {
 	int		i;
 	char	*str;
@@ -51,7 +33,7 @@ void	ft_printf_parse_flags(t_fmt *fmt, char **format)
 	*format += i;
 }
 
-void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
+static void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
 {
 	int		i;
 	char	buf[10];
@@ -74,7 +56,7 @@ void	ft_printf_parse_width(t_fmt *fmt, char **format, va_list ap)
 	*format += i;
 }
 
-void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
+static void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
 {
 	int		i;
 	char	buf[10];
@@ -100,7 +82,7 @@ void	ft_printf_parse_precision(t_fmt *fmt, char **format, va_list ap)
 	*format += i;
 }
 
-void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
+static void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
 {
 	char	*str;
 
@@ -121,3 +103,22 @@ void	ft_printf_parse_modifiers(t_fmt *fmt, char **format)
 		ft_strcpy(fmt->modifier, "");
 	*format += ft_strlen(fmt->modifier);
 }
+
+t_fmt		*ft_printf_parse(char **format, va_list ap)
+{
+	t_fmt		*fmt;
+
+	fmt = ft_fmt_init();
+	ft_printf_parse_flags(fmt, format);
+	ft_printf_parse_width(fmt, format, ap);
+	ft_printf_parse_precision(fmt, format, ap);
+	ft_printf_parse_modifiers(fmt, format);
+	fmt->conversion = **format;
+	(*format)++;
+	ft_fmt_validate_mod(fmt);
+	ft_fmt_validate_flags(fmt);
+	ft_fmt_simplify(fmt);
+	fmt->valid = ft_fmt_validate_conv(fmt) ? 0 : 1;
+	return (fmt);
+}
+
