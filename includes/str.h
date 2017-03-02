@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 13:05:53 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/02 15:14:08 by ariard           ###   ########.fr       */
+/*   Updated: 2017/03/02 16:54:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ char	*ft_strtok(char *s, const char *delim);
 size_t	ft_strcspn(char *s, const char *delim);
 
 char	*ft_path_notdir(char *path);
-int		ft_stris(char *str, (*f)(char *str));
+int		ft_stris(char *str, int (*f)());
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 15:11:28 by ariard            #+#    #+#             */
-/*   Updated: 2017/03/02 15:13:07 by ariard           ###   ########.fr       */
+/*   Updated: 2017/03/02 16:54:25 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_stris(char *str, (*f)(char *str))
+int			ft_stris(char *str, int (*f)())
 {
 	while (*str)
 		if (!(f)(*str++))

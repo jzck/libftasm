@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/02/20 16:44:02 by jhalford         ###   ########.fr        #
+#    Updated: 2017/03/02 16:21:52 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,6 +156,7 @@ str/ft_strdel.c\
 str/ft_strdup.c\
 str/ft_strequ.c\
 str/ft_strinsert.c\
+str/ft_stris.c\
 str/ft_striter.c\
 str/ft_striteri.c\
 str/ft_strjoin.c\
