@@ -6,13 +6,13 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 18:00:52 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/05 15:17:57 by wescande         ###   ########.fr       */
+/*   Updated: 2017/03/05 16:48:29 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#if defined __DARWIN__
+#if defined __APPLE__
 
 int		ft_xattr_count(char *path)
 {
