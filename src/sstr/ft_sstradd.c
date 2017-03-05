@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 18:03:58 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/07 17:39:37 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/05 15:20:02 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 char	**ft_sstradd(char **sstr, char *new)
 {
-	int		i;
 	int		size;
 	char	**newlist;
 
-	i = 0;
 	size = 0;
 	if (sstr)
 		while (sstr[size])

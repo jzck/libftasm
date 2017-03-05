@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/03/02 16:21:52 by jhalford         ###   ########.fr        #
+#*   Updated: 2017/03/05 15:19:07 by wescande         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ AR			=	ar -rc
 MKDIR		=	mkdir -p
 RM			=	/bin/rm -rf
 
-W_FLAGS		=	-Wall -Wextra -Werror
+W_FLAGS		=	-Wall -Wextra
 D_FLAGS		=
 V_FLAGS		=	-fvisibility=hidden
 FLAGS		=	$(W_FLAGS) $(D_FLAGS) $(V_FLAGS)
@@ -198,14 +198,14 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@strip -x $(NAME)
-	@printf "\r\e[48;5;15;38;5;25m✅ MAKE $(NAME)\e[0m\e[K\n"
+	@printf "\r\033[48;5;15;38;5;25m✅ MAKE $(NAME)\033[0m\033[K\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\e[38;5;11m⌛ MAKE %10.10s : %2d%% \e[48;5;%dm%*s\e[0m%*s\e[48;5;255m \e[0m \e[38;5;11m %*s\e[0m\e[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
+	@printf "\r\033[38;5;11m⌛ MAKE %10.10s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
@@ -216,11 +216,11 @@ $(OBJ_DIR):
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@printf "\r\e[38;5;202m✖ clean $(NAME).\e[0m\e[K\n"
+	@printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@printf "\r\e[38;5;196m❌ fclean $(NAME).\e[0m\e[K\n"
+	@printf "\r\033[38;5;196m❌ fclean $(NAME).\033[0m\033[K\n"
 
 re: fclean all
 
