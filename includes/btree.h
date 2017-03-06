@@ -36,6 +36,7 @@ typedef struct s_btree		t_btree;
 typedef struct s_printdata	t_printdata;
 
 t_btree	*btree_create_node(void const *item, size_t content_size);
+t_btree	*btree_map(t_btree *root, void *(*f)(void *))
 void	btree_insert_data(
 		t_btree **root,
 		void *item,
