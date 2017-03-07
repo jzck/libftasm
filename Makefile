@@ -38,6 +38,7 @@ btree/btree_del.c\
 btree/btree_delone.c\
 btree/btree_insert_data.c\
 btree/btree_level_count.c\
+btree/btree_map.c\
 btree/btree_print.c\
 btree/btree_search_item.c\
 char/ft_isalnum.c\
@@ -114,6 +115,7 @@ math/ft_lltoa_base.c\
 math/ft_uilen.c\
 math/ft_uitoa_base.c\
 math/ft_ulltoa_base.c\
+math/id.c\
 mem/ft_bzero.c\
 mem/ft_memalloc.c\
 mem/ft_memccpy.c\
