@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 11:13:15 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/05 11:53:30 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/07 12:16:03 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_btree		t_btree;
 typedef struct s_printdata	t_printdata;
 
 t_btree	*btree_create_node(void const *item, size_t content_size);
+t_btree	*btree_map(t_btree *root, void *(*f)(void *));
 void	btree_insert_data(
 		t_btree **root,
 		void *item,

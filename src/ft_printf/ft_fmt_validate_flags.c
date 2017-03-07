@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 16:53:07 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/16 11:15:55 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/05 15:19:35 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ static void	ft_fmt_validate_flag_conv(t_fmt *fmt)
 
 void		ft_fmt_validate_flags(t_fmt *fmt)
 {
-	int		i;
-
-	i = 0;
 	ft_fmt_validate_flag_conv(fmt);
 	ft_fmt_validate_flag_flag(fmt);
 }
