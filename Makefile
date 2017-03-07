@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/03/06 15:41:48 by wescande         ###   ########.fr        #
+#    Updated: 2017/03/07 14:28:55 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ btree/btree_del.c\
 btree/btree_delone.c\
 btree/btree_insert_data.c\
 btree/btree_level_count.c\
+btree/btree_map.c\
 btree/btree_print.c\
 btree/btree_search_item.c\
 char/ft_isalnum.c\
@@ -114,6 +115,7 @@ math/ft_lltoa_base.c\
 math/ft_uilen.c\
 math/ft_uitoa_base.c\
 math/ft_ulltoa_base.c\
+math/id.c\
 mem/ft_bzero.c\
 mem/ft_memalloc.c\
 mem/ft_memccpy.c\
@@ -137,6 +139,7 @@ sstr/ft_sstrfree.c\
 sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
+sstr/ft_sstrstr.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
 str/ft_putaddr_fd.c\
@@ -154,6 +157,8 @@ str/ft_strcspn.c\
 str/ft_strcut.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
+str/ft_strdupchr.c\
+str/ft_strduptr.c\
 str/ft_strequ.c\
 str/ft_strinsert.c\
 str/ft_stris.c\
@@ -162,11 +167,13 @@ str/ft_striteri.c\
 str/ft_strjoin.c\
 str/ft_strlcat.c\
 str/ft_strlen.c\
+str/ft_strlenchr.c\
 str/ft_strmap.c\
 str/ft_strmapi.c\
 str/ft_strncat.c\
 str/ft_strncmp.c\
 str/ft_strncpy.c\
+str/ft_strchrcpy.c\
 str/ft_strnequ.c\
 str/ft_strnew.c\
 str/ft_strnstr.c\
