@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/20 17:25:39 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/07 14:54:00 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@
 # include "color.h"
 # include "ft_sys.h"
 
-typedef struct s_stof	t_stof;
 typedef struct s_stos	t_stos;
+typedef struct s_stof	t_stof;
+typedef struct s_itof	t_itof;
 
 struct	s_stos
 {
@@ -46,6 +47,12 @@ struct	s_stos
 };
 
 struct	s_stof
+{
+	char	*name;
+	int		(*f)();
+};
+
+struct	s_itof
 {
 	char	*name;
 	int		(*f)();
