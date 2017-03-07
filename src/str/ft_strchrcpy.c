@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stris.c                                         :+:      :+:    :+:   */
+/*   ft_strchrcpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 15:11:28 by ariard            #+#    #+#             */
-/*   Updated: 2017/03/07 11:44:29 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/01 15:43:59 by ariard            #+#    #+#             */
+/*   Updated: 2017/03/07 11:08:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_stris(char *str, int (*f)())
+char		*ft_strchrcpy(char *dst, const char *src, char c)
 {
-	while (*str)
-		if (!(f)(*str++))
-			return (0);
-	return (1);
-}	
+	while (*src && *src != c)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (dst);
+}

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stris.c                                         :+:      :+:    :+:   */
+/*   ft_strlenchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 15:11:28 by ariard            #+#    #+#             */
-/*   Updated: 2017/03/07 11:44:29 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/01 16:10:54 by ariard            #+#    #+#             */
+/*   Updated: 2017/03/07 11:30:02 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_stris(char *str, int (*f)())
+size_t		ft_strlenchr(const char *s, char c)
 {
-	while (*str)
-		if (!(f)(*str++))
-			return (0);
-	return (1);
-}	
+	size_t	i;
+
+	i = 0;
+	while (*s && *s++ != c)
+		i++;
+	return (i);
+}

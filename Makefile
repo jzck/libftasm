@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/03/02 16:21:52 by jhalford         ###   ########.fr        #
+#    Updated: 2017/03/07 11:37:58 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,6 +137,7 @@ sstr/ft_sstrfree.c\
 sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
+sstr/ft_sstrstr.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
 str/ft_putaddr_fd.c\
@@ -154,6 +155,8 @@ str/ft_strcspn.c\
 str/ft_strcut.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
+str/ft_strdupchr.c\
+str/ft_strduptr.c\
 str/ft_strequ.c\
 str/ft_strinsert.c\
 str/ft_stris.c\
@@ -162,11 +165,13 @@ str/ft_striteri.c\
 str/ft_strjoin.c\
 str/ft_strlcat.c\
 str/ft_strlen.c\
+str/ft_strlenchr.c\
 str/ft_strmap.c\
 str/ft_strmapi.c\
 str/ft_strncat.c\
 str/ft_strncmp.c\
 str/ft_strncpy.c\
+str/ft_strchrcpy.c\
 str/ft_strnequ.c\
 str/ft_strnew.c\
 str/ft_strnstr.c\

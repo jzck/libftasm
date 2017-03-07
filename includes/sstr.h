@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 13:16:25 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/18 13:16:48 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/07 11:35:11 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ char	**ft_sstrdup(char **list);
 void	ft_sstrdel(char **sstr, int index);
 void	ft_sstrfree(char **sstr);
 char	*ft_sstrcat(char **sstr, char sep);
+char	*ft_sstrstr(char **sstr, char *find);
 
 #endif

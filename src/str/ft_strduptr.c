@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stris.c                                         :+:      :+:    :+:   */
+/*   ft_strduptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 15:11:28 by ariard            #+#    #+#             */
-/*   Updated: 2017/03/07 11:44:29 by ariard           ###   ########.fr       */
+/*   Created: 2017/01/06 13:37:12 by ariard            #+#    #+#             */
+/*   Updated: 2017/03/07 12:41:20 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_stris(char *str, int (*f)())
+char		*ft_strduptr(char *str, int (*is)(int c))
 {
-	while (*str)
-		if (!(f)(*str++))
-			return (0);
-	return (1);
-}	
+	char	*new;
+	char	*tmp;
+
+	new = ft_memalloc(sizeof(char *) * ft_strlen(str) + 1);
+	tmp = new;
+	while (*str && (is)((int)*str))
+		*new++ = *str++;
+	*new = 0;
+	return (tmp);
+}

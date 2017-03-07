@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 13:05:53 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/02 16:54:21 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/07 11:36:58 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 size_t	ft_strlen(const char *s);
+size_t	ft_strlenchr(const char *s, char c);
 char	*ft_strdup(const char *s1);
+char	*ft_strdupchr(const char *str, char c);
+char	*ft_strduptr(char *str, int (*is)(int c));
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
+char	*ft_strchrcpy(char *dst, const char *str, char c);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strncat(char *s1, const char *s2, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);

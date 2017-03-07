@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stris.c                                         :+:      :+:    :+:   */
+/*   ft_sstrstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 15:11:28 by ariard            #+#    #+#             */
-/*   Updated: 2017/03/07 11:44:29 by ariard           ###   ########.fr       */
+/*   Created: 2017/03/07 11:29:54 by ariard            #+#    #+#             */
+/*   Updated: 2017/03/07 12:44:17 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_stris(char *str, int (*f)())
+char		*ft_sstrstr(char **sstr, char *find)
 {
-	while (*str)
-		if (!(f)(*str++))
-			return (0);
-	return (1);
-}	
+	int		size;
+
+	if (!sstr)
+		return (NULL);
+	size = ft_strlen(find);
+	while ((*sstr))
+	{
+		DG("size : %d", size);
+		DG("sstr : %s", *sstr);
+		DG("find : %s", find);
+		if (ft_strncmp(*sstr, find, size) == 0)
+			return (*sstr);
+		sstr++;
+	}
+	return (NULL);
+}
