@@ -94,7 +94,6 @@ lst/ft_lst_sorted_merge.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
-lst/ft_lstdup.c\
 lst/ft_lsteadd.c\
 lst/ft_lstiter.c\
 lst/ft_lstlast.c\
