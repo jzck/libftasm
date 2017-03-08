@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/08 11:57:34 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/08 11:58:07 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ struct	s_stof
 
 struct	s_itof
 {
-	char	*name;
-	int		(*f)();
+	int			id;
+	int			(*f)();
 };
 
 int		ft_printf(const char *format, ...);
