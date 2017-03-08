@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/03 13:36:18 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/08 01:44:29 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list	*ft_lstdup(t_list **lst, void *(*f)(void *content));
 
 t_list	*ft_lstnew_range(int a, int b);
 void	ft_lsteadd(t_list **alst, t_list *new);

@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/03/07 14:28:55 by ariard           ###   ########.fr        #
+#    Updated: 2017/03/08 01:11:01 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ lst/ft_lst_sorted_merge.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
+lst/ft_lstdup.c\
 lst/ft_lsteadd.c\
 lst/ft_lstiter.c\
 lst/ft_lstlast.c\
@@ -150,6 +151,7 @@ str/ft_strbetween.c\
 str/ft_strcat.c\
 str/ft_strcatf.c\
 str/ft_strchr.c\
+str/ft_strchrcpy.c\
 str/ft_strclr.c\
 str/ft_strcmp.c\
 str/ft_strcpy.c\
@@ -173,7 +175,6 @@ str/ft_strmapi.c\
 str/ft_strncat.c\
 str/ft_strncmp.c\
 str/ft_strncpy.c\
-str/ft_strchrcpy.c\
 str/ft_strnequ.c\
 str/ft_strnew.c\
 str/ft_strnstr.c\
