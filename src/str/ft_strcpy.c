@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 10:48:12 by jhalford          #+#    #+#             */
-/*   Updated: 2016/12/07 15:23:05 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/13 16:06:49 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strcpy(char *dst, const char *src)
 	int i;
 
 	i = 0;
-	while (src[i])
+	while (src && src[i])
 	{
 		dst[i] = src[i];
 		i++;
