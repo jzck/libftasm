@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 20:04:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/14 20:58:37 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/14 21:43:06 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static int			cliopts_parse_long(char ***av, t_cliopts opt_map[], void *data)
 
 int					cliopts_get(char **av, t_cliopts opt_map[], void *data)
 {
-	((t_data_template*)data)->flag = 0;
 	if (!av)
 		return (1);
 	av++;
