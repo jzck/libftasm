@@ -6,16 +6,12 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/11 13:13:18 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/14 20:24:05 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# define DG_MSG0		"{inv}{ran}%5i{yel}%21s {bol}{blu}%-3d{eoc}"
-# define DG_MSG1		getpid(), getpid(), ft_path_notdir(__FILE__), __LINE__
-# define DG(f, ...)		ft_dprintf(STDBUG, DG_MSG0 f "{eoc}\n", DG_MSG1, ##__VA_ARGS__)
 
 # include <string.h>
 # include <unistd.h>
@@ -25,16 +21,20 @@
 # include <sys/xattr.h>
 # include <sys/acl.h>
 
+# include "error.h"
+# include "color.h"
+# include "cliopts.h"
+
 # include "lst.h"
 # include "dlst.h"
+# include "btree.h"
+
 # include "str.h"
 # include "sstr.h"
 # include "math.h"
-# include "btree.h"
 # include "mytime.h"
 # include "get_next_line.h"
-# include "color.h"
-# include "ft_sys.h"
+# include "sys.h"
 
 typedef struct s_stos	t_stos;
 typedef struct s_stof	t_stof;
@@ -60,6 +60,9 @@ struct	s_itof
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
+int		ft_vdprintf(int fd, const char *format, va_list ap);
+int		ft_asprintf(char **ret, const char *format, ...);
+int		ft_vasprintf(char **ret, const char *format, va_list ap);
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);

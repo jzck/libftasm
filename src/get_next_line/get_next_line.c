@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 13:12:06 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/21 14:20:05 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/14 17:47:51 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void		ft_gnlfree(void *a, size_t size)
 {
 	(void)size;
 	ft_strdel(&((t_save*)a)->str);
+	free(a);
 }
 
 static t_list	*ft_newfd(t_list **head, int fd)

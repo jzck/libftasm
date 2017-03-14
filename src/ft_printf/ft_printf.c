@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:33:27 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/11 18:17:48 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/14 20:24:44 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,26 @@ int	ft_dprintf(int fd, const char *format, ...)
 	return (ft_vdprintf(fd, format, ap));
 }
 
+int	ft_asprintf(char **ret, const char *format, ...)
+{
+	va_list	ap;
+	va_start(ap, format);
+	return (ft_vasprintf(ret, format, ap));
+}
+
 int	ft_vdprintf(int fd, const char *format, va_list ap)
+{
+	char	*ret;
+
+	ret = NULL;
+	if (ft_vasprintf(&ret, format, ap))
+		return (1);
+	ft_putstr_fd(ret, fd);
+	ft_strdel(&ret);
+	return (0);
+}
+
+int	ft_vasprintf(char **ret, const char *format, va_list ap)
 {
 	char	*str;
 	char	*tmp;
@@ -63,8 +82,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 			final = ft_strjoin(final, (char[]){*str++, 0});
 		ft_strdel(&tmp);
 	}
-	ft_putstr_fd(final, fd);
-	ft_strdel(&final);
+	*ret = final;
 	return (0);
 }
 

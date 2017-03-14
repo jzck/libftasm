@@ -48,6 +48,9 @@ char/ft_isdigit.c\
 char/ft_isprint.c\
 char/ft_tolower.c\
 char/ft_toupper.c\
+cliopts/cliopts_get.c\
+cliopts/cliopts_getdata.c\
+cliopts/cliopts_has.c\
 color/ft_color_mk.c\
 color/ft_color_mkif.c\
 color/ft_color_reset.c\
@@ -60,6 +63,7 @@ dlst/ft_dlstlast.c\
 dlst/ft_dlstnew.c\
 dlst/ft_dlstrtostr.c\
 dlst/ft_dlstsize.c\
+error/error.c\
 ft_printf/ft_conversion.c\
 ft_printf/ft_fmt_simplify.c\
 ft_printf/ft_fmt_validate_conv.c\

@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sys.h                                           :+:      :+:    :+:   */
+/*   cliopts_has.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/18 13:09:02 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/18 13:19:06 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/14 20:03:18 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/14 20:24:39 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SYS_H
-# define FT_SYS_H
+#include "cliopts.h"
 
-# define FT_XATTR_SIZE	10000
-# define STDIN			STDIN_FILENO
-# define STDOUT			STDOUT_FILENO
-# define STDERR			STDERR_FILENO
-# define STDBUG			3
-
-# include <sys/types.h>
-# include <sys/xattr.h>
-
-int		ft_xattr_print(char *path);
-int		ft_xattr_count(char *path);
-char	*ft_getenv(char **env, char *key);
-int		dup2_close(int fd1, int fd2);
-
-#endif
+int		cliopts_has(char **av, char c)
+{
+	if (!av)
+		return (0);
+	while (*av)	
+	{
+		if (ft_strcmp(*av, "--") == 0)
+			return (0);
+		else if ((*av)[0] == '-' && (*av)[1] == '-')
+			av++;
+		else if ((*av)[0] == '-')
+		{
+			if (ft_strchr(*av + 1, c))
+				return (1);
+			av++;
+		}
+		else
+			return (0);
+	}
+	return (0);
+}
