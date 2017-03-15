@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/14 20:24:05 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/15 20:51:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
 void	ft_putnbr(long n);
 void	ft_putnbr_hex(long n);
+
+int		ft_error_message(char *message);
 
 int		ft_putchar_fd(int c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
