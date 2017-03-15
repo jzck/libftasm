@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:34:21 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/14 20:25:26 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/15 20:45:42 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@
 enum e_errors
 {
 	E_NOERR,
-	E_OPTINVS,
-	E_OPTINVC,
-	E_OPTARG,
+	E_CO_INV,
+	E_CO_INVL,
+	E_CO_MULT,
+	E_CO_MISS,
+	E_CO_MISSL,
 	E_MAX,
 };
 

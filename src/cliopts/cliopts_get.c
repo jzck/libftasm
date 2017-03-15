@@ -6,14 +6,14 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 20:04:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/14 21:43:06 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/15 21:18:20 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	void *data must be a structure starting with `int flag`
-**	to do polymorphism with t_data_template !
-*/
+ **	void *data must be a structure starting with `int flag`
+ **	to do polymorphism with t_data_template !
+ */
 
 # include "cliopts.h"
 
@@ -50,14 +50,15 @@ static int			cliopts_parse_short(char ***av, t_cliopts opt_map[], void *data)
 	while (arg[i])
 	{
 		if (!(map = get_map_short(opt_map, arg[i])))
-			return (ERR_SET(E_OPTINVC, arg[i]));
+			return (ERR_SET(E_CO_INV, arg[i]));
 		if (map->get)
 		{
 			if (!(arg[i - 1] == '-' && arg[i + 1] == 0))
-				return (ERR_SET(E_OPTARG, *arg));
+				return (ERR_SET(E_CO_MULT, *arg));
 			++(*av);
 			if ((map->get)(av, data))
-				return (1);
+				return (ERR_SET(E_CO_MISS, *arg));
+			break;
 		}
 		((t_data_template*)data)->flag |= map->flag_on;
 		((t_data_template*)data)->flag &= ~map->flag_off;
@@ -75,14 +76,14 @@ static int			cliopts_parse_long(char ***av, t_cliopts opt_map[], void *data)
 
 	arg = **av + 2;
 	if (!(map = get_map_long(opt_map, arg)))
-		return (ERR_SET(E_OPTINVS, arg));
+		return (ERR_SET(E_CO_INVL, arg));
 	((t_data_template*)data)->flag |= map->flag_on;
 	((t_data_template*)data)->flag &= ~map->flag_off;
 	if (map->get)
 	{
 		++(*av);
 		if ((map->get)(av, data))
-			return (1);
+			return (ERR_SET(E_CO_MISSL, arg));
 	}
 	++(*av);
 	return (0);
@@ -93,7 +94,7 @@ int					cliopts_get(char **av, t_cliopts opt_map[], void *data)
 	if (!av)
 		return (1);
 	av++;
-	while (*av)	
+	while (av && *av)
 	{
 		if (ft_strcmp(*av, "--") == 0)
 			return (0);
