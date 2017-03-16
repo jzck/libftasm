@@ -65,7 +65,6 @@ dlst/ft_dlstrtostr.c\
 dlst/ft_dlstsize.c\
 error/error.c\
 ft_printf/ft_conversion.c\
-ft_printf/ft_error_message.c\
 ft_printf/ft_fmt_simplify.c\
 ft_printf/ft_fmt_validate_conv.c\
 ft_printf/ft_fmt_validate_flags.c\
@@ -132,7 +131,6 @@ mem/ft_memmove.c\
 mem/ft_memset.c\
 mem/ft_realloc.c\
 path/ft_path_notdir.c\
-printing/ft_error_message.c\
 printing/ft_putchar.c\
 printing/ft_putendl.c\
 printing/ft_putnbr.c\
