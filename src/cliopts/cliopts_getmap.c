@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cliopts_getdata.c                                  :+:      :+:    :+:   */
+/*   cliopts_getmap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 20:35:15 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/14 21:35:19 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/25 14:59:03 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/25 15:01:10 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cliopts.h"
 
-char	**cliopts_getdata(char **av)
+t_cliopts	*cliopts_getmap_long(t_cliopts opt_map[], char *arg)
 {
-	if (!av)
-		return (NULL);
-	av++;
-	while (*av)	
-	{
-		if (ft_strcmp(*av, "--") == 0)
-			return (av + 1);
-		else if ((*av)[0] == '-' && (*av)[1] == '-')
-			av++;
-		else if ((*av)[0] == '-')
-			av++;
-		else
-			return (av);
-	}
-	return (av);
+	int		i;
+
+	i = -1;
+	while (opt_map[++i].c)
+		if (!ft_strcmp(opt_map[i].str, arg))
+			return (&opt_map[i]);
+	return (NULL);
+}
+
+t_cliopts	*cliopts_getmap_short(t_cliopts opt_map[], char arg)
+{
+	int		i;
+
+	i = -1;
+	while (opt_map[++i].c)
+		if (opt_map[i].c == arg)
+			return (&opt_map[i]);
+	return (NULL);
 }
