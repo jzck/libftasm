@@ -6,7 +6,7 @@
 #    By: jhalford <jack@crans.org>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 16:09:36 by jhalford          #+#    #+#              #
-#    Updated: 2017/03/08 01:11:01 by ariard           ###   ########.fr        #
+#    Updated: 2017/03/26 15:35:32 by jhalford         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ lst/ft_lst_cfree.c\
 lst/ft_lst_delif.c\
 lst/ft_lst_delsub.c\
 lst/ft_lst_filter.c\
+lst/ft_lst_filterout.c\
 lst/ft_lst_find.c\
 lst/ft_lst_merge.c\
 lst/ft_lst_order_delsub.c\
@@ -207,7 +208,7 @@ all:
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@strip -x $(NAME)
+	@#strip -x $(NAME)
 	@printf "\r\033[48;5;15;38;5;25m✅ MAKE $(NAME)\033[0m\033[K\n"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:34:21 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/16 14:19:49 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:35:02 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ enum e_errors
 	E_NOERR,
 	E_CO_INV,
 	E_CO_INVL,
-	E_CO_MULT,
 	E_CO_MISS,
 	E_CO_MISSL,
 	E_MAX,

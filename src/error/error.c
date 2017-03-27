@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:47:00 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/15 20:45:41 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/26 16:36:54 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	g_error_msglist[E_MAX][ERRMSG_MAX_SIZE] =
 	"no error",
 	"invalid option -%c",
 	"invalid option --%s",
-	"option '%c' awaits argument(s): please don't combine",
 	"option '%c': missing argument",
 	"option '%s': missing argument",
 };

@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/11 16:18:00 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/26 17:08:28 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ t_list	*ft_lst_find(
 t_list	*ft_lstpop(t_list **lst);
 void	ft_lst_merge(t_list **begin_list1, t_list *begin_list2);
 void	ft_lst_reverse(t_list **begin_list);
+void	ft_lst_filterout(
+		t_list **alst,
+		void *data_ref,
+		int (*cmp)(),
+		void (*del)(void *, size_t));
 
 int		ft_diff(void *a, void *b);
 t_list	*ft_id(t_list *a);

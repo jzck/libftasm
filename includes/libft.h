@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/15 20:51:55 by ariard           ###   ########.fr       */
+/*   Updated: 2017/03/26 17:07:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 typedef struct s_stos	t_stos;
 typedef struct s_stof	t_stof;
 typedef struct s_itof	t_itof;
+typedef long long		t_type;
+typedef long long		t_flag;
 
 struct	s_stos
 {

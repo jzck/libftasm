@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delsub.c                                    :+:      :+:    :+:   */
+/*   ft_lst_filterout.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:15 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/26 16:55:52 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/26 16:56:02 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/26 19:10:03 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_delsub(
+void	ft_lst_filterout(
 		t_list **alst,
-		t_list *sub,
+		void *data_ref,
 		int (*cmp)(),
 		void (*del)(void *, size_t))
 {
@@ -24,13 +24,13 @@ void	ft_lst_delsub(
 	indirect = alst;
 	while (*indirect)
 	{
-		if ((*cmp)((*indirect)->content, sub->content) == 0)
+		if ((*cmp)((*indirect)->content, data_ref) == 0)
 		{
 			tmp = *indirect;
 			(*indirect) = (*indirect)->next;
-			sub = sub->next;
 			ft_lstdelone(&tmp, del);
 		}
-		indirect = &(*indirect)->next;
+		else
+			indirect = &(*indirect)->next;
 	}
 }
