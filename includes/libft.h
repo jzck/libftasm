@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/26 17:07:15 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/28 10:58:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/xattr.h>
 # include <sys/acl.h>
 
+# include "types.h"
 # include "error.h"
 # include "color.h"
 # include "cliopts.h"
@@ -35,12 +36,6 @@
 # include "mytime.h"
 # include "get_next_line.h"
 # include "sys.h"
-
-typedef struct s_stos	t_stos;
-typedef struct s_stof	t_stof;
-typedef struct s_itof	t_itof;
-typedef long long		t_type;
-typedef long long		t_flag;
 
 struct	s_stos
 {

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:57:19 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/28 11:27:45 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/28 10:57:17 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/28 10:57:34 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef TYPES_H
+# define TYPES_H
 
-int		ft_lstiter(t_list *lst, int (*f)(), void *data)
-{
-	if (!lst)
-		return (0);
-	if ((*f)(lst->content, data))
-		return (1);
-	return (ft_lstiter(lst->next, f, data));
-}
+typedef struct s_stos	t_stos;
+typedef struct s_stof	t_stof;
+typedef struct s_itof	t_itof;
+typedef long long		t_type;
+typedef long long		t_flag;
+
+#endif
