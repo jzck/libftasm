@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/24 20:09:05 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/28 20:34:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ typedef struct s_list	t_list;
 
 int		pop(t_list **lst);
 t_list	*push(t_list **stack, int elem);
-int		top(t_list *top);
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
-int		ft_lstiter(t_list *lst, int (*f)());
+int		ft_lstiter(t_list *lst, int (*f)(), void *data);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *));
 
 t_list	*ft_lstnew_range(int a, int b);
@@ -76,6 +75,11 @@ t_list	*ft_lst_find(
 t_list	*ft_lstpop(t_list **lst);
 void	ft_lst_merge(t_list **begin_list1, t_list *begin_list2);
 void	ft_lst_reverse(t_list **begin_list);
+void	ft_lst_filterout(
+		t_list **alst,
+		void *data_ref,
+		int (*cmp)(),
+		void (*del)(void *, size_t));
 
 int		ft_diff(void *a, void *b);
 t_list	*ft_id(t_list *a);

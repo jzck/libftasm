@@ -79,6 +79,7 @@ lst/ft_lst_cfree.c\
 lst/ft_lst_delif.c\
 lst/ft_lst_delsub.c\
 lst/ft_lst_filter.c\
+lst/ft_lst_filterout.c\
 lst/ft_lst_find.c\
 lst/ft_lst_merge.c\
 lst/ft_lst_order_delsub.c\
