@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   is_directory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <jhalford@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:58:43 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/21 15:42:19 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/25 01:40:31 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/25 01:42:02 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int				is_directory(const char *path)
 {
-	char	*out;
-	size_t	i;
+	struct stat		path_stat;
 
-	if (!(out = (char *)ft_malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		out[i] = s[i + start];
-	out[i] = '\0';
-	return (out);
+	stat(path, &path_stat);
+	return (S_ISDIR(path_stat.st_mode));
 }

@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_filterout.c                                 :+:      :+:    :+:   */
+/*   top.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/26 16:56:02 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/26 19:10:03 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/24 20:04:27 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/24 20:09:06 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_filterout(
-		t_list **alst,
-		void *data_ref,
-		int (*cmp)(),
-		void (*del)(void *, size_t))
+int		top(t_list *top)
 {
-	t_list	*tmp;
-	t_list	**indirect;
-
-	indirect = alst;
-	while (*indirect)
-	{
-		if ((*cmp)((*indirect)->content, data_ref) == 0)
-		{
-			tmp = *indirect;
-			(*indirect) = (*indirect)->next;
-			ft_lstdelone(&tmp, del);
-		}
-		else
-			indirect = &(*indirect)->next;
-	}
+	return (top ? *(int*)top->content : 0);
 }

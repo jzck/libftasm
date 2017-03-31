@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 18:08:31 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/07 18:18:30 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/22 22:23:33 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ char	*ft_strtok(char *s, const char *delim)
 
 	if (s == 0)
 		s = lasts;
-	do {
+	if ((ch = *s++) == 0)
+		return (0);
+	while (ft_strchr(delim, ch))
 		if ((ch = *s++) == 0)
 			return (0);
-	} while (ft_strchr(delim, ch));
 	--s;
 	lasts = s + ft_strcspn(s, delim);
 	if (*lasts != 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   btree_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*   By: jhalford <jhalford@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 11:50:46 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/15 18:43:15 by ariard           ###   ########.fr       */
+/*   Updated: 2017/03/24 15:49:42 by gwojda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ t_btree		*btree_map(t_btree *root, void *(*f)(void *))
 
 	if (!root)
 		return (NULL);
-	new = btree_create_node((*f)(root->item), root->content_size);
+	if (!(new = (t_btree *)ft_malloc(sizeof(*new))))
+		return (NULL);
+	new->item = (*f)(root->item);
 	new->left = btree_map(root->left, f);
 	new->right = btree_map(root->right, f);
 	return (new);

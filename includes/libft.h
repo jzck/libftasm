@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/28 10:58:15 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/25 01:56:46 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <errno.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <time.h>
-# include <sys/xattr.h>
-# include <sys/acl.h>
 
-# include "types.h"
+# include "ft_types.h"
 # include "error.h"
 # include "color.h"
 # include "cliopts.h"
@@ -61,6 +60,7 @@ int		ft_vdprintf(int fd, const char *format, va_list ap);
 int		ft_asprintf(char **ret, const char *format, ...);
 int		ft_vasprintf(char **ret, const char *format, va_list ap);
 
+void	*ft_malloc(size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

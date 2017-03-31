@@ -66,6 +66,7 @@ ft_printf/ft_printf.c\
 ft_printf/ft_printf_color.c\
 ft_printf/ft_printf_parse.c\
 ft_printf/ft_transform.c\
+ft_printf/ft_vprintf.c\
 ft_printf/lib_fmt.c\
 ft_printf/lib_fmt_error.c\
 ft_printf/lib_pad.c\
@@ -78,7 +79,6 @@ lst/ft_lst_cfree.c\
 lst/ft_lst_delif.c\
 lst/ft_lst_delsub.c\
 lst/ft_lst_filter.c\
-lst/ft_lst_filterout.c\
 lst/ft_lst_find.c\
 lst/ft_lst_merge.c\
 lst/ft_lst_order_delsub.c\
@@ -102,6 +102,7 @@ lst/ft_lstnew_range.c\
 lst/ft_lstsort.c\
 lst/pop.c\
 lst/push.c\
+lst/top.c\
 math/ft_addrcmp.c\
 math/ft_ilen.c\
 math/ft_ilen_base.c\
@@ -115,6 +116,7 @@ math/ft_uitoa_base.c\
 math/ft_ulltoa_base.c\
 math/id.c\
 mem/ft_bzero.c\
+mem/ft_malloc.c\
 mem/ft_memalloc.c\
 mem/ft_memccpy.c\
 mem/ft_memchr.c\
@@ -134,6 +136,7 @@ sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\
 sstr/ft_sstrdup.c\
 sstr/ft_sstrfree.c\
+sstr/ft_sstrmerge.c\
 sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
@@ -183,10 +186,14 @@ str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strtok.c\
 str/ft_strtrim.c\
+sys/create_directory.c\
 sys/dup2_close.c\
+sys/fd_replace.c\
 sys/ft_getenv.c\
 sys/ft_xattr_count.c\
 sys/ft_xattr_print.c\
+sys/is_directory.c\
+sys/open_access.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
 time/ft_time_isrecent.c

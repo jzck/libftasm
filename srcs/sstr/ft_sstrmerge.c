@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_sstrmerge.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/28 10:57:17 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/28 10:57:34 by jhalford         ###   ########.fr       */
+/*   Created: 2017/03/24 17:40:50 by jhalford          #+#    #+#             */
+/*   Updated: 2017/03/24 18:05:08 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "libft.h"
 
-typedef struct s_stos	t_stos;
-typedef struct s_stof	t_stof;
-typedef struct s_itof	t_itof;
-typedef long long		t_type;
-typedef long long		t_flag;
+char	**ft_sstrmerge(char **s1, char **s2)
+{
+	char	**out;
 
-#endif
+	out = ft_sstrdup(s1);
+	if (!s2)
+		return (out);
+	while (*s2)
+	{
+		out = ft_sstradd(out, *s2);
+		s2++;
+	}
+	return (out);
+}

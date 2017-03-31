@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 20:04:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/26 16:37:04 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/03/25 15:00:35 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int			cliopts_parse_long(
 	if (map->get)
 	{
 		if (map->arg_required && !(tmp = check_required(av, NULL)))
-			return (ERR_SET(E_CO_MISSL, arg));
+			return (ERR_SET(E_CO_MISS, *arg));
 		if ((map->get)(tmp, data))
 			return (ERR_SET(E_CO_MISSL, arg));
 	}
