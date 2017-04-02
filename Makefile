@@ -57,6 +57,7 @@ dlst/ft_dlstnew.c\
 dlst/ft_dlstrtostr.c\
 dlst/ft_dlstsize.c\
 error/error.c\
+error/ft_usage.c\
 ft_printf/ft_conversion.c\
 ft_printf/ft_fmt_simplify.c\
 ft_printf/ft_fmt_validate_conv.c\
