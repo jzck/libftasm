@@ -16,10 +16,16 @@
 # include "libft.h"
 # include <stdarg.h>
 
+/*
+** DEBUG with no malloc
+*/
 # define DG_MSG		"{inv}{ran}%5i{yel}%21s {bol}{blu}%-3d{eoc}"
 # define DG_ARGS	getpid(), getpid(), ft_path_notdir(__FILE__), __LINE__
 # define DG(s, ...)	ft_dprintf(STDBUG,DG_MSG s "{eoc}\n",DG_ARGS,##__VA_ARGS__)
 
+/*
+** DEBUG with no malloc
+*/
 # define DG2		ft_putstr(__FILE__"\t");ft_putnbr(__LINE__)
 # define DGW(d)		DG2;d;ft_putchar('\n')
 # define DGS(s)		DGW(ft_putstr(": "s"="))

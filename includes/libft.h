@@ -34,6 +34,7 @@
 # include "math.h"
 # include "mytime.h"
 # include "get_next_line.h"
+# include "net.h"
 # include "sys.h"
 
 struct	s_stos
