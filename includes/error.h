@@ -20,6 +20,12 @@
 # define DG_ARGS	getpid(), getpid(), ft_path_notdir(__FILE__), __LINE__
 # define DG(s, ...)	ft_dprintf(STDBUG,DG_MSG s "{eoc}\n",DG_ARGS,##__VA_ARGS__)
 
+# define DG2		ft_putstr(__FILE__"\t");ft_putnbr(__LINE__)
+# define DGW(d)		DG2;d;ft_putchar('\n')
+# define DGS(s)		DGW(ft_putstr(": "s"="))
+# define DGSN(s, n)	DGW(ft_putstr(": "s"=");ft_putnbr(n))
+# define DGSH(s, n)	DGW(ft_putstr(": "s"=");ft_putnbr_hex(n))
+
 # define ERR_PROTO(u, m)	"{red}%s: %s{eoc}\n", u, m
 # define ERR_MSG(u, m)		ft_dprintf(2, ERR_PROTO(u, m))
 # define ERR_SET(n, ...)	error_set(n, ##__VA_ARGS__)
