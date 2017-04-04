@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/25 01:56:46 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/04/03 16:51:25 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ struct	s_stos
 
 struct	s_stof
 {
-	char	*name;
+	char	*key;
 	int		(*f)();
 };
 
