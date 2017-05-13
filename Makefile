@@ -23,6 +23,7 @@ INC_DIR		=	includes/
 OBJ_DIR		=	objs/
 
 SRC_BASE	= \
+rs/rs.c\
 btree/btree_apply_by_level.c\
 btree/btree_apply_infix.c\
 btree/btree_apply_prefix.c\
@@ -138,6 +139,7 @@ printing/ft_putchar.c\
 printing/ft_putendl.c\
 printing/ft_putnbr.c\
 printing/ft_putstr.c\
+printing/hexdump.c\
 sstr/ft_sstradd.c\
 sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\
