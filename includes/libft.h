@@ -13,6 +13,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define FT_TRY(a,b)	((a) ? (a) : (b))
+
 # include <string.h>
 # include <errno.h>
 # include <unistd.h>
@@ -24,6 +26,7 @@
 # include "error.h"
 # include "color.h"
 # include "cliopts.h"
+# include "rs.h"
 
 # include "lst.h"
 # include "dlst.h"
@@ -86,6 +89,8 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(long n, int fd);
 void	ft_putnbr_hex_fd(long n, int fd);
+
+void	hexdump(void *pAddressIn, long  lSize);
 
 void	*ft_realloc(void *data, int size);
 
