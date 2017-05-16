@@ -204,7 +204,14 @@ sys/open_access.c\
 sys/open_new.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
-time/ft_time_isrecent.c
+time/ft_time_isrecent.c\
+htb/ft_hash_string.c\
+htb/hashtab_init.c\
+htb/hashtab_insert.c\
+htb/hashtab_lookup.c\
+htb/hashtab_remove.c\
+htb/hashtab_destroy.c\
+htb/hashtab_print.c\
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))

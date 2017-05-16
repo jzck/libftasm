@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/04/03 16:51:25 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/05/16 17:47:18 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "lst.h"
 # include "dlst.h"
 # include "btree.h"
+# include "hashtab.h"
 
 # include "str.h"
 # include "sstr.h"
