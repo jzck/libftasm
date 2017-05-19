@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:27:46 by jhalford          #+#    #+#             */
-/*   Updated: 2017/03/28 20:34:27 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/05/19 18:51:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,8 @@ void	ft_lst_filterout(
 int		ft_diff(void *a, void *b);
 t_list	*ft_id(t_list *a);
 t_list	*ft_lst_at(t_list *list, unsigned int nbr);
+
+void	lst_insert_sort(t_list **head,
+		int (cmp)(void *elem1, void *elem2));
 
 #endif

@@ -103,6 +103,7 @@ lst/ft_lstnadd.c\
 lst/ft_lstnew.c\
 lst/ft_lstnew_range.c\
 lst/ft_lstsort.c\
+lst/lst_insert_sort.c\
 lst/pop.c\
 lst/push.c\
 lst/top.c\
