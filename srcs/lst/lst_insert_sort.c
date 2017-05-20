@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_inser_sort.c                                   :+:      :+:    :+:   */
+/*   lst_insert_sort.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/19 17:59:14 by ariard            #+#    #+#             */
-/*   Updated: 2017/05/19 18:56:53 by ariard           ###   ########.fr       */
+/*   Created: 2017/05/20 19:59:41 by ariard            #+#    #+#             */
+/*   Updated: 2017/05/20 20:05:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			lst_insert_sort(t_list **head, 
-				int (cmp)(void *elem1, void *elem2))
+void		lst_insert_sort(t_list **head,
+			int (cmp)())
 {
-	t_list	**indirect;
-	t_list	*ins;
-	t_list	*tmp;
+	t_list	*new;
+	t_list	*ptr;
 
-	indirect = head;
-	while (indirect && *indirect && (*indirect)->next)
+	new = NULL;
+	while (*head)
 	{
-		ins = *head;
-		if ((cmp)(*indirect, (*indirect)->next) > 0)
-			while (ins->next)
-			{
-				if ((cmp)(*indirect, ins->next) < 0)
-				{
-					tmp->next = (*indirect)->next;
-					(*indirect)->next = ins->next;
-					ins->next = (*indirect);
-					indirect = &tmp;
-					break;
-				}
-				ins = ins->next;
-			}
-		tmp = *indirect;
-		indirect = &(*indirect)->next;
+		ptr = *head;
+		*head = (*head)->next;
+		ft_lst_sorted_insert(&new, ptr, cmp);
 	}
+	*head = new;
 }
