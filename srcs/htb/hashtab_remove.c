@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_print.c                                     :+:      :+:    :+:   */
+/*   hashtab_remove.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:27 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 21:00:09 by ariard           ###   ########.fr       */
+/*   Created: 2017/05/15 19:46:48 by ariard            #+#    #+#             */
+/*   Updated: 2017/05/16 17:34:56 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_print(t_list *list, void (*printer)())
+t_list	*hashtab_remove(t_hashtab *htb, void *key,
+		int (*match)(const void *data_ref, const void *key))	
 {
-	while (list)
-	{
-		ft_putstr("[");
-		(*printer)(list->content);
-		ft_putstr("]->");
-		list = list->next;
-	}
-	ft_putendl("X\n");
+	t_list	*data;
+
+	if ((data = hashtab_lookup(htb, key, match)))
+		return(ft_lst_removeif(&data, key, match));
+	return (NULL);
 }

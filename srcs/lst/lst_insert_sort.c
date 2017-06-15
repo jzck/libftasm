@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_print.c                                     :+:      :+:    :+:   */
+/*   lst_insert_sort.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:27 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 21:00:09 by ariard           ###   ########.fr       */
+/*   Created: 2017/05/20 19:59:41 by ariard            #+#    #+#             */
+/*   Updated: 2017/05/20 20:05:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_print(t_list *list, void (*printer)())
+void		lst_insert_sort(t_list **head,
+			int (cmp)())
 {
-	while (list)
+	t_list	*new;
+	t_list	*ptr;
+
+	new = NULL;
+	while (*head)
 	{
-		ft_putstr("[");
-		(*printer)(list->content);
-		ft_putstr("]->");
-		list = list->next;
+		ptr = *head;
+		*head = (*head)->next;
+		ft_lst_sorted_insert(&new, ptr, cmp);
 	}
-	ft_putendl("X\n");
+	*head = new;
 }

@@ -23,6 +23,7 @@ INC_DIR		=	includes/
 OBJ_DIR		=	objs/
 
 SRC_BASE	= \
+rs/rs.c\
 btree/btree_apply_by_level.c\
 btree/btree_apply_infix.c\
 btree/btree_apply_prefix.c\
@@ -102,6 +103,7 @@ lst/ft_lstnadd.c\
 lst/ft_lstnew.c\
 lst/ft_lstnew_range.c\
 lst/ft_lstsort.c\
+lst/lst_insert_sort.c\
 lst/pop.c\
 lst/push.c\
 lst/top.c\
@@ -137,6 +139,7 @@ printing/ft_putchar.c\
 printing/ft_putendl.c\
 printing/ft_putnbr.c\
 printing/ft_putstr.c\
+printing/hexdump.c\
 sstr/ft_sstradd.c\
 sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\
@@ -196,6 +199,13 @@ time/ft_mytime_free.c\
 time/ft_mytime_get.c\
 time/ft_time_isrecent.c\
 sys/open_new.c
+htb/ft_hash_string.c\
+htb/hashtab_init.c\
+htb/hashtab_insert.c\
+htb/hashtab_lookup.c\
+htb/hashtab_remove.c\
+htb/hashtab_destroy.c\
+htb/hashtab_print.c\
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))

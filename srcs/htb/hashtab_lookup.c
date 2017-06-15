@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_print.c                                     :+:      :+:    :+:   */
+/*   hashtab_lookup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:27 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 21:00:09 by ariard           ###   ########.fr       */
+/*   Created: 2017/05/15 19:38:41 by ariard            #+#    #+#             */
+/*   Updated: 2017/05/16 21:34:20 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_print(t_list *list, void (*printer)())
+t_list	*hashtab_lookup(t_hashtab *htb, void *key,
+		int (*match)(const void *data_ref, const void *key))	
+
 {
-	while (list)
-	{
-		ft_putstr("[");
-		(*printer)(list->content);
-		ft_putstr("]->");
-		list = list->next;
-	}
-	ft_putendl("X\n");
+	int		bucket;
+	
+	if ((bucket = htb->hashfunc(key, htb->capacity)))
+		return (ft_lst_find(htb->head[bucket], key, match));
+	return (NULL);
 }

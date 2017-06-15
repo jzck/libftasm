@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_print.c                                     :+:      :+:    :+:   */
+/*   hashtab_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:09:27 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 21:00:09 by ariard           ###   ########.fr       */
+/*   Created: 2017/05/15 21:35:07 by ariard            #+#    #+#             */
+/*   Updated: 2017/05/16 20:42:05 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "hashtab.h"
 
-void	ft_lst_print(t_list *list, void (*printer)())
+void		hashtab_destroy(t_hashtab *htb, void (*destroy)())
 {
-	while (list)
-	{
-		ft_putstr("[");
-		(*printer)(list->content);
-		ft_putstr("]->");
-		list = list->next;
-	}
-	ft_putendl("X\n");
+	int		bucket;
+
+	bucket = -1;
+	while (++bucket < htb->capacity)
+		ft_lstdel(&htb->head[bucket], destroy);
 }

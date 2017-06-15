@@ -6,12 +6,14 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/04/03 16:51:25 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/05/16 17:47:18 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# define FT_TRY(a,b)	((a) ? (a) : (b))
 
 # include <string.h>
 # include <errno.h>
@@ -24,10 +26,12 @@
 # include "error.h"
 # include "color.h"
 # include "cliopts.h"
+# include "rs.h"
 
 # include "lst.h"
 # include "dlst.h"
 # include "btree.h"
+# include "hashtab.h"
 
 # include "str.h"
 # include "sstr.h"
@@ -85,6 +89,8 @@ int		ft_putstr_fd(char const *s, int fd);
 int		ft_putendl_fd(char const *s, int fd);
 int		ft_putnbr_fd(long n, int fd);
 int		ft_putnbr_hex_fd(long n, int fd);
+
+void	hexdump(void *pAddressIn, long  lSize);
 
 void	*ft_realloc(void *data, int size);
 

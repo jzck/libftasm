@@ -1,5 +1,9 @@
 #include "libft.h"
 
+/*
+** If file already exists, create xxx(1) instead, etc up to 9
+*/
+
 int		open_new(char *filename, int oflag)
 {
 	char	*fname;
