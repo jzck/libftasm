@@ -12,33 +12,33 @@
 
 #include "libft.h"
 
-void	ft_putnbr_loop(long n, int base, int fd)
+int	ft_putnbr_loop(long n, int base, int fd)
 {
 	if (n >= base)
 		ft_putnbr_loop(n / base, base, fd);
-	ft_putchar_fd("0123456789abcdef"[n % base], fd);
+	return (ft_putchar_fd("0123456789abcdef"[n % base], fd));
 }
 
-void	ft_putnbr_hex_fd(long n, int fd)
+int	ft_putnbr_hex_fd(long n, int fd)
 {
 	ft_putstr_fd("0x", fd);
-	ft_putnbr_loop(n, 16, fd);
+	return (ft_putnbr_loop(n, 16, fd));
 }
 
-void	ft_putnbr_fd(long n, int fd)
+int	ft_putnbr_fd(long n, int fd)
 {
 	if (n < 0)
 		ft_putchar_fd('-', fd);
 	n = FT_ABS(n);
-	ft_putnbr_loop(n, 10, fd);
+	return (ft_putnbr_loop(n, 10, fd));
 }
 
-void	ft_putnbr_hex(long n)
+int	ft_putnbr_hex(long n)
 {
-	ft_putnbr_hex_fd(n, 1);
+	return (ft_putnbr_hex_fd(n, 1));
 }
 
-void	ft_putnbr(long n)
+int	ft_putnbr(long n)
 {
-	ft_putnbr_fd(n, 1);
+	return (ft_putnbr_fd(n, 1));
 }

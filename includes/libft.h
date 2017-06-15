@@ -73,18 +73,18 @@ void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 
 int		ft_putchar(int c);
-void	ft_putstr(char const *s);
-void	ft_putendl(char const *s);
-void	ft_putnbr(long n);
-void	ft_putnbr_hex(long n);
+int		ft_putstr(char const *s);
+int		ft_putendl(char const *s);
+int		ft_putnbr(long n);
+int		ft_putnbr_hex(long n);
 
 int		ft_error_message(char *message);
 
 int		ft_putchar_fd(int c, int fd);
-void	ft_putstr_fd(char const *s, int fd);
-void	ft_putendl_fd(char const *s, int fd);
-void	ft_putnbr_fd(long n, int fd);
-void	ft_putnbr_hex_fd(long n, int fd);
+int		ft_putstr_fd(char const *s, int fd);
+int		ft_putendl_fd(char const *s, int fd);
+int		ft_putnbr_fd(long n, int fd);
+int		ft_putnbr_hex_fd(long n, int fd);
 
 void	*ft_realloc(void *data, int size);
 

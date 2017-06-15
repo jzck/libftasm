@@ -131,7 +131,6 @@ mem/ft_realloc.c\
 net/create_client.c\
 net/create_server.c\
 net/net_get.c\
-net/net_get_fd.c\
 net/net_send.c\
 path/ft_path_notdir.c\
 printing/ft_putchar.c\
@@ -193,23 +192,16 @@ str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strtok.c\
 str/ft_strtrim.c\
-sys/create_directory.c\
-sys/dup2_close.c\
-sys/fd_replace.c\
-sys/ft_getenv.c\
-sys/ft_xattr_count.c\
-sys/ft_xattr_print.c\
-sys/is_directory.c\
-sys/open_access.c\
-sys/open_new.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
-time/ft_time_isrecent.c
+time/ft_time_isrecent.c\
+sys/open_new.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
+SHELL		:=	bash
 
 all :
 	@$(MAKE) -j $(NAME)
