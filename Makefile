@@ -198,7 +198,7 @@ str/ft_strtrim.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
 time/ft_time_isrecent.c\
-sys/open_new.c
+sys/open_new.c\
 htb/ft_hash_string.c\
 htb/hashtab_init.c\
 htb/hashtab_insert.c\
