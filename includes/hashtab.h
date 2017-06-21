@@ -6,7 +6,7 @@
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 19:16:49 by ariard            #+#    #+#             */
-/*   Updated: 2017/05/16 21:03:50 by ariard           ###   ########.fr       */
+/*   Updated: 2017/06/21 18:39:01 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void			hashtab_destroy(t_hashtab *htb, void (*destroy)());
 void			hashtab_print(t_hashtab *htb, int (*printer)());
 
 int				ft_hash_string(const void *key, int size);
+
+struct s_list	*hashtab_generator(t_hashtab *htb, char init);
 
 #endif 

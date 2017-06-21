@@ -206,6 +206,7 @@ htb/hashtab_lookup.c\
 htb/hashtab_remove.c\
 htb/hashtab_destroy.c\
 htb/hashtab_print.c\
+htb/hashtab_generator.c\
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
