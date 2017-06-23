@@ -6,7 +6,7 @@
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 19:16:49 by ariard            #+#    #+#             */
-/*   Updated: 2017/06/21 18:39:01 by ariard           ###   ########.fr       */
+/*   Updated: 2017/06/22 20:25:20 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void			hashtab_print(t_hashtab *htb, int (*printer)());
 
 int				ft_hash_string(const void *key, int size);
 
-struct s_list	*hashtab_generator(t_hashtab *htb, char init);
+struct s_list	*hashtab_iterator(t_hashtab *htb, char init);
+
+void			hashtab_del(t_hashtab *htb, void *key,
+				int (*match)(const void *, const void *),
+				void (*del)(void *, size_t));
 
 #endif 

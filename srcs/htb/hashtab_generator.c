@@ -6,13 +6,13 @@
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 18:21:30 by ariard            #+#    #+#             */
-/*   Updated: 2017/06/21 19:54:30 by ariard           ###   ########.fr       */
+/*   Updated: 2017/06/22 22:43:01 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hashtab.h"
 
-struct s_list	*hashtab_generator(t_hashtab *htb, char init)
+struct s_list	*hashtab_iterator(t_hashtab *htb, char init)
 {
 	static int		bucket;
 	static t_list	*tmp;

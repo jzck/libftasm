@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hashtab_print.c                                    :+:      :+:    :+:   */
+/*   hashtab_del.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/16 20:38:14 by ariard            #+#    #+#             */
-/*   Updated: 2017/06/22 22:24:23 by ariard           ###   ########.fr       */
+/*   Created: 2017/06/22 17:04:24 by ariard            #+#    #+#             */
+/*   Updated: 2017/06/22 22:45:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "hashtab.h"
 
-void		hashtab_print(t_hashtab *htb, int (*printer)())
+void		hashtab_del(t_hashtab *htb, void *key,
+			int (*match)(const void *, const void *),
+			void (*del)(void *, size_t))
 {
 	int		bucket;
 
-	bucket = -1;
-	while (++bucket != htb->capacity)
-		ft_lstiter(htb->head[bucket], printer, &bucket);
+	if ((bucket = htb->hashfunc(key, htb->capacity)))
+		ft_lst_delif(&htb->head[bucket], key, match, del);
 }
