@@ -88,4 +88,6 @@ t_list	*ft_lst_at(t_list *list, unsigned int nbr);
 void	lst_insert_sort(t_list **head,
 		int (cmp)());
 
+t_list	*ft_lst_pop(t_list **lst);
+
 #endif

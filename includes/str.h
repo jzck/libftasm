@@ -72,4 +72,6 @@ size_t	ft_strcspn(char *s, const char *delim);
 char	*ft_path_notdir(char *path);
 int		ft_stris(char *str, int (*f)());
 
+char	*ft_strndup(const char *s1, size_t n);
+
 #endif

@@ -104,6 +104,7 @@ lst/ft_lstnew.c\
 lst/ft_lstnew_range.c\
 lst/ft_lstsort.c\
 lst/lst_insert_sort.c\
+lst/ft_lst_pop.c\
 lst/pop.c\
 lst/push.c\
 lst/top.c\
@@ -168,6 +169,7 @@ str/ft_strcspn.c\
 str/ft_strcut.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
+str/ft_strndup.c\
 str/ft_strdupchr.c\
 str/ft_strduptr.c\
 str/ft_strequ.c\
