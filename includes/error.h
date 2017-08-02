@@ -17,7 +17,7 @@
 # include <stdarg.h>
 
 /*
-** DEBUG with no malloc
+** DEBUG with malloc
 */
 # define DG_MSG		"{inv}{ran}%5i{yel}%21s {bol}{blu}%-3d{eoc}"
 # define DG_ARGS	getpid(), getpid(), ft_path_notdir(__FILE__), __LINE__
