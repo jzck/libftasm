@@ -151,6 +151,7 @@ sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
 sstr/ft_sstrstr.c\
+str/ft_strsepjoin.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
 str/ft_putaddr_fd.c\

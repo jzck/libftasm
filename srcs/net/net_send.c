@@ -12,3 +12,26 @@ int		net_send(int sock, char *msg, int size)
 		return (1);
 	return (0);
 }
+
+int		net_send_large(int sock, char *msg, int size)
+{
+	int		i;
+	int		num_blks;
+	int		num_last_blk;
+
+	num_blks = htons(size / NET_MAXSIZE + 1);
+	num_last_blk = htons(size % NET_MAXSIZE);
+	if (net_send(sock, (char*)&num_blks, sizeof(num_blks)))
+		return (1);
+	if (net_send(sock, (char*)&num_last_blk, sizeof(num_blks)))
+		return (1);
+
+	num_blks = ntohs(num_blks);
+	num_last_blk = ntohs(num_last_blk);
+	i = -1;	
+	while (++i < num_blks - 1)
+		net_send(sock, msg + i * NET_MAXSIZE, NET_MAXSIZE);
+	if (num_last_blk)
+		net_send(sock, msg + i * NET_MAXSIZE, num_last_blk);
+	return (0);
+}
