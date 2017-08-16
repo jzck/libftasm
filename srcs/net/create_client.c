@@ -16,3 +16,28 @@ int		create_client(char *addr, int port, char *protoname)
 		return (-1);
 	return (sock);
 }
+
+void	listener(int domain, int sock, int proto, void (*handler)(void *buf, int bytes, struct sockaddr_in *addr))
+{	int sd;
+	struct sockaddr_in addr;
+	unsigned char buf[1024];
+
+	sd = socket(domain, sock, proto);
+	if (sd < 0)
+	{
+		perror("listener socket");
+		exit(0);
+	}
+	for (;;)
+	{	int bytes;
+		socklen_t len=sizeof(addr);
+
+		bzero(buf, sizeof(buf));
+		bytes = recvfrom(sd, buf, sizeof(buf), 0, (struct sockaddr*)&addr, &len);
+		if (bytes > 0 && handler)
+				handler(buf, bytes, &addr);
+		else
+			perror("recvfrom");
+	}
+	exit(0);
+}

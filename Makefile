@@ -152,6 +152,7 @@ sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
 sstr/ft_sstrstr.c\
+str/ft_strsepjoin.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
 str/ft_putaddr_fd.c\
@@ -216,7 +217,7 @@ SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
-SHELL		:=	bash
+SHELL		:=	/bin/bash
 
 all :
 	@$(MAKE) -j $(NAME)
@@ -236,7 +237,7 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval COLOR=$(shell list=(160 196 202 208 215 221 226 227 190 154 118 82 46); index=$$(($(PERCENT) * $${#list[@]} / 100)); echo "$${list[$$index]}"))
 	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(shell echo "$@" | sed 's/^.*\///')"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
-		-I $(INC_DIR)
+		-I $(INC_DIR) -lm
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :

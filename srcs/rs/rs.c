@@ -1,6 +1,7 @@
 #include "libft.h"
 #include <math.h>
 
+double sqrt(double x);
 struct s_stats g_rs = {0, 0, 0, 0, 0, 0, 0};
 
 void	rs_clear()
@@ -32,8 +33,8 @@ void	rs_push(double n)
 
 void	rs_calcmore()
 {
-	void	*libm;
-	double	(*sqrt)(double);
+	/* void	*libm; */
+	/* double	(*sqrt)(double); */
 
 	if (g_rs.count == 0)
 	{
@@ -47,10 +48,10 @@ void	rs_calcmore()
 		return ;
 	}
 	g_rs.var = g_rs.m / (g_rs.count - 1);
-	if ((libm = dlopen("libm.dylib", 0)) == NULL)
-		printf("%s\n", dlerror());
-	else if ((sqrt = dlsym(libm, "sqrt")) == NULL)
-		printf("%s\n", dlerror());
-	else
-		g_rs.stdev = sqrt(g_rs.var);
+	/* if ((libm = dlopen("libm.dylib", 0)) == NULL) */
+	/* 	printf("%s\n", dlerror()); */
+	/* else if ((sqrt = dlsym(libm, "sqrt")) == NULL) */
+	/* 	printf("%s\n", dlerror()); */
+	/* else */
+	g_rs.stdev = sqrt(g_rs.var);
 }
