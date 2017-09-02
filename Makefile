@@ -17,10 +17,12 @@ NASM		=	nasm
 
 UNAME_S		=	$(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	FLAGS_ASM	=	-f elf64
+	FLAGS_ASM	=	-f elf64\
+					-DWRITE=0x0000001
 endif
 ifeq ($(UNAME_S),Darwin)
-	FLAGS_ASM	=	-f macho64
+	FLAGS_ASM	=	-f macho64\
+					-DWRITE=0x2000004
 endif
 
 
@@ -33,17 +35,24 @@ OBJ_DIR		=	objs/
 
 SRC_BASE	= \
 ft_bzero.s\
+ft_strcat.s\
+ft_isalpha.s\
 ft_isdigit.s\
 ft_isalnum.s\
-ft_isprint.s\
-ft_isalpha.s\
 ft_isascii.s\
-ft_strcat.s\
+ft_isprint.s\
 ft_toupper.s\
 ft_tolower.s\
+ft_puts.s\
+\
+ft_strlen.s\
+ft_memset.s\
+ft_memcpy.s\
+ft_strdup.s\
 \
 ft_islower.s\
 ft_isupper.s\
+ft_putchar.s\
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.s=.o))
@@ -86,9 +95,9 @@ fclean :		clean
 
 re :			fclean all
 
-main: $(NAME) main.c
-	@gcc main.c -I $(INC_DIR) -L. -lfts -o main -Wall -Wextra -Werror -L. -lfts -o main
-	@printf "\r\033[38;5;117m✓ MAKE main\033[0m\033[K\n"
+test: $(NAME) test.c
+	@gcc test.c -I $(INC_DIR) -Wall -Wextra -Werror -L. -lfts -o test
+	@printf "\r\033[38;5;117m✓ MAKE test\033[0m\033[K\n"
 
 .PHONY :		fclean clean re
 
