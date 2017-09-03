@@ -405,16 +405,18 @@ int test_strdup()
 	return (0);
 }
 
-/* int test_cat(char ** argv) */
-/* { */
-/* 	ft_putstr(__func__); ft_putstr(":\n"); */
-/* 	ft_putstr("Wait for a user input:\n"); */
-/* 	ft_cat(0); */
-/* 	ft_cat(open(__FILE__, O_RDONLY)); */
-/* 	ft_cat(open(argv[0], O_RDONLY)); */
-/* 	ft_cat(-42); */
-/* 	return (0); */
-/* } */
+int test_cat(char ** argv)
+{
+	ft_putstr(__func__); ft_putstr(":\n");
+	/* ft_putstr("Wait for a user input:\n"); */
+	/* ft_cat(0); */
+	ft_putstr("\ntest.c:\n");
+	ft_cat(open(__FILE__, O_RDONLY));
+	ft_putstr("\ntest binary:\n");
+	ft_cat(open(argv[0], O_RDONLY));
+	ft_cat(-42);
+	return (0);
+}
 
 int test_isupper()
 {
@@ -491,12 +493,12 @@ int main(int argc, char **argv)
 	ft_putstr("\nPART BONUS:\n_______\n");
 	if (test_isupper() ||
 			test_islower() ||
-			test_isupper() ||
-			test_putchar())
+			test_isupper())
+			/* test_putchar()) */
 		return (1);
-	/* ft_putstr("\nPART 3:\n_______\n"); */
-	/* /1* if (test_cat(argv)) *1/ */
-	/* /1* 	return (1); *1/ */
+	ft_putstr("\nPART 3:\n_______\n");
+	if (test_cat(argv))
+		return (1);
 	puts("\033c\n\033[38;5;117mALL PASSED:\n___________\n\033[0m");
 	return (0);
 }

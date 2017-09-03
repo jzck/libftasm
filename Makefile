@@ -18,10 +18,12 @@ NASM		=	nasm
 UNAME_S		=	$(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	FLAGS_ASM	=	-f elf64\
+					-D READ=0x0000000\
 					-DWRITE=0x0000001
 endif
 ifeq ($(UNAME_S),Darwin)
 	FLAGS_ASM	=	-f macho64\
+					-D READ=0x2000003\
 					-DWRITE=0x2000004
 endif
 
@@ -49,6 +51,8 @@ ft_strlen.s\
 ft_memset.s\
 ft_memcpy.s\
 ft_strdup.s\
+\
+ft_cat.s\
 \
 ft_islower.s\
 ft_isupper.s\

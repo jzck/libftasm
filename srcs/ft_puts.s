@@ -6,7 +6,8 @@ extern ft_putchar
 
 %define STDOUT			1
 
-ft_puts:						; int puts(const char *s)
+_ft_puts:						; int puts(const char *s)
+ft_puts:
 	push	rdi
     call    ft_strlen
 	pop		rdi
