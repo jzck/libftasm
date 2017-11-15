@@ -17,12 +17,14 @@ NASM		=	nasm
 
 UNAME_S		=	$(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	FLAGS_ASM	=	-f elf64\
+	FLAGS_ASM	=	-g\
+					-f elf64\
 					-D READ=0x0000000\
 					-DWRITE=0x0000001
 endif
 ifeq ($(UNAME_S),Darwin)
-	FLAGS_ASM	=	-f macho64\
+	FLAGS_ASM	=	-g\
+					-f macho64\
 					-D READ=0x2000003\
 					-DWRITE=0x2000004
 endif
@@ -103,6 +105,13 @@ test: $(NAME) test.c
 	@gcc test.c -I $(INC_DIR) -Wall -Wextra -Werror -L. -lfts -o test
 	@printf "\r\033[38;5;117m✓ MAKE test\033[0m\033[K\n"
 
-.PHONY :		fclean clean re
+debug: $(NAME) debug.c
+	@gcc debug.c -I $(INC_DIR) -Wall -Wextra -Werror -L. -lfts -o debug
+	@printf "\r\033[38;5;117m✓ MAKE debug\033[0m\033[K\n"
+
+run-dbg: debug
+	lldb ./debug
+
+.PHONY :		fclean clean re run-gdb
 
 -include $(OBJS:.o=.d)

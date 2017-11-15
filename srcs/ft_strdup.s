@@ -1,6 +1,7 @@
 global		_ft_strdup
 global		ft_strdup
 
+extern		_malloc
 extern		malloc
 extern		ft_strlen
 extern		ft_memcpy
@@ -15,7 +16,7 @@ ft_strdup:
 	inc		rax
 	push	rax
 	mov		rdi, rax
-	call	malloc
+	call	_malloc
 	cmp		rax, 0
 	je		end
 	mov		rdi, rax

@@ -8,23 +8,26 @@ section .bss
 
 section .text
 
+; int ft_putchar(int c)
 _ft_putchar:
 ft_putchar:
-	xor rdx, rdx
-	mov dl, dil
-	mov [char], rdx
+	; save c value
+	push rdi
 
+	; write(STDOUT, char, 1)
 	mov rdi, STDOUT
-	mov rsi, char
+	lea rsi, [rdi]
 	mov rdx, 1
 	mov rax, WRITE
 	syscall
 
 	cmp rax, 0
-	jle end
-	mov rax, [char]
+	jle err
+	; success case then return c
+	pop rax
 	ret
 
-end:
-	mov rax, -42
+err:
+	; error case then return -1
+	mov rax, -1
 	ret

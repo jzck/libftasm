@@ -214,10 +214,22 @@ int test_puts()
 	char str[] = "It's a char line you have to print. Not this one";
 	str[35] = 0;
 	int ret, ret_cmp;
-	/* ft_putstr("Original:"); ret_cmp = puts(NULL); */
-	ft_putstr("Notre___:|"); ft_puts(NULL);ft_putstr("|\n");
-	ft_putstr("Notre___:|"); ret = ft_puts(str);ft_putstr("|\n");
-	ft_putstr("Original:|"); ret_cmp = puts(str);ft_putstr("|\n");
+	printf("Original:|"); ret = puts("");printf("|\n");
+	printf("Notre   :|"); ret_cmp = ft_puts("");printf("|\n");
+	if (ret != ret_cmp)
+	{
+		printf("FAILED: %d vs %d\n", ret, ret_cmp);
+		return (1);
+	}
+	printf("Original:|"); ret = puts(NULL);printf("|\n");
+	printf("Notre   :|"); ret_cmp = ft_puts(NULL);printf("|\n");
+	if (ret != ret_cmp)
+	{
+		printf("FAILED: %d vs %d\n", ret, ret_cmp);
+		return (1);
+	}
+	printf("Notre   :|"); ret = ft_puts(str);printf("|\n");
+	printf("Original:|"); ret_cmp = puts(str);printf("|\n");
 	if (ret != ret_cmp)
 	{
 		printf("FAILED: %d vs %d\n", ret, ret_cmp);

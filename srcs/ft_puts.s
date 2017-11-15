@@ -6,36 +6,35 @@ extern ft_putchar
 
 %define STDOUT			1
 
+section .data
+	string db "(null)"
+	.len: equ $ - string
+
 _ft_puts:						; int puts(const char *s)
 ft_puts:
-	push	rdi
-    call    ft_strlen
+	push	rdi					; because strlen will clobber rdi
+	call	ft_strlen
 	pop		rdi
-    push    rax					; Number of printed chars have to be returned by ft_puts
     cmp     rax, 0
-    jg      print_string		; if length > 0, print string
-	mov		rdi, 0xa
-	call	ft_putchar
-    jmp     error				; else go to error
+    je      print_nl			; if empty string skip printing
 
 print_string:
-    mov     rsi, rdi            ; string arg for write
-    mov     rdi, STDOUT			; file_descriptor arg for write
-    mov     rdx, rax            ; length arg returned by ft_strlen for write
-    mov     rax, WRITE			; write
-	mov		byte [rsi + rdx], 0xa	; newline at end of string
-	inc		rdx
+	; int write(int fd, const char *str, size_t size)
+	mov		rsi, rdi			; char *str
+    mov     rdi, STDOUT			; int fd
+    mov     rdx, rax            ; size_t strlen
+    mov     rax, WRITE			; WRITE
     syscall
-	dec		rdx
-	mov		byte [rsi + rdx], 0x0	; put back eos
+	jc		error
 
-    test    rax, rax
-    jle     error               ; if write failed, go to error
-	jmp		success
+print_nl:
+	mov		rdi, 0xa
+	call	ft_putchar
+    test	rax, rax
+    jc		error               ; if write failed, go to error
 
 success:
-    pop     rax                 ; Get number of chars printed by print_string
-    inc     rax                 ; Add new line printed by print_newline to this number
+	mov		rax, 0xa			; success returns '\n'
     jmp     end
 
 error:
