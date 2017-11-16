@@ -2,5 +2,5 @@
 
 int	main(void)
 {
-	ft_puts("hello\0");
+	return (ft_puts("h2g2"));
 }

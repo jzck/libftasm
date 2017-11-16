@@ -216,25 +216,32 @@ int test_puts()
 	int ret, ret_cmp;
 	printf("Original:|"); ret = puts("");printf("|\n");
 	printf("Notre   :|"); ret_cmp = ft_puts("");printf("|\n");
+#ifdef __APPLE__
 	if (ret != ret_cmp)
 	{
-		printf("FAILED: %d vs %d\n", ret, ret_cmp);
+		printf("FAILED: %d should be %d\n", ret_cmp, ret);
 		return (1);
 	}
+#endif
+#ifdef __APPLE__
+// puts(NULL) segfaults on linux
 	printf("Original:|"); ret = puts(NULL);printf("|\n");
 	printf("Notre   :|"); ret_cmp = ft_puts(NULL);printf("|\n");
 	if (ret != ret_cmp)
 	{
-		printf("FAILED: %d vs %d\n", ret, ret_cmp);
+		printf("FAILED: %d should be %d\n", ret_cmp, ret);
 		return (1);
 	}
+#endif
 	printf("Notre   :|"); ret = ft_puts(str);printf("|\n");
 	printf("Original:|"); ret_cmp = puts(str);printf("|\n");
+#ifdef __APPLE__
 	if (ret != ret_cmp)
 	{
-		printf("FAILED: %d vs %d\n", ret, ret_cmp);
+		printf("FAILED: %d should be %d\n", ret_cmp, ret);
 		return (1);
 	}
+#endif
 	return (0);
 }
 
@@ -484,6 +491,7 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
+	setbuf(stdout, NULL);
 	ft_putstr("\nPART 1:\n_______\n");
 	if (test_bzero() ||
 			test_isdigit() ||

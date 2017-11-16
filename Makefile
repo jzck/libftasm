@@ -102,11 +102,11 @@ fclean :		clean
 re :			fclean all
 
 test: $(NAME) test.c
-	@gcc test.c -I $(INC_DIR) -Wall -Wextra -Werror -L. -lfts -o test
+	@gcc test.c -I $(INC_DIR) -L. -lfts -o test
 	@printf "\r\033[38;5;117m✓ MAKE test\033[0m\033[K\n"
 
 debug: $(NAME) debug.c
-	@gcc debug.c -I $(INC_DIR) -Wall -Wextra -Werror -L. -lfts -o debug
+	@gcc debug.c -I $(INC_DIR) -L. -lfts -o debug
 	@printf "\r\033[38;5;117m✓ MAKE debug\033[0m\033[K\n"
 
 run-dbg: debug

@@ -25,22 +25,21 @@ print_string:
     mov     rdx, rax            ; size_t strlen
     mov     rax, WRITE			; WRITE
     syscall
-	jc		error
+	cmp		rax, 0
+	jl		error
 
 print_nl:
+	; xor		rdi, rdi
+	; add		rdi, 0xa
 	mov		rdi, 0xa
 	call	ft_putchar
-    test	rax, rax
-    jc		error               ; if write failed, go to error
+	cmp		rax, 0
+	jl		error
 
 success:
 	mov		rax, 0xa			; success returns '\n'
-    jmp     end
+	ret
 
 error:
-    pop     rax
     mov     rax, -1             ; Return EOF (alias -1) on error
-    jmp     end
-
-end:
 	ret

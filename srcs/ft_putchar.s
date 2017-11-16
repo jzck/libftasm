@@ -12,22 +12,25 @@ section .text
 _ft_putchar:
 ft_putchar:
 	; save c value
-	push rdi
+	push	rdi
 
-	; write(STDOUT, char, 1)
-	mov rdi, STDOUT
-	lea rsi, [rdi]
-	mov rdx, 1
-	mov rax, WRITE
+	; int write(int fd, char *str, size_t len)
+	lea		rsi, [char]		; char *str
+	mov		[rsi], dil
+	mov		rdi, STDOUT		; int fd
+	mov		rdx, 1			; size_t len
+	mov		rax, WRITE
 	syscall
 
-	cmp rax, 0
-	jle err
+	cmp		rax, 0
+	jl		err
+
 	; success case then return c
-	pop rax
+	pop		rax
 	ret
 
 err:
 	; error case then return -1
-	mov rax, -1
+	pop		rax
+	mov		rax, -1
 	ret
