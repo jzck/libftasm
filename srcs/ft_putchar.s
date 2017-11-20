@@ -3,8 +3,8 @@
 global _ft_putchar
 global ft_putchar
 
-section .bss
-	char: resb 1
+section .data
+	string: db "A"
 
 section .text
 
@@ -15,10 +15,10 @@ ft_putchar:
 	push	rdi
 
 	; int write(int fd, char *str, size_t len)
-	lea		rsi, [char]		; char *str
+	lea		rsi, [rel string]	; char *str
 	mov		[rsi], dil
-	mov		rdi, STDOUT		; int fd
-	mov		rdx, 1			; size_t len
+	mov		rdx, 1				; size_t len
+	mov		rdi, STDOUT			; int fd
 	mov		rax, WRITE
 	syscall
 

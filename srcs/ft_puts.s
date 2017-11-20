@@ -1,19 +1,20 @@
 global _ft_puts
 global ft_puts
 
-extern ft_strlen
-extern ft_putchar
+extern _ft_strlen
+extern _ft_putchar
 
 %define STDOUT			1
 
 section .data
-	string db "(null)"
+	string: db "(null)"
 	.len: equ $ - string
 
+section .text
 _ft_puts:						; int puts(const char *s)
 ft_puts:
 	push	rdi					; because strlen will clobber rdi
-	call	ft_strlen
+	call	_ft_strlen
 	pop		rdi
     cmp     rax, 0
     je      print_nl			; if empty string skip printing
@@ -26,20 +27,16 @@ print_string:
     mov     rax, WRITE			; WRITE
     syscall
 	cmp		rax, 0
-	jl		error
+	jl		finish
 
 print_nl:
-	; xor		rdi, rdi
-	; add		rdi, 0xa
 	mov		rdi, 0xa
-	call	ft_putchar
+	call	_ft_putchar
 	cmp		rax, 0
-	jl		error
+	ret
+	jl		finish
 
 success:
 	mov		rax, 0xa			; success returns '\n'
-	ret
-
-error:
-    mov     rax, -1             ; Return EOF (alias -1) on error
+finish:
 	ret

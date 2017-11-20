@@ -1,7 +1,8 @@
 global		_ft_memcpy
 global		ft_memcpy
 
-_ft_memcpy:			; void *ft_memcpy(void *dst, const void *src, size_t n)
+; void *ft_memcpy(void *dst, const void *src, size_t n)
+_ft_memcpy:
 ft_memcpy:
 	push	rdi
 	cmp		rdi, 0

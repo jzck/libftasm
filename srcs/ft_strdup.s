@@ -3,22 +3,24 @@ global		ft_strdup
 
 extern		_malloc
 extern		malloc
-extern		ft_strlen
-extern		ft_memcpy
+extern		_ft_strlen
+extern		_ft_memcpy
 
-_ft_strdup:			; void *ft_strdup(const char *d)
+; void *ft_strdup(const char *d)
+_ft_strdup:
 ft_strdup:
 	mov		rax, 0
 	cmp		rdi, 0
 	je		end
 	push	rdi
-	call	ft_strlen
+	call	_ft_strlen
 	inc		rax
 	push	rax
 	mov		rdi, rax
-	call	malloc
+	call	_malloc
 	cmp		rax, 0
 	je		end
+
 	mov		rdi, rax
 	pop		rcx
 	pop		rsi

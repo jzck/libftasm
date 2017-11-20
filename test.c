@@ -400,26 +400,26 @@ int test_strdup()
 	}
 	str = ft_strdup("Coucou");
 	str_cmp = strdup("Coucou");
-	len = strlen(str);
-	len_cmp = strlen(str_cmp);
-	if (len != len_cmp)
-	{
-		printf("FAILED: len is %d vs %d\n", len, len_cmp);
-		return (1);
-	}
-	i = -1;
-	while (++i < len)
-	{
-		if (str[i] != str_cmp[i])
-		{
-			ft_putnstr(str, len);
-			ft_putnstr(str_cmp, len);
-			printf("FAILED: %c vs %c\n", str[i], str_cmp[i]);
-			return (1);
-		}
-	}
-	free(str);
-	free(str_cmp);
+	/* len = strlen(str); */
+	/* len_cmp = strlen(str_cmp); */
+	/* if (len != len_cmp) */
+	/* { */
+	/* 	printf("FAILED: len is %d vs %d\n", len, len_cmp); */
+	/* 	return (1); */
+	/* } */
+	/* i = -1; */
+	/* while (++i < len) */
+	/* { */
+	/* 	if (str[i] != str_cmp[i]) */
+	/* 	{ */
+	/* 		ft_putnstr(str, len); */
+	/* 		ft_putnstr(str_cmp, len); */
+	/* 		printf("FAILED: %c vs %c\n", str[i], str_cmp[i]); */
+	/* 		return (1); */
+	/* 	} */
+	/* } */
+	/* free(str); */
+	/* free(str_cmp); */
 
 	return (0);
 }
@@ -510,6 +510,7 @@ int main(int argc, char **argv)
 			test_memcpy() ||
 			test_strdup())
 		return (1);
+	exit(1);
 	ft_putstr("\nPART BONUS:\n_______\n");
 	if (test_isupper() ||
 			test_islower() ||

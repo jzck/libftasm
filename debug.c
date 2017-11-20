@@ -2,5 +2,6 @@
 
 int	main(void)
 {
-	return (ft_puts("h2g2"));
+	ft_puts("h2g2");
+	return (0);
 }
