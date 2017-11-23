@@ -27,6 +27,7 @@ ft_putchar:
 
 	; success case then return c
 	pop		rax
+	movzx	rax, al				; cast to char
 	ret
 
 err:

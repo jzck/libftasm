@@ -6,11 +6,6 @@ int ft_putstr(const char *str)
 	return (write(1, str, strlen(str)));
 }
 
-/* int ft_putchar(const char c) */
-/* { */
-/* 	return (write(1, &c, 1)); */
-/* } */
-
 int ft_putnstr(const char *str, size_t n)
 {
 	return (write(1, str, n));
@@ -400,26 +395,26 @@ int test_strdup()
 	}
 	str = ft_strdup("Coucou");
 	str_cmp = strdup("Coucou");
-	/* len = strlen(str); */
-	/* len_cmp = strlen(str_cmp); */
-	/* if (len != len_cmp) */
-	/* { */
-	/* 	printf("FAILED: len is %d vs %d\n", len, len_cmp); */
-	/* 	return (1); */
-	/* } */
-	/* i = -1; */
-	/* while (++i < len) */
-	/* { */
-	/* 	if (str[i] != str_cmp[i]) */
-	/* 	{ */
-	/* 		ft_putnstr(str, len); */
-	/* 		ft_putnstr(str_cmp, len); */
-	/* 		printf("FAILED: %c vs %c\n", str[i], str_cmp[i]); */
-	/* 		return (1); */
-	/* 	} */
-	/* } */
-	/* free(str); */
-	/* free(str_cmp); */
+	len = strlen(str);
+	len_cmp = strlen(str_cmp);
+	if (len != len_cmp)
+	{
+		printf("FAILED: len is %d vs %d\n", len, len_cmp);
+		return (1);
+	}
+	i = -1;
+	while (++i < len)
+	{
+		if (str[i] != str_cmp[i])
+		{
+			ft_putnstr(str, len);
+			ft_putnstr(str_cmp, len);
+			printf("FAILED: %c vs %c\n", str[i], str_cmp[i]);
+			return (1);
+		}
+	}
+	free(str);
+	free(str_cmp);
 
 	return (0);
 }
@@ -427,13 +422,15 @@ int test_strdup()
 int test_cat(char ** argv)
 {
 	ft_putstr(__func__); ft_putstr(":\n");
+
 	/* ft_putstr("Wait for a user input:\n"); */
 	/* ft_cat(0); */
-	ft_putstr("\ntest.c:\n");
-	ft_cat(open(__FILE__, O_RDONLY));
-	ft_putstr("\ntest binary:\n");
-	ft_cat(open(argv[0], O_RDONLY));
-	ft_cat(-42);
+
+	/* ft_putstr("\ntest.c:\n"); */
+	/* ft_cat(open(__FILE__, O_RDONLY)); */
+
+	/* ft_putstr("\ntest binary:\n"); */
+	/* ft_cat(open("test", O_RDONLY)); */
 	return (0);
 }
 
@@ -510,16 +507,15 @@ int main(int argc, char **argv)
 			test_memcpy() ||
 			test_strdup())
 		return (1);
-	exit(1);
 	ft_putstr("\nPART BONUS:\n_______\n");
 	if (test_isupper() ||
 			test_islower() ||
-			test_isupper())
-			/* test_putchar()) */
+			test_isupper() ||
+			test_putchar())
 		return (1);
 	ft_putstr("\nPART 3:\n_______\n");
 	if (test_cat(argv))
 		return (1);
-	puts("\033c\n\033[38;5;117mALL PASSED:\n___________\n\033[0m");
+	puts("\033c\n\033[38;5;117mALL PASSED\n___________\n\033[0m");
 	return (0);
 }

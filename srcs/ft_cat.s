@@ -1,10 +1,8 @@
 global _ft_cat
 global ft_cat
 
-extern ft_putchar
-
 %define STDOUT			1
-%define BUFF_SIZE		10
+%define BUFF_SIZE		1024
 
 section .bss
 	buf: resb BUFF_SIZE
