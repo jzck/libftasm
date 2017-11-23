@@ -102,7 +102,7 @@ re :			fclean all
 
 
 test: $(NAME) main.c
-	gcc -Wall -Wextra -Werror main.c libfts.a
+	gcc -Wall -Wextra -Werror $? -o test
 	@printf "\r\033[38;5;117m✓ MAKE test\033[0m\033[K\n"
 
 .PHONY :		fclean clean re run-gdb
