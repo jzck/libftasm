@@ -1,5 +1,6 @@
 #include "libft.h"
 #include <ctype.h>
+#include <math.h>
 
 int ft_putstr(const char *str)
 {
@@ -219,7 +220,7 @@ int test_puts()
 	}
 #endif
 #ifdef __APPLE__
-// puts(NULL) segfaults on linux
+// puts(NULL) segfaults on linux because the compiler lets you shoot yourself
 	printf("Original:|"); ret = puts(NULL);printf("|\n");
 	printf("Notre   :|"); ret_cmp = ft_puts(NULL);printf("|\n");
 	if (ret != ret_cmp)
@@ -419,18 +420,15 @@ int test_strdup()
 	return (0);
 }
 
-int test_cat(char ** argv)
+int test_cat(char **av)
 {
 	ft_putstr(__func__); ft_putstr(":\n");
 
-	/* ft_putstr("Wait for a user input:\n"); */
-	/* ft_cat(0); */
-
-	/* ft_putstr("\ntest.c:\n"); */
-	/* ft_cat(open(__FILE__, O_RDONLY)); */
-
-	/* ft_putstr("\ntest binary:\n"); */
-	/* ft_cat(open("test", O_RDONLY)); */
+	(void)av;
+	ft_cat(0);
+	ft_cat(open(__FILE__, O_RDONLY));
+	ft_cat(open(av[0], O_RDONLY));
+	ft_cat(-42);
 	return (0);
 }
 
@@ -479,42 +477,192 @@ int test_putchar()
 			return(1);
 		}
 	}
-
+	ft_putstr(":\n");
 	return (0);
+}
+
+int test_max()
+{
+	ft_putstr(__func__); ft_putstr(":\n");
+	unsigned int a, b, ret, ret_cmp;
+	int ans = 0;
+	a = 5;
+	b = 6;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = 6;
+	b = 5;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -10;
+	b = -12;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = -10;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -10;
+	b = 12;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = 10;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = 0;
+	b = 10;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = 0;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -2147483648;
+	b = 2147483647;
+	if ((ret = ft_max(a,b)) != (ret_cmp = fmax(a,b)))
+	{
+			dprintf(2, "FAILED max(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+
+	return (ans);
+}
+
+int test_min()
+{
+	ft_putstr(__func__); ft_putstr(":\n");
+	unsigned int a, b, ret, ret_cmp;
+	int ans = 0;
+	a = 5;
+	b = 6;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = 6;
+	b = 5;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -10;
+	b = -12;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = -10;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -10;
+	b = 12;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = 10;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = 0;
+	b = 10;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -12;
+	b = 0;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+	a = -2147483648;
+	b = 2147483647;
+	if ((ret = ft_min(a,b)) != (ret_cmp = fmin(a,b)))
+	{
+			dprintf(2, "FAILED min(%d, %d) => %d vs %d\n",a,b,ret,ret_cmp);
+			++ans;
+		}
+
+	return (ans);
 }
 
 
 int main(int argc, char **argv)
 {
 	(void)argc;
-	(void)argv;
 	setbuf(stdout, NULL);
 	ft_putstr("\nPART 1:\n_______\n");
-	if (test_bzero() ||
-			test_isdigit() ||
-			test_isalpha() ||
+	if (
+			test_bzero() ||
 			test_strcat() ||
-			test_isascii() ||
+			test_isalpha() ||
+			test_isdigit() ||
 			test_isalnum() ||
+			test_isascii() ||
 			test_isprint() ||
 			test_toupper() ||
 			test_tolower() ||
-			test_puts())
+			test_puts()
+	   )
 		return (1);
 	ft_putstr("PART 2:\n_______\n");
-	if (test_strlen() ||
+	if (
+			test_strlen() ||
 			test_memset() ||
 			test_memcpy() ||
-			test_strdup())
-		return (1);
-	ft_putstr("\nPART BONUS:\n_______\n");
-	if (test_isupper() ||
-			test_islower() ||
-			test_isupper() ||
-			test_putchar())
+			test_strdup()
+	   )
 		return (1);
 	ft_putstr("\nPART 3:\n_______\n");
 	if (test_cat(argv))
+		return (1);
+	ft_putstr("\nPART BONUS:\n_______\n");
+	if (
+			test_isupper() ||
+			test_islower() ||
+			test_putchar() ||
+			test_min() ||
+			test_max()
+	   )
 		return (1);
 	puts("\033c\n\033[38;5;117mALL PASSED\n___________\n\033[0m");
 	return (0);

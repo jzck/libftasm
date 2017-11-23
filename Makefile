@@ -39,26 +39,25 @@ OBJ_DIR		=	objs/
 
 SRC_BASE	= \
 ft_bzero.s\
-ft_strcat.s\
-ft_isalpha.s\
-ft_isdigit.s\
-ft_isalnum.s\
-ft_isascii.s\
-ft_isprint.s\
-ft_toupper.s\
-ft_tolower.s\
-ft_puts.s\
-\
-ft_strlen.s\
-ft_memset.s\
-ft_memcpy.s\
-ft_strdup.s\
-\
 ft_cat.s\
-\
+ft_isalnum.s\
+ft_isalpha.s\
+ft_isascii.s\
+ft_isdigit.s\
 ft_islower.s\
+ft_isprint.s\
 ft_isupper.s\
+ft_max.s\
+ft_memcpy.s\
+ft_memset.s\
+ft_min.s\
 ft_putchar.s\
+ft_puts.s\
+ft_strcat.s\
+ft_strdup.s\
+ft_strlen.s\
+ft_tolower.s\
+ft_toupper.s
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.s=.o))
@@ -101,8 +100,9 @@ fclean :		clean
 
 re :			fclean all
 
-test: $(NAME) test.c
-	@gcc test.c -I $(INC_DIR) -L. -lfts -o test
+
+test: $(NAME) main.c
+	gcc -Wall -Wextra -Werror main.c libfts.a
 	@printf "\r\033[38;5;117m✓ MAKE test\033[0m\033[K\n"
 
 .PHONY :		fclean clean re run-gdb

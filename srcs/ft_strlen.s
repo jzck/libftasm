@@ -6,7 +6,7 @@ ft_strlen:
 	mov		rax, 0
 	cmp		rdi, 0
 	je		end
-t
+
 	mov		rcx, -1
 	cld
 	repnz	scasb

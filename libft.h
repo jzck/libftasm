@@ -19,6 +19,7 @@ int		ft_isprint(int i);
 int		ft_toupper(int i);
 int		ft_tolower(int i);
 int		ft_puts(char *s);
+
 /*
 ** PART_2
 */
@@ -26,14 +27,17 @@ int		ft_strlen(char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
+
 /*
 ** PART_3
 */
 void	ft_cat(int fd);
+
 /*
 ** PART_BONUS
 */
 int		ft_isupper(int i);
 int		ft_islower(int i);
 int		ft_putchar(int i);
-
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);

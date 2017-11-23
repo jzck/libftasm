@@ -8,14 +8,17 @@ section .bss
 	buf: resb BUFF_SIZE
 
 section .text
-
-_ft_cat:						; void ft_cat(int fd)
+; void ft_cat(int fd)
+_ft_cat:
 ft_cat:
-	push	rdi
+	mov		r8, rdi
+	cmp		rdi, 0
+	jl		end
 	lea		rsi, [rel buf]
 	mov		rdx, BUFF_SIZE
 	mov		rax, READ			; int read(int fd, void *buf, size_t count)
 	syscall
+	jc		end
 	cmp		rax, 0
 	jle		end
 
@@ -23,11 +26,11 @@ ft_cat:
     mov     rdx, rax
     mov     rax, WRITE			; int write(int fd, const void *buf, size_t count)
     syscall
+	jc		end
 	cmp		rax, 0
 	jl		end
 
-	pop		rdi
+	mov		rdi, r8
     jmp		ft_cat
 end:		
-	pop		rax
 	ret
